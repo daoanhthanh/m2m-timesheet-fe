@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.absence {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  max-width: 100%;
+}

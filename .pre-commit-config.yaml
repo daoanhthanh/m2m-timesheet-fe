@@ -1,0 +1,19 @@
+repos:
+  - repo: local
+    hooks:
+      - id: prettier
+        name: Format code trước khi commit
+        description: "Tự động format code trước khi commit"
+        entry: prettier src --write
+        language: node
+        "types": [text]
+        args: []
+        require_serial: false
+        additional_dependencies: ["prettier@4.0.0-alpha.8"]
+        minimum_pre_commit_version: "0"
+
+      - id: after-format
+        name: Đã format code xong. Hãy add lại vào git và commit nếu cần thiết
+        description: ""
+        entry: "echo 'Đã format code xong'"
+        language: system

@@ -1,0 +1,58 @@
+{
+  "buttons": {
+    "filter": "Lọc",
+    "clear": "Xóa",
+    "cancel": "Hủy",
+    "submit": "Gửi",
+    "save": "Lưu",
+    "refresh": "Làm mới",
+    "create": "Tạo mới",
+    "edit": "Chỉnh sửa",
+    "logout": "Đăng xuất"
+  },
+  "pages": {
+    "login": {
+      "title": "Đăng nhập",
+      "signin": "Đăng nhập",
+      "divider": "hoặc",
+      "fields": {
+        "password": "Mật khẩu",
+        "email": "Email hoặc số điện thoại"
+      },
+      "buttons": {
+        "rememberMe": "Nhớ thông tin cho lần đăng nhập sau",
+        "forgotPassword": "Quên mật khẩu?"
+      },
+      "errors": {
+        "validEmail": "Vui lòng nhập một địa chỉ email hợp lệ.",
+        "requiredEmail": "Vui lòng nhập email hoặc số điện thoại."
+      }
+    },
+    "forgotPassword": {
+      "title": "Quên mật khẩu?",
+      "description": "Vui lòng nhập email của bạn. Chúng tôi sẽ gửi cho bạn một email với hướng dẫn để thiết lập lại mật khẩu của bạn.",
+      "fields": {
+        "email": "Email hoặc tên đăng nhập"
+      },
+      "errors": {
+        "validEmail": "Vui lòng nhập một địa chỉ email hợp lệ."
+      },
+      "buttons": {
+        "send": "Gửi",
+        "submit": "Gửi hướng dẫn thiết lập lại mật khẩu"
+      }
+    },
+    "register": {
+      "buttons": {
+        "haveAccount": "Đã nhớ ra mật khẩu?"
+      }
+    }
+  },
+  "documentTitle": {
+    "default": "JVI Chấm công",
+    "suffix": " | JVI Chấm công"
+  },
+  "notifications": {
+    "error": "Đã có lỗi xảy ra. Hãy liên hệ với kỹ thuật viên để xử lý."
+  }
+}
