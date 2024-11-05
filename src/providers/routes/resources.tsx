@@ -1,4 +1,8 @@
-import { DashboardOutlined, UserOutlined, ClockCircleOutlined } from "@ant-design/icons";
+import {
+  DashboardOutlined,
+  UserOutlined,
+  ClockCircleOutlined,
+} from "@ant-design/icons";
 import { ResourceProps } from "@refinedev/core";
 
 const resources: ResourceProps[] = [
