@@ -15,13 +15,13 @@ export default function Calendar() {
   const onPanelChange = (
     value: TDayjs,
     mode: ACalendarProps<TDayjs>["mode"],
-  ) => {
-    console.log(value.format("YYYY-MM-DD"), mode);
-  };
+  ) => {};
+
+  const [selectedDate, setSelectedDate] = React.useState<TDayjs>(dayjs());
 
   const onSelect = (date: TDayjs, selectInfo: SelectInfo) => {
     if (selectInfo.source === "date") {
-      console.log(date.format("YYYY-MM-DD"));
+      setSelectedDate(date);
     }
   };
 
@@ -47,6 +47,7 @@ export default function Calendar() {
         className="mb-1.5"
         entity="timesheet"
         buttonText={t("timesheet.createLeaveRequest")}
+        additionalQuery={{ targetDate: selectedDate.format("DD-MM-YYYY") }}
       />
       <ACalendar
         onPanelChange={onPanelChange}

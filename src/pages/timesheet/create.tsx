@@ -1,27 +1,27 @@
 import { useForm } from "@refinedev/antd";
-
-import { Button, Form, Input, Modal, TimePicker } from "antd";
-
+import { Button, DatePicker, Form, Input, Modal, TimePicker } from "antd";
 import { useNavigation } from "@refinedev/core";
 import { useTranslation } from "react-i18next";
 import { LeaveRequestForm } from "@/domains/calendar";
 import dayjs, { type Dayjs } from "dayjs";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export const LeaveRequestCreate = () => {
   const { t } = useTranslation();
-  const { formProps, saveButtonProps, queryResult, onFinish } =
-    useForm<LeaveRequestForm>({
-      redirect: "list",
-    });
-
+  const timeFormat = "HH:mm";
+  const { form, formProps, saveButtonProps } = useForm<LeaveRequestForm>({
+    redirect: "list",
+  });
   const { list } = useNavigation();
+  const [searchParams] = useSearchParams();
+  const targetDate = searchParams.get("targetDate");
 
   const [startLeaveTime, setStartLeaveTime] = useState<Dayjs>(dayjs());
   const [endLeaveTime, setEndLeaveTime] = useState<Dayjs>(startLeaveTime);
+
   const addTime = (amount: number) => {
     setEndLeaveTime(endLeaveTime.add(amount, "hour"));
-    console.log("endLeaveTime", endLeaveTime.format("HH:mm"));
   };
 
   const updateTime = () => {
@@ -51,7 +51,10 @@ export const LeaveRequestCreate = () => {
     wrapperCol: { span: 16 },
   };
 
-  const dateFormatList = ["DD/MM/YYYY", "DD-MM-YYYY", "DDMMYYYY"];
+  useEffect(() => {
+    form.setFieldsValue({ startLeaveTime });
+    form.setFieldsValue({ endLeaveTime });
+  }, [endLeaveTime, formProps.form]);
 
   return (
     <Modal
@@ -67,15 +70,13 @@ export const LeaveRequestCreate = () => {
       }}
       width={"45rem"}
     >
+      {/*@ts-ignore*/}
       <Form
         {...formLayout}
         {...formProps}
-        onFinish={(values) => {
-          // onFinish({
-          //     ...values,
-          // }).then((r) => {});
-
-          console.log("values", values);
+        onFinish={(values: LeaveRequestForm) => {
+          values.startLeaveTime = startLeaveTime.format("HH:mm");
+          values.endLeaveTime = endLeaveTime.format("HH:mm");
         }}
       >
         <Form.Item
@@ -91,18 +92,37 @@ export const LeaveRequestCreate = () => {
         </Form.Item>
 
         <Form.Item
+          label={t("timesheet.leaveDate")}
+          name="leaveDate"
+          rules={[
+            {
+              required: true,
+              message: t("timesheet.leaveDateRequired"),
+            },
+          ]}
+        >
+          <DatePicker
+            placeholder={"DD-MM-YYYY"}
+            defaultValue={dayjs(targetDate, "DD-MM-YYYY")}
+            format={"DD-MM-YYYY"}
+          />
+        </Form.Item>
+
+        <Form.Item
           label={t("timesheet.startLeaveTime")}
           name="startLeaveTime"
           rules={[
             {
               required: true,
+              message: t("timesheet.startLeaveTimeRequired"),
             },
           ]}
         >
           <TimePicker
             defaultValue={dayjs()}
-            format={"HH:mm"}
-            placeholder="HH:mm"
+            defaultPickerValue={dayjs()}
+            format={timeFormat}
+            placeholder={timeFormat}
             onChange={(dayjsValue, _) => {
               dayjsValue == null
                 ? setStartLeaveTime(dayjs())
@@ -116,19 +136,23 @@ export const LeaveRequestCreate = () => {
           rules={[
             {
               required: true,
+              message: t("timesheet.startLeaveTimeRequired"),
             },
           ]}
         >
           {updateTime()}
           <TimePicker
-            format={"HH:mm"}
+            format={timeFormat}
+            placeholder={timeFormat}
             value={endLeaveTime}
+            defaultPickerValue={startLeaveTime}
             onChange={(dayjsValue, _) =>
               dayjsValue == null
                 ? setEndLeaveTime(startLeaveTime)
                 : setEndLeaveTime(dayjsValue)
             }
           />
+          <span>{endLeaveTime.diff(startLeaveTime, "hours")} giờ</span>
         </Form.Item>
         <Form.Item label={t("common.phoneNumber")} name="contactPhoneNumber">
           <Input type="tel" />

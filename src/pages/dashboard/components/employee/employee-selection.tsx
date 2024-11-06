@@ -44,9 +44,7 @@ export default function EmployeeSelection(props: EmProps) {
       ? option.label.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
       : false;
 
-  const onSearch = (value: string) => {
-    console.log("🚀 ~ onSearch ~ value:", value);
-  };
+  const onSearch = (value: string) => {};
 
   return (
     <Select

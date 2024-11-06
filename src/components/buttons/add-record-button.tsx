@@ -11,12 +11,14 @@ interface AddRecordButtonProps {
   entity: string;
   buttonText: string;
   className?: string;
+  additionalQuery?: Record<string, string>;
 }
 
 const AddRecordButton: FC<AddRecordButtonProps> = ({
   entity,
   buttonText,
   className,
+  additionalQuery,
 }) => {
   const go = useGo();
   // const {pathname} = useLocation();
@@ -30,7 +32,7 @@ const AddRecordButton: FC<AddRecordButtonProps> = ({
       icon={<PlusCircleOutlined />}
       onClick={() => {
         return go({
-          to: `${createUrl(entity)}`,
+          to: `${createUrl(entity)}?${new URLSearchParams(additionalQuery)}`,
           query: {
             // to: pathname,
           },
