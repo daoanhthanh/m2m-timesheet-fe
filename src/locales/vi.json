@@ -49,8 +49,8 @@
     }
   },
   "documentTitle": {
-    "default": "JVI Chấm công",
-    "suffix": " | JVI Chấm công"
+    "default": "Man to Man Chấm công",
+    "suffix": " | M2M"
   },
   "notifications": {
     "error": "Đã có lỗi xảy ra. Hãy liên hệ với kỹ thuật viên để xử lý."

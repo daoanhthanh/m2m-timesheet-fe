@@ -65,7 +65,7 @@ export const CurrentUser: React.FC = () => {
   return (
     <div style={{ display: "flex" }}>
       <Space style={{ marginLeft: "8px" }} size="middle">
-        <Text strong>{user?.userFullName}</Text>
+        <Text strong>{user?.userLastName}</Text>
         <Popover
           placement="bottomRight"
           content={content}
