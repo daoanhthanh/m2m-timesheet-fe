@@ -21,8 +21,9 @@ export interface Timesheet {
 }
 
 export interface LeaveRequestForm {
+  leaveDate: string;
   leaveReason: string;
-  startLeaveTime: any;
-  endLeaveTime: any;
+  startLeaveTime: string;
+  endLeaveTime: string;
   contactPhoneNumber: string;
 }

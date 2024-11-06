@@ -66,6 +66,8 @@
       "short": "Nghỉ",
       "full": "Thời gian nghỉ"
     },
+    "leaveDate": "Ngày nghỉ",
+    "leaveDateRequired": "Ngày nghỉ không được để trống",
     "leaveReason": "Lý do nghỉ",
     "leaveStatus": "Trạng thái",
     "createLeaveRequest": "Tạo đơn nghỉ",
@@ -76,6 +78,9 @@
   },
   "common": {
     "phoneNumber": "Số điện thoại",
-    "save": "Thêm"
+    "save": "Thêm",
+    "hours": "giờ",
+    "hour": "giờ",
+    "allDay": "Cả ngày"
   }
 }
