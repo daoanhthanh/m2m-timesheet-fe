@@ -20,6 +20,7 @@ import Banner from "@/components/banner";
 import authProvider from "@/providers/auth-provider";
 import Routes from "@/providers/routes/Routes";
 import dataProvider from "@/providers/data-provider";
+import { ColorModeContextProvider } from "@/contexts/color-mode";
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -43,28 +44,30 @@ const App: React.FC = () => {
       )}
 
       <ConfigProvider locale={vi_VN}>
-        <AntdApp>
-          <Refine
-            authProvider={authProvider}
-            dataProvider={dataProvider}
-            routerProvider={routerProvider}
-            resources={resources}
-            i18nProvider={i18nProvider}
-            notificationProvider={useNotificationProvider}
-            options={{
-              syncWithLocation: true,
-              warnWhenUnsavedChanges: true,
-              textTransformers: {
-                plural: (text) => text,
-                singular: (text) => text,
-              },
-            }}
-          >
-            {Routes()}
-            <UnsavedChangesNotifier />
-            <DocumentTitleHandler />
-          </Refine>
-        </AntdApp>
+        <ColorModeContextProvider>
+          <AntdApp>
+            <Refine
+              authProvider={authProvider}
+              dataProvider={dataProvider}
+              routerProvider={routerProvider}
+              resources={resources}
+              i18nProvider={i18nProvider}
+              notificationProvider={useNotificationProvider}
+              options={{
+                syncWithLocation: true,
+                warnWhenUnsavedChanges: true,
+                textTransformers: {
+                  plural: (text) => text,
+                  singular: (text) => text,
+                },
+              }}
+            >
+              {Routes()}
+              <UnsavedChangesNotifier />
+              <DocumentTitleHandler />
+            </Refine>
+          </AntdApp>
+        </ColorModeContextProvider>
       </ConfigProvider>
     </BrowserRouter>
   );

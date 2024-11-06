@@ -1,17 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 
-import { Layout, Space, theme } from "antd";
-
-// import { searchClient } from "@/providers";
-//
-// import { AlgoliaSearch } from "./algolia-search";
+import { Layout as AntdLayout, Switch, theme } from "antd";
 import { CurrentUser } from "./current-user";
-// import { Notifications } from "./notifications";
-
+import { ColorModeContext } from "@/contexts/color-mode";
 const { useToken } = theme;
 
 export const Header: React.FC = () => {
   const { token } = useToken();
+
+  const { mode, setMode } = useContext(ColorModeContext);
 
   const headerStyles: React.CSSProperties = {
     backgroundColor: token.colorBgElevated,
@@ -22,16 +19,18 @@ export const Header: React.FC = () => {
     height: "64px",
     position: "sticky",
     top: 0,
-    zIndex: 999,
+    zIndex: 1,
   };
 
   return (
-    <Layout.Header style={headerStyles}>
-      {/*{searchClient ? <AlgoliaSearch /> : null}*/}
-      <Space align="center" size="middle">
-        {/*<Notifications />*/}
-        <CurrentUser />
-      </Space>
-    </Layout.Header>
+    <AntdLayout.Header style={headerStyles}>
+      <Switch
+        checkedChildren="🌛"
+        unCheckedChildren="🔆"
+        onChange={() => setMode(mode === "light" ? "dark" : "light")}
+        defaultChecked={mode === "dark"}
+      />
+      <CurrentUser />
+    </AntdLayout.Header>
   );
 };

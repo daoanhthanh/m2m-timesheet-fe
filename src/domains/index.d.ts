@@ -29,3 +29,9 @@ export interface Pagination<T> {
   data: T[];
   total: number;
 }
+
+export interface BaseResponse<T> {
+  data?: T;
+  success: boolean;
+  error?: string;
+}

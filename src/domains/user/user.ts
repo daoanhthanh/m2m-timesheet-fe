@@ -8,6 +8,7 @@ export enum Role {
 }
 
 export default interface User extends BaseEntity {
+  userID: string;
   userFullName: string;
   role: Role;
   avatarUrl: string;

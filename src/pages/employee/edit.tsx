@@ -40,6 +40,7 @@ export const EmployeeEdit = () => {
             },
           ]}
         >
+          {/*@ts-ignore*/}
           <Select {...categorySelectProps} />
         </Form.Item>
         <Form.Item

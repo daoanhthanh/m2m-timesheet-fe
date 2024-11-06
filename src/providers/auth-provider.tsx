@@ -6,15 +6,15 @@ import {
   saveUserSession,
 } from "@/providers/storage/localStorage";
 import { get, post } from "@/providers/http/request";
+import { BaseResponse } from "@/domains";
 
 const checkMe = async () => {
-  const maybeMe = await get<User>(endpoints.me);
+  const maybeMe = await get<BaseResponse<User>>(endpoints.me);
 
   if (maybeMe.isFails()) {
     return null;
   }
-
-  return maybeMe.data();
+  return maybeMe.data().data;
 };
 
 const authProvider: AuthProvider = {

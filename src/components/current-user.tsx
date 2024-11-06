@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useGetIdentity, useLogout } from "@refinedev/core";
 
 import { LogoutOutlined, SettingOutlined } from "@ant-design/icons";
-import { Button, Popover } from "antd";
+import { Button, Popover, Space } from "antd";
 
 import Text from "@/components/text";
 import User from "@/domains/user/user";
@@ -63,21 +63,24 @@ export const CurrentUser: React.FC = () => {
   );
 
   return (
-    <>
-      <Popover
-        placement="bottomRight"
-        content={content}
-        trigger="click"
-        overlayInnerStyle={{ padding: 0 }}
-        overlayStyle={{ zIndex: 999 }}
-      >
-        <Avatar
-          userName={user?.userFullName}
-          src={user?.avatarUrl}
-          size="default"
-          style={{ cursor: "pointer" }}
-        />
-      </Popover>
+    <div style={{ display: "flex" }}>
+      <Space style={{ marginLeft: "8px" }} size="middle">
+        <Text strong>{user?.userFullName}</Text>
+        <Popover
+          placement="bottomRight"
+          content={content}
+          trigger="click"
+          overlayInnerStyle={{ padding: 0 }}
+          overlayStyle={{ zIndex: 999 }}
+        >
+          <Avatar
+            userName={user?.userFullName}
+            src={user?.avatarUrl}
+            size="default"
+            style={{ cursor: "pointer" }}
+          />
+        </Popover>
+      </Space>
 
       <ChangePasswordModal opened={openChangePw} setOpened={setOpenChangePw} />
       {/*{user && (*/}
@@ -87,6 +90,6 @@ export const CurrentUser: React.FC = () => {
       {/*        userId={user.id}*/}
       {/*    />*/}
       {/*)}*/}
-    </>
+    </div>
   );
 };

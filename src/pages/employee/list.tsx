@@ -47,6 +47,7 @@ export const EmployeeList = () => {
           <AddRecordButton entity="employees" buttonText="Thêm nhân viên nha" />
         }
       >
+        {/*@ts-ignore*/}
         <Table {...tableProps} rowKey="id">
           <Table.Column dataIndex="id" title="ID" />
           <Table.Column
