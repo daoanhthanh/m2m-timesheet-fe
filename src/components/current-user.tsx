@@ -74,7 +74,7 @@ export const CurrentUser: React.FC = () => {
           overlayStyle={{ zIndex: 999 }}
         >
           <Avatar
-            userName={user?.userFullName}
+            userName={user?.userLastName}
             src={user?.avatarUrl}
             size="default"
             style={{ cursor: "pointer" }}

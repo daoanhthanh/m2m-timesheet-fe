@@ -4,7 +4,7 @@ import type { RefineLayoutThemedTitleProps } from "@refinedev/antd";
 import { useLink } from "@refinedev/core";
 import styles from "./styles.module.css";
 
-import { Space, theme, Typography } from "antd";
+import { Space, theme } from "antd";
 
 import { Logo } from "@/components/logo";
 
