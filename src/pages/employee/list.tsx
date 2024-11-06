@@ -9,7 +9,7 @@ import {
 
 import { Input, Space, Table } from "antd";
 
-import ListTitleButton from "@/components/buttons/list-title-button";
+import AddRecordButton from "@/components/buttons/add-record-button";
 import FileHandleButton from "@/components/buttons/file-handle-button";
 import User from "@/domains/user/user";
 import Avatar from "@/components/avatar";
@@ -44,7 +44,7 @@ export const EmployeeList = () => {
           );
         }}
         title={
-          <ListTitleButton toPath="employees" buttonText="Thêm nhân viên" />
+          <AddRecordButton entity="employees" buttonText="Thêm nhân viên nha" />
         }
       >
         <Table {...tableProps} rowKey="id">

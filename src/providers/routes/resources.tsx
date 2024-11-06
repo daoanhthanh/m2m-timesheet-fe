@@ -17,7 +17,7 @@ const resources: ResourceProps[] = [
   {
     name: "timesheet",
     list: "/timesheet",
-    create: "/timesheet/create",
+    create: "/timesheet/create-leave-request",
     show: "/timesheet/show/:id",
     edit: "/timesheet/edit/:id",
     meta: {

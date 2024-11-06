@@ -1,5 +1,5 @@
 import { Alert, Table } from "antd";
-import TimeAndEmployeeSelector from "@/pages/timesheet/components/admin/time-and-employee-selector";
+import TimeAndEmployeeSelector from "@/pages/dashboard/components/admin/time-and-employee-selector";
 
 interface IData {
   key: number;
@@ -52,7 +52,7 @@ const columns = [
           props: {
             style: { background: isWeekend ? "#dbdbdb" : "" },
           },
-          children: <div>{text}</div>,
+          items: <div>{text}</div>,
         };
       },
     };

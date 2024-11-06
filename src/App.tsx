@@ -16,7 +16,6 @@ import "@refinedev/antd/dist/reset.css";
 
 import resources from "@/providers/routes/resources";
 import React from "react";
-import "./styles.css";
 import Banner from "@/components/banner";
 import authProvider from "@/providers/auth-provider";
 import Routes from "@/providers/routes/Routes";

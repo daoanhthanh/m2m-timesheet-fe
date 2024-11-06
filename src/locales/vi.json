@@ -54,5 +54,26 @@
   },
   "notifications": {
     "error": "Đã có lỗi xảy ra. Hãy liên hệ với kỹ thuật viên để xử lý."
+  },
+  "timesheet": {
+    "totalHours": {
+      "short": "Công",
+      "full": "Tổng số giờ"
+    },
+    "actualCheckIn": "Giờ đến",
+    "actualCheckOut": "Giờ về",
+    "leaveTime": {
+      "short": "Nghỉ",
+      "full": "Thời gian nghỉ"
+    },
+    "leaveReason": "Lý do nghỉ",
+    "leaveStatus": "Trạng thái",
+    "createLeaveRequest": "Tạo đơn nghỉ",
+    "startLeaveTime": "Thời gian bắt đầu",
+    "endLeaveTime": "Thời gian kết thúc"
+  },
+  "common": {
+    "phoneNumber": "Số điện thoại",
+    "save": "Thêm"
   }
 }

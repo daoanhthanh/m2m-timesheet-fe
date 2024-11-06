@@ -18,8 +18,10 @@ import {
 import { Title } from "@/components/title";
 import React from "react";
 import { AuthPage } from "pages/auth";
-import TimesheetTablePage from "@/pages/timesheet";
+import TimesheetTablePage from "pages/dashboard";
 import { Layout } from "@/layout";
+import PersonalTimesheetPage from "pages/timesheet";
+import { LeaveRequestCreate } from "@/pages/timesheet/create";
 
 const Routes = () => {
   return (
@@ -40,8 +42,8 @@ const Routes = () => {
         <Route index element={<TimesheetTablePage />} />
 
         <Route path="/timesheet">
-          <Route index element={<EmployeeList />} />
-          <Route path="create" element={<EmployeeCreate />} />
+          <Route index element={<PersonalTimesheetPage />} />
+          <Route path="create-leave-request" element={<LeaveRequestCreate />} />
           <Route path="edit/:id" element={<EmployeeEdit />} />
           <Route path="show/:id" element={<EmployeeShow />} />
         </Route>

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .page-container {
   @media screen and (max-width: 820px) {
     margin-top: 15px;

@@ -1,5 +1,5 @@
 {
-  "name": "auth-antd",
+  "name": "timesheet-fe",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -47,16 +47,19 @@
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "cypress": "^13.6.3",
     "typescript": "^5.4.2",
     "vite": "^5.1.6",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
+    "autoprefixer": "^10.4.20",
     "eslint": "^9.0.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-simple-import-sort": "^12.1.0",
+    "postcss": "^8.4.47",
     "prettier": "^4.0.0-alpha.8",
+    "sass-embedded": "^1.80.6",
+    "tailwindcss": "^3.4.14",
     "vite-tsconfig-paths": "^4.3.2"
   }
 }

@@ -7,26 +7,32 @@ import { PlusCircleOutlined } from "@ant-design/icons";
 import { Button, Grid } from "antd";
 import Text from "@/components/text";
 
-interface ListTitleButtonProps {
-  toPath: string;
+interface AddRecordButtonProps {
+  entity: string;
   buttonText: string;
+  className?: string;
 }
 
-const ListTitleButton: FC<ListTitleButtonProps> = ({ buttonText, toPath }) => {
+const AddRecordButton: FC<AddRecordButtonProps> = ({
+  entity,
+  buttonText,
+  className,
+}) => {
   const go = useGo();
-  const { pathname } = useLocation();
+  // const {pathname} = useLocation();
   const { createUrl } = useNavigation();
   const screens = Grid.useBreakpoint();
 
   return (
     <Button
+      className={className}
       type="primary"
       icon={<PlusCircleOutlined />}
       onClick={() => {
         return go({
-          to: `${createUrl(toPath)}`,
+          to: `${createUrl(entity)}`,
           query: {
-            to: pathname,
+            // to: pathname,
           },
           options: {
             keepQuery: true,
@@ -52,4 +58,4 @@ const ListTitleButton: FC<ListTitleButtonProps> = ({ buttonText, toPath }) => {
   );
 };
 
-export default ListTitleButton;
+export default AddRecordButton;
