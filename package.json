@@ -8,7 +8,7 @@
     "cypress": "cypress open -C ./cypress.config.ts",
     "cypress:run": "cypress run -C ./cypress.config.ts",
     "dev": "refine dev --port 5555",
-    "preview": "refine start",
+    "preview": "refine start --port 5555",
     "refine": "refine",
     "format": "prettier src --write",
     "lint": "eslint src --fix"
@@ -27,15 +27,16 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
-    "@refinedev/antd": "5.43.1",
+    "@refinedev/antd": "5.44.0",
     "@refinedev/cli": "2.16.39",
-    "@refinedev/core": "4.55.0",
+    "@refinedev/core": "4.56.0",
     "@refinedev/react-router-v6": "4.6.0",
     "@refinedev/simple-rest": "5.0.8",
     "@uiw/react-md-editor": "^3.19.5",
     "antd": "5.16.5",
     "antd-img-crop": "^4.22.0",
     "antd-password-input-strength": "^2.0.1",
+    "fullcalendar": "^6.1.15",
     "i18next": "^23.11.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -46,8 +47,6 @@
     "@types/node": "^18.16.2",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.0.0",
-    "typescript": "^5.4.2",
-    "vite": "^5.1.6",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
@@ -60,6 +59,8 @@
     "prettier": "^4.0.0-alpha.8",
     "sass-embedded": "^1.80.6",
     "tailwindcss": "^3.4.14",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6",
     "vite-tsconfig-paths": "^4.3.2"
   }
 }

@@ -1,6 +1,6 @@
 import type { Dayjs } from "dayjs";
 
-export type LeaveStatus = "approved" | "rejected" | "pending";
+export type LeaveStatus = "APPROVED" | "REJECTED" | "PENDING";
 
 export interface LeaveRequest {
   leaveTime: number;
@@ -8,7 +8,7 @@ export interface LeaveRequest {
   leaveStatus: LeaveStatus;
 }
 
-export interface Timeslot {
+export interface TimeslotByDay {
   isCompleted: boolean;
   totalHours: number;
   actualCheckInTime: Dayjs;
@@ -16,9 +16,14 @@ export interface Timeslot {
   leaveRequest?: LeaveRequest;
 }
 
-export interface Timesheet {
-  [key: string]: Timeslot;
+export type TimesheetByDay = Map<string, TimeslotByDay>;
+
+export interface TimeslotByMonth {
+  totalWorkingHours: number;
+  totalLeaveHours: number;
 }
+
+export type TimesheetByMonth = Map<string, TimeslotByMonth>;
 
 export interface LeaveRequestForm {
   leaveDate: string;

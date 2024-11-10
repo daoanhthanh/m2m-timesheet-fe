@@ -2,17 +2,20 @@ import React from "react";
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import { Badge, Popover } from "antd";
-import { Timeslot } from "@/domains/calendar";
+import { TimeslotByDay } from "@/domains/calendar";
 import { useTranslation } from "react-i18next";
 import styles from "./index.module.scss";
 import type { PresetStatusColorType } from "antd/es/_util/colors";
+import type { CellRenderInfo } from "rc-picker/lib/interface";
+import getMonthName from "@/providers/month-list";
 
 export interface DateCellProps {
   value: Dayjs;
-  timeslot: Timeslot;
+  info: CellRenderInfo<Dayjs>;
+  timeslot: TimeslotByDay;
 }
 
-export default function DateCell({ value, timeslot }: DateCellProps) {
+export default function CalendarCell({ value, info, timeslot }: DateCellProps) {
   const { t } = useTranslation();
 
   const popupTitle: string = `${t("timesheet.totalHours.full")}: ${timeslot.totalHours}`;
@@ -63,13 +66,14 @@ export default function DateCell({ value, timeslot }: DateCellProps) {
     if (timeslot.leaveRequest) {
       let badgeStatus: PresetStatusColorType = "processing";
       switch (timeslot.leaveRequest.leaveStatus) {
-        case "approved":
+        case "APPROVED":
           badgeStatus = "success";
           break;
-        case "rejected":
+        case "REJECTED":
           badgeStatus = "error";
           break;
       }
+
       content.push(
         <Badge
           key={2}
@@ -85,7 +89,11 @@ export default function DateCell({ value, timeslot }: DateCellProps) {
   return (
     <Popover content={popupContent} title={popupTitle} trigger="click">
       <div className={className}>
-        <div className="ant-picker-calendar-date-value">{value.date()}</div>
+        <div className="ant-picker-calendar-date-value">
+          {info.type === "date"
+            ? value.date()
+            : getMonthName(info.locale!, value.month())}
+        </div>
         <div className="ant-picker-calendar-date-content">
           {contentRender()}
         </div>

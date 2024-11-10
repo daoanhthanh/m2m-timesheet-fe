@@ -4,18 +4,22 @@ import type { Dayjs as TDayjs } from "dayjs";
 import dayjs from "dayjs";
 import type { CellRenderInfo } from "rc-picker/lib/interface";
 import * as React from "react";
-import DateCell from "@/pages/timesheet/components/date-cell";
+import CalendarCell from "pages/timesheet/components/calendar-cell";
 import { useTranslation } from "react-i18next";
-import { Timeslot } from "@/domains/calendar";
+import { TimesheetByDay, TimeslotByDay } from "@/domains/calendar";
 import AddRecordButton from "@/components/buttons/add-record-button";
 
 export default function Calendar() {
   const { t } = useTranslation();
 
+  const [timeslots, setTimeslots] = React.useState<TimesheetByDay>(new Map());
+
   const onPanelChange = (
     value: TDayjs,
     mode: ACalendarProps<TDayjs>["mode"],
-  ) => {};
+  ) => {
+    console.log(JSON.stringify(value, null, 2), mode);
+  };
 
   const [selectedDate, setSelectedDate] = React.useState<TDayjs>(dayjs());
 
@@ -26,7 +30,7 @@ export default function Calendar() {
   };
 
   const cellRender = (date: TDayjs, info: CellRenderInfo<TDayjs>) => {
-    const timeslot: Timeslot = {
+    const timeslot: TimeslotByDay = {
       isCompleted: true,
       totalHours: 8,
       actualCheckInTime: dayjs(),
@@ -34,11 +38,11 @@ export default function Calendar() {
       leaveRequest: {
         leaveTime: 4,
         leaveReason: "flu",
-        leaveStatus: "approved",
+        leaveStatus: "APPROVED",
       },
     };
 
-    return <DateCell value={date} timeslot={timeslot} />;
+    return <CalendarCell value={date} info={info} timeslot={timeslot} />;
   };
 
   return (

@@ -80,7 +80,7 @@ const dataProvider: DataProvider = {
 
     const { headers } = meta ?? {};
 
-    const response = await httpClient.post<_, any>(url, variables, {
+    const response = await httpClient.post<unknown, any>(url, variables, {
       headers,
     });
 
@@ -92,7 +92,7 @@ const dataProvider: DataProvider = {
 
     const { headers } = meta ?? {};
 
-    const response = await httpClient.put<_, any>(url, variables, {
+    const response = await httpClient.put<unknown, any>(url, variables, {
       headers,
     });
 

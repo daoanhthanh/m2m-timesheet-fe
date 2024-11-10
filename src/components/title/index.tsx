@@ -17,7 +17,6 @@ export const Title: React.FC<RefineLayoutThemedTitleProps> = ({
   const Link = useLink();
 
   const { theme } = useToken();
-  console.log(theme.id);
 
   return (
     <Link

@@ -22,7 +22,6 @@ import TimesheetTablePage from "pages/dashboard";
 import { Layout } from "@/layout";
 import PersonalTimesheetPage from "pages/timesheet";
 import { LeaveRequestCreate } from "@/pages/timesheet/create";
-import dayjs from "dayjs";
 
 const Routes = () => {
   return (

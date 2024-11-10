@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { useLocation } from "react-router-dom";
 
 import { useGo, useNavigation } from "@refinedev/core";
 
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { Button, Grid } from "antd";
 import Text from "@/components/text";
+import { useLocation } from "react-router-dom";
 
 interface AddRecordButtonProps {
   entity: string;
@@ -21,7 +21,7 @@ const AddRecordButton: FC<AddRecordButtonProps> = ({
   additionalQuery,
 }) => {
   const go = useGo();
-  // const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const { createUrl } = useNavigation();
   const screens = Grid.useBreakpoint();
 
@@ -34,7 +34,7 @@ const AddRecordButton: FC<AddRecordButtonProps> = ({
         return go({
           to: `${createUrl(entity)}?${new URLSearchParams(additionalQuery)}`,
           query: {
-            // to: pathname,
+            to: pathname,
           },
           options: {
             keepQuery: true,
