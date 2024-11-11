@@ -46,6 +46,11 @@
       "buttons": {
         "haveAccount": "Đã nhớ ra mật khẩu?"
       }
+    },
+    "error": {
+      "title": "Lỗi",
+      "404": "Không tìm thấy trang bạn đang tìm kiếm.",
+      "backHome": "Trở về trang chủ"
     }
   },
   "documentTitle": {

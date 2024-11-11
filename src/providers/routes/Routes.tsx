@@ -1,6 +1,5 @@
 import { Authenticated } from "@refinedev/core";
-import { ErrorComponent, ThemedLayoutV2 } from "@refinedev/antd";
-
+import { ErrorComponent } from "pages/error-component";
 import {
   CatchAllNavigate,
   NavigateToResource,
@@ -113,10 +112,10 @@ const Routes = () => {
 
       <Route
         element={
-          <Authenticated key="catch-all" v3LegacyAuthProviderCompatible>
-            <ThemedLayoutV2>
+          <Authenticated key="catch-all" v3LegacyAuthProviderCompatible={true}>
+            <Layout>
               <Outlet />
-            </ThemedLayoutV2>
+            </Layout>
           </Authenticated>
         }
       >
