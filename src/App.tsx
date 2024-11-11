@@ -1,4 +1,4 @@
-import { Refine, I18nProvider } from "@refinedev/core";
+import { I18nProvider, Refine } from "@refinedev/core";
 import { useNotificationProvider } from "@refinedev/antd";
 
 import vi_VN from "antd/locale/vi_VN";
@@ -6,8 +6,8 @@ import vi_VN from "antd/locale/vi_VN";
 import { useTranslation } from "react-i18next";
 
 import routerProvider, {
-  UnsavedChangesNotifier,
   DocumentTitleHandler,
+  UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import { BrowserRouter } from "react-router-dom";
 import { App as AntdApp, ConfigProvider } from "antd";
@@ -42,9 +42,8 @@ const App: React.FC = () => {
       ) : (
         ""
       )}
-
-      <ConfigProvider locale={vi_VN}>
-        <ColorModeContextProvider>
+      <ColorModeContextProvider>
+        <ConfigProvider locale={vi_VN}>
           <AntdApp>
             <Refine
               authProvider={authProvider}
@@ -67,8 +66,8 @@ const App: React.FC = () => {
               <DocumentTitleHandler />
             </Refine>
           </AntdApp>
-        </ColorModeContextProvider>
-      </ConfigProvider>
+        </ConfigProvider>
+      </ColorModeContextProvider>
     </BrowserRouter>
   );
 };

@@ -26,7 +26,7 @@
 //
 //
 // import Avatar from "@/components/avatar";
-// import Text from "@/components/text";
+// import {Text} from "@/components";
 // import styles from "./index.module.css";
 //
 //

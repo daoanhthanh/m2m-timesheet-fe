@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 
 import { ConfigProvider, Typography } from "antd";
 
@@ -59,7 +59,7 @@ const sizes = {
   },
 };
 
-const Text: FC<TextProps> = ({ size = "sm", children, ...rest }) => {
+export const Text: FC<TextProps> = ({ size = "sm", children, ...rest }) => {
   return (
     <ConfigProvider
       theme={{
@@ -72,5 +72,3 @@ const Text: FC<TextProps> = ({ size = "sm", children, ...rest }) => {
     </ConfigProvider>
   );
 };
-
-export default Text;

@@ -1,9 +1,12 @@
 import type { Dayjs } from "dayjs";
+import { Scalars } from "@/domains";
 
 export type LeaveStatus = "APPROVED" | "REJECTED" | "PENDING";
 
 export interface LeaveRequest {
-  leaveTime: number;
+  id: number;
+  leaveDate: Scalars["Date"];
+  leaveHour: number;
   leaveReason: string;
   leaveStatus: LeaveStatus;
 }
@@ -11,8 +14,8 @@ export interface LeaveRequest {
 export interface TimeslotByDay {
   isCompleted: boolean;
   totalHours: number;
-  actualCheckInTime: Dayjs;
-  actualCheckOutTime: Dayjs;
+  actualCheckInTime: Scalars["DateTime"];
+  actualCheckOutTime: Scalars["DateTime"];
   leaveRequest?: LeaveRequest;
 }
 

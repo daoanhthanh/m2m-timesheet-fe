@@ -74,13 +74,18 @@
     "startLeaveTime": "Thời gian bắt đầu",
     "endLeaveTime": "Thời gian kết thúc",
     "startLeaveTimeRequired": "Thời gian bắt đầu không được để trống",
-    "endLeaveTimeRequired": "Thời gian kết thúc không được để trống"
+    "endLeaveTimeRequired": "Thời gian kết thúc không được để trống",
+    "recentLeaveRequest": "Đơn nghỉ gần đây",
+    "noRecentLeaveRequest": "Không có đơn nghỉ nào"
   },
   "common": {
     "phoneNumber": "Số điện thoại",
     "save": "Thêm",
-    "hours": "giờ",
-    "hour": "giờ",
-    "allDay": "Cả ngày"
+    "hours": " giờ",
+    "hour": " giờ",
+    "allDay": "Cả ngày",
+    "today": "Hôm nay",
+    "yesterday": "Hôm qua",
+    "tomorrow": "Ngày mai"
   }
 }

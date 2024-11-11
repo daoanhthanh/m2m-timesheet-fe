@@ -1,8 +1,8 @@
 import React from "react";
 import {
+  ForgotPasswordPage,
   LoginPage,
   RegisterPage,
-  ForgotPasswordPage,
   UpdatePasswordPage,
 } from "./components";
 import type { CardProps, FormProps, LayoutProps } from "antd";

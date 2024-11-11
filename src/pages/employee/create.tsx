@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { useForm } from "@refinedev/antd";
 
-import { DatePicker, Form, Input, Radio, Modal, RadioChangeEvent } from "antd";
+import { DatePicker, Form, Input, Modal, Radio, RadioChangeEvent } from "antd";
 
 import { useGetIdentity, useNavigation } from "@refinedev/core";
 import User from "@/domains/user/user";

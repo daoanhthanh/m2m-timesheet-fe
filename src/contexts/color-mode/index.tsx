@@ -2,9 +2,9 @@ import { RefineThemes } from "@refinedev/antd";
 import { ConfigProvider, theme } from "antd";
 import {
   createContext,
+  type PropsWithChildren,
   useEffect,
   useState,
-  type PropsWithChildren,
 } from "react";
 
 type ColorModeContextType = {

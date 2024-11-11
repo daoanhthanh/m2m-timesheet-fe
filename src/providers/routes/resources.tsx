@@ -1,7 +1,7 @@
 import {
+  ClockCircleOutlined,
   DashboardOutlined,
   UserOutlined,
-  ClockCircleOutlined,
 } from "@ant-design/icons";
 import { ResourceProps } from "@refinedev/core";
 

@@ -4,14 +4,14 @@ import { useNavigation } from "@refinedev/core";
 import { useTranslation } from "react-i18next";
 import { LeaveRequestForm } from "@/domains/calendar";
 import dayjs, { type Dayjs } from "dayjs";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export const LeaveRequestCreate = () => {
   const { t } = useTranslation();
   const timeFormat = "HH:mm";
   const dateFormat = "DD-MM-YYYY";
-  const { form, formProps, saveButtonProps } = useForm<LeaveRequestForm>({
+  const { formProps, saveButtonProps } = useForm<LeaveRequestForm>({
     redirect: "list",
   });
   const { list } = useNavigation();
@@ -31,16 +31,16 @@ export const LeaveRequestCreate = () => {
     return (
       <div>
         <Button className="mr-0.5 mb-0.5" onClick={() => addTime(1)}>
-          +1 {t("common.hour")}
+          +1{t("common.hour")}
         </Button>
         <Button className="mr-0.5 mb-0.5" onClick={() => addTime(2)}>
-          +2 {t("common.hours")}
+          +2{t("common.hours")}
         </Button>
         <Button className="mr-0.5 mb-0.5" onClick={() => addTime(3)}>
-          +3 {t("common.hours")}
+          +3{t("common.hours")}
         </Button>
         <Button className="mr-0.5 mb-0.5" onClick={() => addTime(5)}>
-          +5 {t("common.hours")}
+          +5{t("common.hours")}
         </Button>
         <Button className="mr-0.5 mb-0.5" onClick={() => addTime(8)}>
           {t("common.allDay")}
@@ -54,11 +54,11 @@ export const LeaveRequestCreate = () => {
     wrapperCol: { span: 16 },
   };
 
-  useEffect(() => {
-    form.setFieldsValue({ startLeaveTime });
-    form.setFieldsValue({ endLeaveTime });
-    form.setFieldsValue({ leaveDate: dayjs(targetDate, dateFormat) });
-  }, [endLeaveTime, formProps.form]);
+  const initialValues = {
+    leaveDate: dayjs(targetDate, dateFormat),
+    startLeaveTime,
+    endLeaveTime,
+  };
 
   return (
     <Modal
@@ -78,6 +78,7 @@ export const LeaveRequestCreate = () => {
       <Form
         {...formLayout}
         {...formProps}
+        initialValues={initialValues}
         onFinish={(values: LeaveRequestForm) => {
           values.startLeaveTime = startLeaveTime.format("HH:mm");
           values.endLeaveTime = endLeaveTime.format("HH:mm");
@@ -127,7 +128,6 @@ export const LeaveRequestCreate = () => {
         >
           <TimePicker
             defaultValue={dayjs()}
-            defaultPickerValue={dayjs()}
             format={timeFormat}
             placeholder={timeFormat}
             onChange={(dayjsValue, _) => {
@@ -143,7 +143,7 @@ export const LeaveRequestCreate = () => {
           rules={[
             {
               required: true,
-              message: t("timesheet.startLeaveTimeRequired"),
+              message: t("timesheet.endLeaveTimeRequired"),
             },
           ]}
         >
@@ -152,7 +152,6 @@ export const LeaveRequestCreate = () => {
             format={timeFormat}
             placeholder={timeFormat}
             value={endLeaveTime}
-            defaultPickerValue={startLeaveTime}
             onChange={(dayjsValue, _) =>
               dayjsValue == null
                 ? setEndLeaveTime(startLeaveTime)

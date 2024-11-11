@@ -1,4 +1,4 @@
-import { Some, Optional, None } from "./option";
+import { None, Optional, Some } from "./option";
 
 export abstract class Either<L, R> {
   abstract left: L;

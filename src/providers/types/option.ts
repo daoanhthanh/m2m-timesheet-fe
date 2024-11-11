@@ -1,7 +1,12 @@
 export abstract class Optional<T> {
   value: T;
+
   constructor(value: T) {
     this.value = value;
+  }
+
+  static wrap<T>(value: T): Optional<T> {
+    return value === null || value === undefined ? new Some(value) : new None();
   }
 
   isDefined(): boolean {
@@ -29,10 +34,6 @@ export abstract class Optional<T> {
 
   fold<U>(ifEmpty: U, fn: (value: T) => U): U {
     return this.isDefined() ? fn(this.value) : ifEmpty;
-  }
-
-  static wrap<T>(value: T): Optional<T> {
-    return value === null || value === undefined ? new Some(value) : new None();
   }
 }
 

@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { Layout as AntdLayout, Switch, theme } from "antd";
 import { CurrentUser } from "./current-user";
 import { ColorModeContext } from "@/contexts/color-mode";
+
 const { useToken } = theme;
 
 export const Header: React.FC = () => {

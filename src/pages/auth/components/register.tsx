@@ -1,36 +1,36 @@
 import React from "react";
 import {
-  type RegisterPageProps,
   type RegisterFormTypes,
-  useRouterType,
-  useLink,
+  type RegisterPageProps,
   useActiveAuthProvider,
-  useTranslate,
-  useRouterContext,
+  useLink,
   useRegister,
+  useRouterContext,
+  useRouterType,
+  useTranslate,
 } from "@refinedev/core";
 import { ThemedTitleV2 } from "@refinedev/antd";
 import {
-  layoutStyles,
-  containerStyles,
-  titleStyles,
-  headStyles,
   bodyStyles,
+  containerStyles,
+  headStyles,
+  layoutStyles,
+  titleStyles,
 } from "./styles";
 import {
-  Row,
-  Col,
-  Layout,
-  Card,
-  Typography,
-  Form,
-  Input,
   Button,
-  type LayoutProps,
+  Card,
   type CardProps,
-  type FormProps,
+  Col,
   Divider,
+  Form,
+  type FormProps,
+  Input,
+  Layout,
+  type LayoutProps,
+  Row,
   theme,
+  Typography,
 } from "antd";
 
 type RegisterProps = RegisterPageProps<LayoutProps, CardProps, FormProps>;

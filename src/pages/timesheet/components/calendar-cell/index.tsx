@@ -24,17 +24,17 @@ export default function CalendarCell({ value, info, timeslot }: DateCellProps) {
     <div>
       <p className={styles.pDetail}>
         {t("timesheet.actualCheckIn")}:{" "}
-        <span>{timeslot.actualCheckInTime.format("HH:mm")}</span>
+        <span>{timeslot.actualCheckInTime}</span>
       </p>
       <p className={styles.pDetail}>
         {t("timesheet.actualCheckOut")}:{" "}
-        <span>{timeslot.actualCheckOutTime.format("HH:mm")}</span>
+        <span>{timeslot.actualCheckOutTime}</span>
       </p>
       {timeslot.leaveRequest && (
         <>
           <p className={styles.pDetail}>
             {t("timesheet.leaveTime.full")}:{" "}
-            <span>{timeslot.leaveRequest.leaveTime}</span>
+            <span>{timeslot.leaveRequest.leaveHour}</span>
           </p>
           <p className={styles.pDetail}>
             {t("timesheet.leaveReason")}:{" "}
@@ -78,7 +78,7 @@ export default function CalendarCell({ value, info, timeslot }: DateCellProps) {
         <Badge
           key={2}
           status={badgeStatus}
-          text={`${t("timesheet.leaveTime.short")}: ${timeslot.leaveRequest.leaveTime}`}
+          text={`${t("timesheet.leaveTime.short")}: ${timeslot.leaveRequest.leaveHour}`}
         />,
       );
     }
@@ -87,7 +87,7 @@ export default function CalendarCell({ value, info, timeslot }: DateCellProps) {
   };
 
   return (
-    <Popover content={popupContent} title={popupTitle} trigger="click">
+    <Popover content={popupContent} title={popupTitle} trigger="hover">
       <div className={className}>
         <div className="ant-picker-calendar-date-value">
           {info.type === "date"

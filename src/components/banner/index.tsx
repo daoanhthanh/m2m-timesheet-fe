@@ -4,6 +4,7 @@ import { CSSRules } from "./styles";
 export interface BannerProps {
   text: string;
 }
+
 const Banner: FC<BannerProps> = ({ text }) => {
   useEffect(() => {
     const styleTag = document.createElement("style");

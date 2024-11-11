@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import User from "@/domains/user/user";
 
 const useAuthorization = (): User | null => {

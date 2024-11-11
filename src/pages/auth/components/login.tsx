@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  type LoginPageProps,
   type LoginFormTypes,
-  useLink,
-  useRouterType,
+  type LoginPageProps,
   useActiveAuthProvider,
+  useLink,
   useLogin,
-  useTranslate,
   useRouterContext,
+  useRouterType,
+  useTranslate,
 } from "@refinedev/core";
 import { ThemedTitleV2 } from "@refinedev/antd";
 import {
@@ -18,20 +18,20 @@ import {
   titleStyles,
 } from "./styles";
 import {
-  Row,
-  Col,
-  Layout,
-  Card,
-  Typography,
-  Form,
-  Input,
   Button,
-  Checkbox,
+  Card,
   type CardProps,
-  type LayoutProps,
+  Checkbox,
+  Col,
   Divider,
+  Form,
   type FormProps,
+  Input,
+  Layout,
+  type LayoutProps,
+  Row,
   theme,
+  Typography,
 } from "antd";
 
 type LoginProps = LoginPageProps<LayoutProps, CardProps, FormProps>;

@@ -1,3 +1,8 @@
+export type Scalars = {
+  DateTime: string;
+  Date: string;
+};
+
 export interface ICategory {
   id: number;
   title: string;

@@ -1,34 +1,34 @@
 import React from "react";
 import {
-  type ForgotPasswordPageProps,
   type ForgotPasswordFormTypes,
-  useRouterType,
-  useLink,
-  useTranslate,
-  useRouterContext,
+  type ForgotPasswordPageProps,
   useForgotPassword,
+  useLink,
+  useRouterContext,
+  useRouterType,
+  useTranslate,
 } from "@refinedev/core";
 import { ThemedTitleV2 } from "@refinedev/antd";
 import {
-  layoutStyles,
-  containerStyles,
-  titleStyles,
-  headStyles,
   bodyStyles,
+  containerStyles,
+  headStyles,
+  layoutStyles,
+  titleStyles,
 } from "./styles";
 import {
-  Row,
-  Col,
-  Layout,
-  Card,
-  Typography,
-  Form,
-  Input,
   Button,
-  type LayoutProps,
+  Card,
   type CardProps,
+  Col,
+  Form,
   type FormProps,
+  Input,
+  Layout,
+  type LayoutProps,
+  Row,
   theme,
+  Typography,
 } from "antd";
 
 type ResetPassworProps = ForgotPasswordPageProps<
@@ -90,8 +90,10 @@ export const ForgotPasswordPage: React.FC<ResetPassworProps> = ({
   const CardContent = (
     <Card
       title={CardTitle}
-      headStyle={headStyles}
-      bodyStyle={bodyStyles}
+      styles={{
+        header: headStyles,
+        body: bodyStyles,
+      }}
       style={{
         ...containerStyles,
         backgroundColor: token.colorBgElevated,

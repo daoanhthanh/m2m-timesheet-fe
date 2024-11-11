@@ -5,7 +5,7 @@ import { useGetIdentity, useLogout } from "@refinedev/core";
 import { LogoutOutlined, SettingOutlined } from "@ant-design/icons";
 import { Button, Popover, Space } from "antd";
 
-import Text from "@/components/text";
+import { Text } from "@/components";
 import User from "@/domains/user/user";
 import Avatar from "@/components/avatar";
 import ChangePasswordModal from "@/components/change-password";

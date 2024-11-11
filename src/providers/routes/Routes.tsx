@@ -2,10 +2,10 @@ import { Authenticated } from "@refinedev/core";
 import { ErrorComponent, ThemedLayoutV2 } from "@refinedev/antd";
 
 import {
-  NavigateToResource,
   CatchAllNavigate,
+  NavigateToResource,
 } from "@refinedev/react-router-v6";
-import { Routes as ReactRoutes, Route, Outlet } from "react-router-dom";
+import { Outlet, Route, Routes as ReactRoutes } from "react-router-dom";
 
 import "@refinedev/antd/dist/reset.css";
 
@@ -20,8 +20,7 @@ import React from "react";
 import { AuthPage } from "pages/auth";
 import TimesheetTablePage from "pages/dashboard";
 import { Layout } from "@/layout";
-import PersonalTimesheetPage from "pages/timesheet";
-import { LeaveRequestCreate } from "@/pages/timesheet/create";
+import { TimesheetWrapper, LeaveRequestCreate } from "@/pages/timesheet";
 
 const Routes = () => {
   return (
@@ -31,7 +30,7 @@ const Routes = () => {
           <Authenticated
             key="authenticated-routes"
             fallback={<CatchAllNavigate to="/login" />}
-            v3LegacyAuthProviderCompatible
+            v3LegacyAuthProviderCompatible={true}
           >
             <Layout>
               <Outlet />
@@ -41,8 +40,15 @@ const Routes = () => {
       >
         <Route index element={<TimesheetTablePage />} />
 
-        <Route path="/timesheet">
-          <Route index element={<PersonalTimesheetPage />} />
+        <Route
+          path="/timesheet"
+          element={
+            <TimesheetWrapper>
+              <Outlet />
+            </TimesheetWrapper>
+          }
+        >
+          <Route index element={null} />
           <Route path="create-leave-request" element={<LeaveRequestCreate />} />
           <Route path="edit/:id" element={<EmployeeEdit />} />
           <Route path="show/:id" element={<EmployeeShow />} />
@@ -60,7 +66,7 @@ const Routes = () => {
           <Authenticated
             key="auth-pages"
             fallback={<Outlet />}
-            v3LegacyAuthProviderCompatible
+            v3LegacyAuthProviderCompatible={true}
           >
             <NavigateToResource resource="dashboard" />
           </Authenticated>

@@ -1,33 +1,30 @@
-
-
 export default [
   {
-    "env": { "browser": true, "es6": true },
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "sourceType": "module"
+    env: { browser: true, es6: true },
+    parser: "@typescript-eslint/parser",
+    parserOptions: {
+      sourceType: "module",
     },
-    "plugins": ["@typescript-eslint", "simple-import-sort", "import"],
-    "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
+    plugins: ["@typescript-eslint", "simple-import-sort", "import"],
+    extends: ["plugin:@typescript-eslint/recommended", "prettier"],
     rules: {
       "simple-import-sort/imports": [
         "error",
         {
-          "groups": [
+          groups: [
             ["^react"],
             ["^@refine"],
             ["^@?\\w"],
             ["^"],
             ["^\\."],
-            ["^\\u0000"]
-          ]
-        }
+            ["^\\u0000"],
+          ],
+        },
       ],
       "simple-import-sort/exports": "error",
       "import/first": "error",
       "import/newline-after-import": "error",
-      "import/no-duplicates": "error"
-    }
-  }
-
-]
+      "import/no-duplicates": "error",
+    },
+  },
+];

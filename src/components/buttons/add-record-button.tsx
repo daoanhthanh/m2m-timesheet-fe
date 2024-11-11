@@ -4,12 +4,13 @@ import { useGo, useNavigation } from "@refinedev/core";
 
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { Button, Grid } from "antd";
-import Text from "@/components/text";
+import { Text } from "@/components";
 import { useLocation } from "react-router-dom";
 
 interface AddRecordButtonProps {
   entity: string;
   buttonText: string;
+  block?: boolean;
   className?: string;
   additionalQuery?: Record<string, string>;
 }
@@ -17,6 +18,7 @@ interface AddRecordButtonProps {
 const AddRecordButton: FC<AddRecordButtonProps> = ({
   entity,
   buttonText,
+  block,
   className,
   additionalQuery,
 }) => {
@@ -27,6 +29,7 @@ const AddRecordButton: FC<AddRecordButtonProps> = ({
 
   return (
     <Button
+      block={block}
       className={className}
       type="primary"
       icon={<PlusCircleOutlined />}
