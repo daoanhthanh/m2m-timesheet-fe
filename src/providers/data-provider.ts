@@ -1,8 +1,15 @@
-import { type CrudFilters, DataProvider } from "@refinedev/core";
+import {
+  BaseRecord,
+  type CrudFilters,
+  CustomParams,
+  CustomResponse,
+  DataProvider,
+} from "@refinedev/core";
 import { API_URL } from "@/providers/endpoints";
 import { generateSort, mapOperator } from "@refinedev/simple-rest";
 import { stringify } from "query-string";
 import { httpClient } from "@/providers/http/request";
+import { joinHostAndApi } from "@/providers/utils";
 
 const generateFilter = (filters?: CrudFilters) => {
   const queryFilters: { [key: string]: string } = {};
@@ -128,8 +135,44 @@ const dataProvider: DataProvider = {
   // createMany: ({ resource, variables, meta }) => Promise,
   // deleteMany: ({ resource, ids, variables, meta }) => Promise,
   // updateMany: ({ resource, ids, variables, meta }) => Promise,
-  // custom: ({ url, method, filters, sorters, payload, query, headers, meta }) =>
-  //   Promise,
+  custom: async <
+    TData extends BaseRecord = BaseRecord,
+    TQuery = unknown,
+    TPayload = unknown,
+  >({
+    meta,
+    method,
+    url,
+    query,
+    payload,
+    filters,
+    sorters,
+    headers,
+  }: CustomParams<TQuery, TPayload>): Promise<CustomResponse<TData>> => {
+    const queryFilters = generateFilter(filters);
+    // const generatedSort = generateSort(sorters);
+    const combinedQuery = { ...query, ...queryFilters };
+
+    const api = joinHostAndApi(API_URL, url);
+
+    const urlWithQuery = Object.keys(combinedQuery).length
+      ? `${api}?${stringify(combinedQuery)}`
+      : api;
+
+    const response = await fetch(urlWithQuery, {
+      method,
+      credentials: "include",
+      body: payload as BodyInit | null,
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data: TData = await response.json();
+    return { data };
+  },
 };
 
 export default dataProvider;

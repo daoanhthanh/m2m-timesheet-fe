@@ -199,4 +199,6 @@ export const httpClient = {
   post,
   put,
   delete: deleteRequest,
+  doRequest,
+  handleIfErrorReturned,
 };

@@ -4,12 +4,11 @@ import { Button, Card, CardProps, Skeleton } from "antd";
 import { CalendarOutlined, RightCircleOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { Text } from "@/components";
-import { useNavigation } from "@refinedev/core";
+import { useCustom, useList, useNavigation } from "@refinedev/core";
 import { CalendarUpcomingEvent } from "@/pages/timesheet/components/recent-leave-request";
 import type { TFunction } from "i18next";
 
 export type RecentLeaveRequestProps = {
-  data: LeaveRequest[];
   cardProps?: CardProps;
 };
 
@@ -29,11 +28,57 @@ const NoEvent: React.FC<{ t: TFunction<"translation", undefined> }> = ({
 );
 
 export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
-  data,
   cardProps,
 }) => {
   const { t } = useTranslation();
   const { list } = useNavigation();
+
+  // url,
+  //   method,
+  //   config,
+  //   queryOptions,
+  //   successNotification,
+  //   errorNotification,
+  //   meta,
+  //   metaData,
+  //   dataProviderName,
+  //   overtimeOptions,
+
+  const { data, isLoading } = useCustom<LeaveRequest>({
+    url: "/timesheets/recent-leave-request",
+    method: "get",
+  });
+
+  const _data: LeaveRequest[] = [
+    {
+      id: 1,
+      leaveDate: "2024-11-11",
+      leaveHour: 4,
+      leaveReason: "flu",
+      leaveStatus: "APPROVED",
+    },
+    {
+      id: 2,
+      leaveDate: "2024-11-12",
+      leaveHour: 8,
+      leaveReason: "flu",
+      leaveStatus: "REJECTED",
+    },
+    {
+      id: 3,
+      leaveDate: "2024-11-13",
+      leaveHour: 4,
+      leaveReason: "flu",
+      leaveStatus: "PENDING",
+    },
+    {
+      id: 4,
+      leaveDate: "2024-11-01",
+      leaveHour: 3,
+      leaveReason: "flu",
+      leaveStatus: "APPROVED",
+    },
+  ];
 
   return (
     <Card
@@ -59,10 +104,10 @@ export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
       }
       {...cardProps}
     >
-      {data.map((item) => (
+      {_data.map((item) => (
         <CalendarUpcomingEvent key={item.id} item={item} />
       ))}
-      {data.length === 0 && <NoEvent t={t} />}
+      {_data.length === 0 && <NoEvent t={t} />}
     </Card>
   );
 };
