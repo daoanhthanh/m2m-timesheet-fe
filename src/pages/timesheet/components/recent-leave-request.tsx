@@ -21,6 +21,7 @@ export const CalendarUpcomingEvent: React.FC<CalendarUpcomingEventProps> = ({
   const { show } = useNavigation();
   const { t } = useTranslation();
   const { id, leaveDate, leaveHour, leaveReason, leaveStatus } = item;
+
   const curDayjs = dayjs(leaveDate);
   const isToday = curDayjs.isToday();
   const isTomorrow = curDayjs.isSame(dayjs().add(1, "day"), "day");
@@ -69,7 +70,7 @@ export const CalendarUpcomingEvent: React.FC<CalendarUpcomingEventProps> = ({
   return (
     <div
       onClick={() => {
-        show("events", item.id);
+        show("timesheet", item.id);
       }}
       key={id}
       className={styles.item}

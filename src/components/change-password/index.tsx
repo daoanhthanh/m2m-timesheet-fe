@@ -88,6 +88,9 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({
       title="Đổi mật khẩu"
       destroyOnClose={true}
       maskClosable={true}
+      onCancel={() => {
+        closeModal();
+      }}
       footer={() => (
         <Space>
           <Button onClick={() => closeModal()}>Huỷ</Button>

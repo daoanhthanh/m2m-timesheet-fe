@@ -19,7 +19,13 @@ import React from "react";
 import { AuthPage } from "pages/auth";
 import TimesheetTablePage from "pages/dashboard";
 import { Layout } from "@/layout";
-import { TimesheetWrapper, LeaveRequestCreate } from "@/pages/timesheet";
+import {
+  LeaveRequestCreate,
+  TimesheetShow,
+  TimesheetWrapper,
+} from "@/pages/timesheet";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const Routes = () => {
   return (
@@ -33,6 +39,7 @@ const Routes = () => {
           >
             <Layout>
               <Outlet />
+              <ToastContainer />
             </Layout>
           </Authenticated>
         }
@@ -50,7 +57,7 @@ const Routes = () => {
           <Route index element={null} />
           <Route path="create-leave-request" element={<LeaveRequestCreate />} />
           <Route path="edit/:id" element={<EmployeeEdit />} />
-          <Route path="show/:id" element={<EmployeeShow />} />
+          <Route path="show/:id" element={<TimesheetShow />} />
         </Route>
         <Route path="/employees">
           <Route index element={<EmployeeList />} />

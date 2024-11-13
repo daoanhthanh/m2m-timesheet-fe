@@ -187,12 +187,12 @@ const getFilename = (disposition: string) => {
   }
 };
 
-export default {
-  get,
-  post,
-  put,
-  delete: deleteRequest,
-};
+// export default {
+//   get,
+//   post,
+//   put,
+//   delete: deleteRequest,
+// };
 
 export const httpClient = {
   get,
