@@ -81,7 +81,12 @@
     "startLeaveTimeRequired": "Thời gian bắt đầu không được để trống",
     "endLeaveTimeRequired": "Thời gian kết thúc không được để trống",
     "recentLeaveRequest": "Đơn nghỉ gần đây",
-    "noRecentLeaveRequest": "Không có đơn nghỉ nào"
+    "noRecentLeaveRequest": "Không có đơn nghỉ nào",
+    "status": {
+      "pending": "Đang chờ",
+      "approved": "Đã duyệt",
+      "rejected": "Từ chối"
+    }
   },
   "common": {
     "phoneNumber": "Số điện thoại",

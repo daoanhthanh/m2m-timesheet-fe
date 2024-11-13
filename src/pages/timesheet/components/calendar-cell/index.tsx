@@ -34,7 +34,7 @@ export default function CalendarCell({ value, info, timeslot }: DateCellProps) {
         <>
           <p className={styles.pDetail}>
             {t("timesheet.leaveTime.full")}:{" "}
-            <span>{timeslot.leaveRequest.leaveHour}</span>
+            <span>{timeslot.leaveRequest.leaveTime}</span>
           </p>
           <p className={styles.pDetail}>
             {t("timesheet.leaveReason")}:{" "}
@@ -78,7 +78,7 @@ export default function CalendarCell({ value, info, timeslot }: DateCellProps) {
         <Badge
           key={2}
           status={badgeStatus}
-          text={`${t("timesheet.leaveTime.short")}: ${timeslot.leaveRequest.leaveHour}`}
+          text={`${t("timesheet.leaveTime.short")}: ${timeslot.leaveRequest.leaveTime}`}
         />,
       );
     }

@@ -13,20 +13,24 @@ import { useTranslation } from "react-i18next";
 
 type CalendarUpcomingEventProps = {
   item: LeaveRequest;
+  multipleYears?: boolean;
 };
 
 export const CalendarUpcomingEvent: React.FC<CalendarUpcomingEventProps> = ({
   item,
+  multipleYears,
 }) => {
   const { show } = useNavigation();
   const { t } = useTranslation();
-  const { id, leaveDate, leaveHour, leaveReason, leaveStatus } = item;
+  const { id, leaveDate, leaveTime, leaveReason, leaveStatus } = item;
 
   const curDayjs = dayjs(leaveDate);
   const isToday = curDayjs.isToday();
   const isTomorrow = curDayjs.isSame(dayjs().add(1, "day"), "day");
   const isYesterday = curDayjs.isSame(dayjs().subtract(1, "day"), "day");
-  const isAllDayEvent = leaveHour == 8;
+  const isAllDayEvent = leaveTime == 8;
+
+  const dateFormat = multipleYears ? "DD MMMM, YYYY" : "DD MMMM";
 
   const renderDate = () => {
     if (isToday) {
@@ -41,7 +45,7 @@ export const CalendarUpcomingEvent: React.FC<CalendarUpcomingEventProps> = ({
       return t("common.yesterday");
     }
 
-    return dayjs(leaveDate).format("DD MMMM");
+    return dayjs(leaveDate).format(dateFormat);
   };
 
   const renderTime = () => {
@@ -49,23 +53,21 @@ export const CalendarUpcomingEvent: React.FC<CalendarUpcomingEventProps> = ({
       return "Cả ngày";
     }
 
-    return leaveHour + t("common.hour");
+    return leaveTime + t("common.hour");
   };
 
   const color = () => {
     switch (leaveStatus) {
       case "PENDING":
-        return "cyan";
+        return "purple";
       case "APPROVED":
         return "green";
       case "REJECTED":
         return "red";
       default:
-        return "blue";
+        return "purple";
     }
   };
-
-  // ["blue", "purple", "cyan", "green", "magenta", "pink", "red", "orange", "yellow", "volcano", "geekblue", "lime", "gold"];
 
   return (
     <div
@@ -77,7 +79,7 @@ export const CalendarUpcomingEvent: React.FC<CalendarUpcomingEventProps> = ({
     >
       <div className={styles.date}>
         <Badge color={color()} className={styles.badge} />
-        <Text size="xs">{`${renderDate()}, ${renderTime()}`}</Text>
+        <Text size="xs">{`${renderDate()} | ${renderTime()}`}</Text>
       </div>
       <Text ellipsis={{ tooltip: true }} strong className={styles.title}>
         {leaveReason}

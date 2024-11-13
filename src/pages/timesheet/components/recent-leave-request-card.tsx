@@ -1,12 +1,13 @@
 import { LeaveRequest } from "@/domains/calendar";
 import React from "react";
-import { Button, Card, CardProps, Skeleton } from "antd";
-import { CalendarOutlined, RightCircleOutlined } from "@ant-design/icons";
+import { Card, CardProps, Tag } from "antd";
+import { CalendarOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { Text } from "@/components";
-import { useCustom, useList, useNavigation } from "@refinedev/core";
+import { useCustom, useNavigation } from "@refinedev/core";
 import { CalendarUpcomingEvent } from "@/pages/timesheet/components/recent-leave-request";
 import type { TFunction } from "i18next";
+import { BaseResponse } from "@/domains";
 
 export type RecentLeaveRequestProps = {
   cardProps?: CardProps;
@@ -44,70 +45,57 @@ export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
   //   dataProviderName,
   //   overtimeOptions,
 
-  const { data, isLoading } = useCustom<LeaveRequest>({
+  const { data, isLoading } = useCustom<BaseResponse<LeaveRequest[]>>({
     url: "/timesheets/recent-leave-request",
     method: "get",
   });
 
-  const _data: LeaveRequest[] = [
-    {
-      id: 1,
-      leaveDate: "2024-11-11",
-      leaveHour: 4,
-      leaveReason: "flu",
-      leaveStatus: "APPROVED",
-    },
-    {
-      id: 2,
-      leaveDate: "2024-11-12",
-      leaveHour: 8,
-      leaveReason: "flu",
-      leaveStatus: "REJECTED",
-    },
-    {
-      id: 3,
-      leaveDate: "2024-11-13",
-      leaveHour: 4,
-      leaveReason: "flu",
-      leaveStatus: "PENDING",
-    },
-    {
-      id: 4,
-      leaveDate: "2024-11-01",
-      leaveHour: 3,
-      leaveReason: "flu",
-      leaveStatus: "APPROVED",
-    },
-  ];
+  const leaveRequests = data?.data.data || [];
+
+  const dataContainsDifferentYear: boolean = leaveRequests.some(
+    (item) =>
+      new Date(item.leaveDate).getFullYear() !== new Date().getFullYear(),
+  );
 
   return (
-    <Card
-      styles={{
-        header: { padding: "8px 16px" },
-        body: {
-          padding: "0 1rem",
-        },
-      }}
-      title={
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-          }}
-        >
-          <CalendarOutlined />
-          <Text size="sm" style={{ marginLeft: ".7rem" }}>
-            {t("timesheet.recentLeaveRequest")}
-          </Text>
-        </div>
-      }
-      {...cardProps}
-    >
-      {_data.map((item) => (
-        <CalendarUpcomingEvent key={item.id} item={item} />
-      ))}
-      {_data.length === 0 && <NoEvent t={t} />}
-    </Card>
+    <div>
+      <Card
+        styles={{
+          header: { padding: "8px 16px" },
+          body: {
+            padding: "0 1rem",
+          },
+        }}
+        title={
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
+            <CalendarOutlined />
+            <Text size="sm" style={{ marginLeft: ".7rem" }}>
+              {t("timesheet.recentLeaveRequest")}
+            </Text>
+          </div>
+        }
+        {...cardProps}
+      >
+        {leaveRequests.map((item) => (
+          <CalendarUpcomingEvent
+            key={item.id}
+            item={item}
+            multipleYears={dataContainsDifferentYear}
+          />
+        ))}
+        {leaveRequests.length === 0 && <NoEvent t={t} />}
+      </Card>
+      <div>
+        <Tag color="purple">{t("timesheet.status.pending")}</Tag>
+        <Tag color="green">{t("timesheet.status.approved")}</Tag>
+        <Tag color="red">{t("timesheet.status.rejected")}</Tag>
+      </div>
+    </div>
   );
 };

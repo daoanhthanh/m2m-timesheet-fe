@@ -6,7 +6,7 @@ export type LeaveStatus = "APPROVED" | "REJECTED" | "PENDING";
 export interface LeaveRequest {
   id: number;
   leaveDate: Scalars["Date"];
-  leaveHour: number;
+  leaveTime: number;
   leaveReason: string;
   leaveStatus: LeaveStatus;
 }

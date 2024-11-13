@@ -50,7 +50,7 @@ export const TimesheetWrapper: React.FC<React.PropsWithChildren> = ({
       actualCheckOutTime: dayjs().add(9, "hour").format("HH:mm"),
       leaveRequest: {
         id: 1,
-        leaveHour: 4,
+        leaveTime: 4,
         leaveReason: "flu",
         leaveStatus: "APPROVED",
         leaveDate: "",

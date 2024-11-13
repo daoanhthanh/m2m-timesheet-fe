@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { Layout as AntdLayout, Switch, theme } from "antd";
 import { CurrentUser } from "./current-user";
-import { ColorModeContext } from "@/contexts/color-mode";
+import { ColorModeContext } from "@/providers/contexts/color-mode";
 
 const { useToken } = theme;
 
@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
     height: "64px",
     position: "sticky",
     top: 0,
-    zIndex: 1,
+    zIndex: 100,
   };
 
   return (
