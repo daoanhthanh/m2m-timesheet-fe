@@ -21,7 +21,7 @@ import TimesheetTablePage from "pages/dashboard";
 import { Layout } from "@/layout";
 import {
   LeaveRequestCreate,
-  TimesheetShow,
+  LeaveRequestShow,
   TimesheetWrapper,
 } from "@/pages/timesheet";
 import { ToastContainer } from "react-toastify";
@@ -47,7 +47,7 @@ const Routes = () => {
         <Route index element={<TimesheetTablePage />} />
 
         <Route
-          path="/timesheet"
+          path="/timesheets"
           element={
             <TimesheetWrapper>
               <Outlet />
@@ -57,7 +57,7 @@ const Routes = () => {
           <Route index element={null} />
           <Route path="create-leave-request" element={<LeaveRequestCreate />} />
           <Route path="edit/:id" element={<EmployeeEdit />} />
-          <Route path="show/:id" element={<TimesheetShow />} />
+          <Route path="show/:id" element={<LeaveRequestShow />} />
         </Route>
         <Route path="/employees">
           <Route index element={<EmployeeList />} />

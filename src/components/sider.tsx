@@ -165,9 +165,11 @@ export const Sider: React.FC = () => {
               >
                 <Title
                   collapsed={false}
-                  wrapperStyles={{
-                    width: "100px",
-                  }}
+                  wrapperStyles={
+                    {
+                      // width: "100px",
+                    }
+                  }
                 />
               </div>
               {renderMenu()}
@@ -253,9 +255,11 @@ export const Sider: React.FC = () => {
         >
           <Title
             collapsed={siderCollapsed}
-            wrapperStyles={{
-              width: "100px",
-            }}
+            wrapperStyles={
+              {
+                // width: "100px",
+              }
+            }
           />
         </div>
         {renderMenu()}

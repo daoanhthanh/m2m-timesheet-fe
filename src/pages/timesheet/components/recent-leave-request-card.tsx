@@ -5,7 +5,7 @@ import { CalendarOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { Text } from "@/components";
 import { useCustom, useNavigation } from "@refinedev/core";
-import { CalendarUpcomingEvent } from "@/pages/timesheet/components/recent-leave-request";
+import { RecentLeaveRequestItem } from "@/pages/timesheet/components/recent-leave-request-item";
 import type { TFunction } from "i18next";
 import { BaseResponse } from "@/domains";
 
@@ -32,18 +32,6 @@ export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
   cardProps,
 }) => {
   const { t } = useTranslation();
-  const { list } = useNavigation();
-
-  // url,
-  //   method,
-  //   config,
-  //   queryOptions,
-  //   successNotification,
-  //   errorNotification,
-  //   meta,
-  //   metaData,
-  //   dataProviderName,
-  //   overtimeOptions,
 
   const { data, isLoading } = useCustom<BaseResponse<LeaveRequest[]>>({
     url: "/timesheets/recent-leave-request",
@@ -83,7 +71,7 @@ export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
         {...cardProps}
       >
         {leaveRequests.map((item) => (
-          <CalendarUpcomingEvent
+          <RecentLeaveRequestItem
             key={item.id}
             item={item}
             multipleYears={dataContainsDifferentYear}

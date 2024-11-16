@@ -1,33 +1,21 @@
-import { Button, Drawer, Skeleton, Space, Tag } from "antd";
+import { Button, Drawer, Skeleton } from "antd";
 import React from "react";
 import { Text } from "@/components";
 import { useNavigation, useShow } from "@refinedev/core";
-import { TimeslotByDay } from "@/domains/calendar";
+import { LeaveRequest } from "@/domains/calendar";
 import { EditButton } from "@refinedev/antd";
-import { CloseOutlined, EditOutlined, FlagOutlined } from "@ant-design/icons";
-import dayjs from "@/providers/utils/date/viDayJS";
-import { toast } from "react-toastify";
+import { CloseOutlined, EditOutlined } from "@ant-design/icons";
 
-export const TimesheetShow: React.FC = () => {
-  const { query } = useShow<TimeslotByDay>({});
+export const LeaveRequestShow: React.FC = () => {
+  const { query } = useShow<LeaveRequest>();
   const { data, isLoading } = query;
   const { list } = useNavigation();
   const record = data?.data;
 
-  // if (!record) {
-  //   toast.error("Không tìm thấy bản ghi");
-  //   list("timesheets");
-  //   return null;
-  // }
-
-  // const curDayjs = dayjs(record!.leaveRequest.leaveDate);
-  // const isToday = curDayjs.isToday();
-  // const isTomorrow = curDayjs.isSame(dayjs().add(1, "day"), "day");
-  // const isYesterday = curDayjs.isSame(dayjs().subtract(1, "day"), "day");
-  // const isAllDayEvent = leaveHour == 8;
+  console.log("record ở đây:", JSON.stringify(data, null, 2));
 
   const handleOnClose = () => {
-    list("timesheet");
+    list("timesheets");
   };
 
   return (
@@ -52,7 +40,7 @@ export const TimesheetShow: React.FC = () => {
               }}
             />
             <Text strong size="md">
-              {record?.leaveRequest?.leaveReason}
+              {record?.leaveReason}
             </Text>
           </div>
           <div style={{ display: "flex", gap: "4px" }}>
@@ -90,6 +78,10 @@ export const TimesheetShow: React.FC = () => {
             gap: "24px",
           }}
         >
+          <div>
+            <Text strong>Ngày</Text>
+            <Text>{record?.leaveDate}</Text>
+          </div>
           {/*  {allDay ? (*/}
           {/*    <div>*/}
           {/*      <CalendarOutlined style={{marginRight: ".5rem"}}/>*/}

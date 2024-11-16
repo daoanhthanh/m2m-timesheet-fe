@@ -11,12 +11,12 @@ import styles from "./index.module.css";
 import { LeaveRequest } from "@/domains/calendar";
 import { useTranslation } from "react-i18next";
 
-type CalendarUpcomingEventProps = {
+type RecentLeaveRequestItemProps = {
   item: LeaveRequest;
   multipleYears?: boolean;
 };
 
-export const CalendarUpcomingEvent: React.FC<CalendarUpcomingEventProps> = ({
+export const RecentLeaveRequestItem: React.FC<RecentLeaveRequestItemProps> = ({
   item,
   multipleYears,
 }) => {
@@ -72,13 +72,13 @@ export const CalendarUpcomingEvent: React.FC<CalendarUpcomingEventProps> = ({
   return (
     <div
       onClick={() => {
-        show("timesheet", item.id);
+        show("timesheets", item.id);
       }}
       key={id}
       className={styles.item}
     >
-      <div className={styles.date}>
-        <Badge color={color()} className={styles.badge} />
+      <div className="mb-1">
+        <Badge color={color()} className="mr-4" />
         <Text size="xs">{`${renderDate()} | ${renderTime()}`}</Text>
       </div>
       <Text ellipsis={{ tooltip: true }} strong className={styles.title}>

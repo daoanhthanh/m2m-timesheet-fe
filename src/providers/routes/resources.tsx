@@ -15,11 +15,11 @@ const resources: ResourceProps[] = [
     },
   },
   {
-    name: "timesheet",
-    list: "/timesheet",
-    create: "/timesheet/create-leave-request",
-    show: "/timesheet/show/:id",
-    edit: "/timesheet/edit/:id",
+    name: "timesheets",
+    list: "/timesheets",
+    create: "/timesheets/create-leave-request",
+    show: "/timesheets/show/:id",
+    edit: "/timesheets/edit/:id",
     meta: {
       label: "Chấm công",
       icon: <ClockCircleOutlined />,

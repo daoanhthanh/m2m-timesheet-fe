@@ -66,8 +66,8 @@ export const TimesheetWrapper: React.FC<React.PropsWithChildren> = ({
         <Col xs={24} xl={6}>
           <AddRecordButton
             block
-            className="mb-1"
-            entity="timesheet"
+            className="mb-2"
+            entity="timesheets"
             buttonText={t("timesheet.createLeaveRequest")}
             additionalQuery={{ targetDate: selectedDate.format("DD-MM-YYYY") }}
           />

@@ -57,7 +57,8 @@ const AddRecordButton: FC<AddRecordButtonProps> = ({
           fontWeight: 400,
         }}
       >
-        {!screens.xs ? buttonText : null}
+        {/*{!screens.xs ? buttonText : null}*/}
+        {buttonText}
       </Text>
     </Button>
   );
