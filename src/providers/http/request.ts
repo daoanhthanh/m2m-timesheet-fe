@@ -1,7 +1,7 @@
 import { Either } from "@/providers/types/either";
 
 export class ApiResult<Return> {
-  constructor(private readonly underlying: Either<ApiError, Return>) {}
+  constructor(private underlying: Either<ApiError, Return>) {}
 
   static success<Return>(data: Return) {
     return new ApiResult(Either.right(data));
@@ -194,7 +194,7 @@ const getFilename = (disposition: string) => {
 //   delete: deleteRequest,
 // };
 
-export const httpClient = {
+export default {
   get,
   post,
   put,

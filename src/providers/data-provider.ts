@@ -8,7 +8,7 @@ import {
 import { API_URL } from "@/providers/endpoints";
 import { generateSort, mapOperator } from "@refinedev/simple-rest";
 import { stringify } from "query-string";
-import { httpClient } from "@/providers/http/request";
+import { get, post, put, deleteRequest } from "@/providers/http/request";
 import { joinHostAndApi } from "@/providers/utils";
 
 const generateFilter = (filters?: CrudFilters) => {
@@ -75,7 +75,7 @@ const dataProvider: DataProvider = {
       ? `${url}?${stringify(combinedQuery)}`
       : url;
 
-    const response = await httpClient.get<any>(urlWithQuery, {
+    const response = await get<any>(urlWithQuery, {
       headers: headersFromMeta,
     });
 
@@ -87,7 +87,7 @@ const dataProvider: DataProvider = {
 
     const { headers } = meta ?? {};
 
-    const response = await httpClient.post<unknown, any>(url, variables, {
+    const response = await post<unknown, any>(url, variables, {
       headers,
     });
 
@@ -99,7 +99,7 @@ const dataProvider: DataProvider = {
 
     const { headers } = meta ?? {};
 
-    const response = await httpClient.put<unknown, any>(url, variables, {
+    const response = await put<unknown, any>(url, variables, {
       headers,
     });
 
@@ -111,22 +111,22 @@ const dataProvider: DataProvider = {
 
     const { headers } = meta ?? {};
 
-    const { data } = await httpClient.delete<any>(url, {
+    const response = await deleteRequest<any>(url, {
       headers,
     });
 
-    return data();
+    return response.data();
   },
 
   getOne: async ({ resource, id, meta }) => {
     const url = `${API_URL}/${resource}/${id}`;
     const { headers } = meta ?? {};
 
-    const { data } = await httpClient.get<any>(url, {
+    const response = await get<any>(url, {
       headers,
     });
 
-    return data();
+    return response.data();
   },
   getApiUrl: () => API_URL,
 

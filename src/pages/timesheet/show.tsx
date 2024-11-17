@@ -12,8 +12,6 @@ export const LeaveRequestShow: React.FC = () => {
   const { list } = useNavigation();
   const record = data?.data;
 
-  console.log("record ở đây:", JSON.stringify(data, null, 2));
-
   const handleOnClose = () => {
     list("timesheets");
   };
