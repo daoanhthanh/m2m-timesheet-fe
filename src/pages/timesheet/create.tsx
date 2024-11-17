@@ -66,7 +66,7 @@ export const LeaveRequestCreate = () => {
       title={t("timesheet.createLeaveRequest")}
       style={{ display: "inherit" }}
       onCancel={() => {
-        list("timesheet");
+        list("timesheets");
       }}
       okText={t("common.save")}
       okButtonProps={{

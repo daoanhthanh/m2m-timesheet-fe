@@ -1,10 +1,10 @@
 import { LeaveRequest } from "@/domains/calendar";
 import React from "react";
-import { Card, CardProps, Tag } from "antd";
+import { Card, CardProps, Skeleton, Tag } from "antd";
 import { CalendarOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { Text } from "@/components";
-import { useCustom, useNavigation } from "@refinedev/core";
+import { useCustom } from "@refinedev/core";
 import { RecentLeaveRequestItem } from "@/pages/timesheet/components/recent-leave-request-item";
 import type { TFunction } from "i18next";
 import { BaseResponse } from "@/domains";
@@ -45,7 +45,19 @@ export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
       new Date(item.leaveDate).getFullYear() !== new Date().getFullYear(),
   );
 
-  return (
+  return isLoading ? (
+    <Skeleton
+      loading={isLoading}
+      active
+      avatar
+      paragraph={{
+        rows: 3,
+      }}
+      style={{
+        padding: 0,
+      }}
+    />
+  ) : (
     <div>
       <Card
         styles={{

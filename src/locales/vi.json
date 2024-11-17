@@ -86,6 +86,9 @@
       "pending": "Đang chờ",
       "approved": "Đã duyệt",
       "rejected": "Từ chối"
+    },
+    "show": {
+      "title": "Chi tiết đơn nghỉ"
     }
   },
   "common": {
