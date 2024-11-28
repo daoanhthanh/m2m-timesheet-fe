@@ -18,7 +18,7 @@ const useAuthorization = (): User | null => {
       }
     };
 
-    fetchLoginData();
+    fetchLoginData().then((r) => {});
   }, []);
 
   return loginData;

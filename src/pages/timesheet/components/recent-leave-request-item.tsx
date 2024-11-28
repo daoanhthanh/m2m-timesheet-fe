@@ -10,7 +10,7 @@ import dayjs from "@/providers/utils/date/viDayJS";
 import styles from "./index.module.css";
 import { LeaveRequest } from "@/domains/calendar";
 import { useTranslation } from "react-i18next";
-import getBadgeColorFromLRStatus from "@/providers/utils/get-badge-color-from-lr-status";
+import { getBadgeColorFromLRStatus } from "@/providers/utils/get-badge-color-from-lr-status";
 
 type RecentLeaveRequestItemProps = {
   item: LeaveRequest;
@@ -51,23 +51,10 @@ export const RecentLeaveRequestItem: React.FC<RecentLeaveRequestItemProps> = ({
 
   const renderTime = () => {
     if (isAllDayEvent) {
-      return "Cả ngày";
+      return t("common.allDay");
     }
 
     return leaveTime + t("common.hour");
-  };
-
-  const color = () => {
-    switch (leaveStatus) {
-      case "PENDING":
-        return "purple";
-      case "APPROVED":
-        return "green";
-      case "REJECTED":
-        return "red";
-      default:
-        return "purple";
-    }
   };
 
   return (
@@ -78,12 +65,17 @@ export const RecentLeaveRequestItem: React.FC<RecentLeaveRequestItemProps> = ({
       key={id}
       className={styles.item}
     >
-      <div className="mb-1">
+      <div className="mb-1 flex">
         <Badge
           color={getBadgeColorFromLRStatus(leaveStatus)}
           className="mr-4"
         />
-        <Text size="xs">{`${renderDate()} | ${renderTime()}`}</Text>
+        <div className="w-full grid grid-cols-2 gap-1">
+          <Text size="xs">{renderDate()}</Text>
+          <Text className="flex justify-end" size="xs">
+            {renderTime()}
+          </Text>
+        </div>
       </div>
       <Text ellipsis={{ tooltip: true }} strong className={styles.title}>
         {leaveReason}

@@ -7,9 +7,11 @@ import React, {
   useState,
 } from "react";
 
+export type ThemeMode = "light" | "dark";
+
 type ColorModeContextType = {
-  mode: string;
-  setMode: (mode: string) => void;
+  mode: ThemeMode;
+  setMode: (mode: ThemeMode) => void;
 };
 
 export const ColorModeContext = createContext<ColorModeContextType>(
@@ -19,13 +21,15 @@ export const ColorModeContext = createContext<ColorModeContextType>(
 export const ColorModeContextProvider: React.FC<PropsWithChildren> = ({
   children,
 }) => {
-  const colorModeFromLocalStorage = localStorage.getItem("colorMode");
+  const colorModeFromLocalStorage = localStorage.getItem(
+    "colorMode",
+  ) as ThemeMode;
   const isSystemPreferenceDark = window?.matchMedia(
     "(prefers-color-scheme: dark)",
   ).matches;
 
-  const systemPreference = isSystemPreferenceDark ? "dark" : "light";
-  const [mode, setMode] = useState(
+  const systemPreference: ThemeMode = isSystemPreferenceDark ? "dark" : "light";
+  const [mode, setMode] = useState<ThemeMode>(
     colorModeFromLocalStorage || systemPreference,
   );
 

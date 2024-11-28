@@ -8,6 +8,7 @@ import { useCustom } from "@refinedev/core";
 import { RecentLeaveRequestItem } from "@/pages/timesheet/components/recent-leave-request-item";
 import type { TFunction } from "i18next";
 import { BaseResponse } from "@/domains";
+import styles from "./index.module.css";
 
 export type RecentLeaveRequestProps = {
   cardProps?: CardProps;
@@ -45,19 +46,7 @@ export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
       new Date(item.leaveDate).getFullYear() !== new Date().getFullYear(),
   );
 
-  return isLoading ? (
-    <Skeleton
-      loading={isLoading}
-      active
-      avatar
-      paragraph={{
-        rows: 3,
-      }}
-      style={{
-        padding: 0,
-      }}
-    />
-  ) : (
+  return (
     <div>
       <Card
         styles={{
@@ -82,19 +71,38 @@ export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
         }
         {...cardProps}
       >
-        {leaveRequests.map((item) => (
-          <RecentLeaveRequestItem
-            key={item.id}
-            item={item}
-            multipleYears={dataContainsDifferentYear}
-          />
-        ))}
-        {leaveRequests.length === 0 && <NoEvent t={t} />}
+        {isLoading ? (
+          Array.from({ length: 3 }).map((_, index) => (
+            <div className={styles.item} key={index}>
+              <Skeleton
+                loading
+                active
+                paragraph={{
+                  rows: 1,
+                }}
+                style={{
+                  paddingBottom: "3px",
+                }}
+              />
+            </div>
+          ))
+        ) : (
+          <>
+            {leaveRequests.map((item) => (
+              <RecentLeaveRequestItem
+                key={item.id}
+                item={item}
+                multipleYears={dataContainsDifferentYear}
+              />
+            ))}
+            {leaveRequests.length === 0 && <NoEvent t={t} />}
+          </>
+        )}
       </Card>
       <div>
-        <Tag color="purple">{t("timesheet.status.pending")}</Tag>
-        <Tag color="green">{t("timesheet.status.approved")}</Tag>
-        <Tag color="red">{t("timesheet.status.rejected")}</Tag>
+        <Tag color="purple">{t("timesheet.status.PENDING")}</Tag>
+        <Tag color="green">{t("timesheet.status.APPROVED")}</Tag>
+        <Tag color="red">{t("timesheet.status.REJECTED")}</Tag>
       </div>
     </div>
   );

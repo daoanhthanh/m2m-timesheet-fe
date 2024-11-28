@@ -4,10 +4,12 @@ import dayjs from "dayjs";
 import { Badge, Popover } from "antd";
 import { TimeslotByDay } from "@/domains/calendar";
 import { useTranslation } from "react-i18next";
-import styles from "./index.module.scss";
+import "./index.scss";
 import type { PresetStatusColorType } from "antd/es/_util/colors";
 import type { CellRenderInfo } from "rc-picker/lib/interface";
 import getMonthName from "@/providers/month-list";
+import { twMerge } from "tailwind-merge";
+import useThemeMode from "@/hooks/useThemeMode";
 
 export interface DateCellProps {
   value: Dayjs;
@@ -18,29 +20,33 @@ export interface DateCellProps {
 export default function CalendarCell({ value, info, timeslot }: DateCellProps) {
   const { t } = useTranslation();
 
+  const themeMode = useThemeMode();
+
+  const weekendBgColor = themeMode === "dark" ? "bg-[#78716C]" : "bg-slate-100";
+
   const popupTitle: string = `${t("timesheet.totalHours.full")}: ${timeslot.totalHours}`;
 
   const popupContent = (
     <div>
-      <p className={styles.pDetail}>
+      <p className="mb-0">
         {t("timesheet.actualCheckIn")}:{" "}
         <span>{timeslot.actualCheckInTime}</span>
       </p>
-      <p className={styles.pDetail}>
+      <p className="mb-0">
         {t("timesheet.actualCheckOut")}:{" "}
         <span>{timeslot.actualCheckOutTime}</span>
       </p>
       {timeslot.leaveRequest && (
         <>
-          <p className={styles.pDetail}>
+          <p className="mb-0">
             {t("timesheet.leaveTime.full")}:{" "}
             <span>{timeslot.leaveRequest.leaveTime}</span>
           </p>
-          <p className={styles.pDetail}>
+          <p className="mb-0">
             {t("timesheet.leaveReason")}:{" "}
             <span>{timeslot.leaveRequest.leaveReason}</span>
           </p>
-          <p className={styles.pDetail}>
+          <p className="mb-0">
             {t("timesheet.leaveStatus")}:{" "}
             <span>{timeslot.leaveRequest.leaveStatus}</span>
           </p>
@@ -49,7 +55,14 @@ export default function CalendarCell({ value, info, timeslot }: DateCellProps) {
     </div>
   );
 
-  const className = `ant-picker-cell-inner ant-picker-calendar-date ${value.isSame(dayjs(), "date") ? "ant-picker-calendar-date-today" : ""}`;
+  const isWeekend = value.day() === 0 || value.day() === 6;
+
+  const className = twMerge(
+    "ant-picker-cell-inner ant-picker-calendar-date",
+    value.isSame(dayjs(), "date") ? "ant-picker-calendar-date-today" : "",
+    isWeekend ? weekendBgColor : "",
+    "m-0",
+  );
 
   const contentRender = () => {
     let content = [];

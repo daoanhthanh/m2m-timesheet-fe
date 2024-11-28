@@ -81,6 +81,9 @@ export const TimesheetWrapper: React.FC<React.PropsWithChildren> = ({
             onPanelChange={onPanelChange}
             onSelect={onSelect}
             fullCellRender={cellRender}
+            style={{
+              borderRadius: "10px",
+            }}
           />
         </Col>
       </Row>

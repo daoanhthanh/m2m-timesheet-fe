@@ -83,9 +83,9 @@
     "recentLeaveRequest": "Đơn nghỉ gần đây",
     "noRecentLeaveRequest": "Không có đơn nghỉ nào",
     "status": {
-      "pending": "Đang chờ",
-      "approved": "Đã duyệt",
-      "rejected": "Từ chối"
+      "PENDING": "Đang chờ",
+      "APPROVED": "Đã duyệt",
+      "REJECTED": "Từ chối"
     },
     "show": {
       "title": "Chi tiết đơn nghỉ"

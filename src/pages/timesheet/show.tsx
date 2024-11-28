@@ -3,15 +3,19 @@ import React from "react";
 import { Text } from "@/components";
 import { useNavigation, useShow } from "@refinedev/core";
 import { LeaveRequest } from "@/domains/calendar";
-import { EditButton } from "@refinedev/antd";
 import {
   CalendarOutlined,
-  ClockCircleOutlined,
+  CalendarTwoTone,
+  ClockCircleTwoTone,
   CloseOutlined,
   EditOutlined,
+  InfoCircleTwoTone,
 } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import getBadgeColorFromLRStatus from "@/providers/utils/get-badge-color-from-lr-status";
+import {
+  getBadgeColorFromLRStatus,
+  getBadgeIconFromLRStatus,
+} from "@/providers/utils/get-badge-color-from-lr-status";
 import dayjs from "dayjs";
 
 export const LeaveRequestShow: React.FC = () => {
@@ -39,26 +43,37 @@ export const LeaveRequestShow: React.FC = () => {
       >
         {allDay ? (
           <div>
-            <CalendarOutlined style={{ marginRight: ".5rem" }} />
+            <CalendarOutlined className="mr-2" />
             <Text>{`${dayjs(record?.leaveDate).format("D MMMM")}`}</Text>
             <Tag style={{ marginLeft: ".5rem" }} color="blue">
-              Cả ngày
+              {t("common.allDay")}
             </Tag>
           </div>
         ) : (
           <>
             <div>
-              <CalendarOutlined style={{ marginRight: ".5rem" }} />
+              <CalendarTwoTone className="mr-2" />
               <Text>
                 {dayjs(record?.leaveDate).format("dddd, DD MMMM, YYYY")}
               </Text>
             </div>
             <div>
-              <ClockCircleOutlined style={{ marginRight: ".5rem" }} />
+              <ClockCircleTwoTone className="mr-2" />
               <Text>
                 {t("timesheet.leaveTime.full")}: {record?.leaveTime}
                 {t("common.hour")}
               </Text>
+            </div>
+            <div>
+              <InfoCircleTwoTone className="mr-2" />
+              <Text>{t("timesheet.leaveStatus")}:&nbsp;</Text>
+
+              <Tag
+                icon={getBadgeIconFromLRStatus(record?.leaveStatus)}
+                color={getBadgeColorFromLRStatus(record?.leaveStatus)}
+              >
+                {t(`timesheet.status.${record?.leaveStatus}`)}
+              </Tag>
             </div>
           </>
         )}
@@ -66,34 +81,17 @@ export const LeaveRequestShow: React.FC = () => {
     );
   };
 
-  return isLoading ? (
-    <Skeleton
-      loading={isLoading}
-      active
-      avatar
-      paragraph={{
-        rows: 3,
-      }}
-      style={{
-        padding: 0,
-      }}
-    />
-  ) : (
+  return (
     <Drawer
       title={
         <div className="flex justify-between items-center">
-          <div style={{ display: "flex", gap: "8px" }}>
+          <div className="flex flex-row gap-[8px] w-full">
             {isLoading ? (
-              <Skeleton
-                loading={isLoading}
-                active
-                avatar
-                paragraph={{
-                  rows: 1,
-                }}
-                style={{
-                  padding: 0,
-                }}
+              <Skeleton.Button
+                className="mr-2"
+                active={true}
+                size={"small"}
+                block={true}
               />
             ) : (
               <>
@@ -108,7 +106,9 @@ export const LeaveRequestShow: React.FC = () => {
             )}
           </div>
           <div style={{ display: "flex", gap: "4px" }}>
-            <EditButton icon={<EditOutlined />} hideText type="text" />
+            {/*<EditButton icon={<EditOutlined />} hideText type="text" />*/}
+            <Button icon={<EditOutlined />} type="text" />
+            {/*<EditOutlined />*/}
             <Button
               icon={<CloseOutlined />}
               type="text"
@@ -120,13 +120,13 @@ export const LeaveRequestShow: React.FC = () => {
       closeIcon={false}
       open
       onClose={handleOnClose}
-      width={378}
+      width={"30rem"}
     >
       {isLoading ? (
         <Skeleton
-          loading={isLoading}
+          loading
           active
-          avatar
+          title={false}
           paragraph={{
             rows: 3,
           }}
