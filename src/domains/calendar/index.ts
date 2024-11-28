@@ -9,6 +9,7 @@ export interface LeaveRequest {
   leaveTime: number;
   leaveReason: string;
   leaveStatus: LeaveStatus;
+  rejectReason?: string;
 }
 
 export interface TimeslotByDay {

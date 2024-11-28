@@ -75,6 +75,7 @@
     "leaveDateRequired": "Ngày nghỉ không được để trống",
     "leaveReason": "Lý do nghỉ",
     "leaveStatus": "Trạng thái",
+    "rejectReason": "Lý do từ chối",
     "createLeaveRequest": "Tạo đơn nghỉ",
     "startLeaveTime": "Thời gian bắt đầu",
     "endLeaveTime": "Thời gian kết thúc",

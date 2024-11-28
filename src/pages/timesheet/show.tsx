@@ -10,6 +10,7 @@ import {
   CloseOutlined,
   EditOutlined,
   InfoCircleTwoTone,
+  MessageTwoTone,
 } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import {
@@ -51,12 +52,14 @@ export const LeaveRequestShow: React.FC = () => {
           </div>
         ) : (
           <>
+            {/* LR created date */}
             <div>
               <CalendarTwoTone className="mr-2" />
               <Text>
                 {dayjs(record?.leaveDate).format("dddd, DD MMMM, YYYY")}
               </Text>
             </div>
+            {/* LR total hours */}
             <div>
               <ClockCircleTwoTone className="mr-2" />
               <Text>
@@ -64,6 +67,7 @@ export const LeaveRequestShow: React.FC = () => {
                 {t("common.hour")}
               </Text>
             </div>
+            {/* LR response status*/}
             <div>
               <InfoCircleTwoTone className="mr-2" />
               <Text>{t("timesheet.leaveStatus")}:&nbsp;</Text>
@@ -75,6 +79,16 @@ export const LeaveRequestShow: React.FC = () => {
                 {t(`timesheet.status.${record?.leaveStatus}`)}
               </Tag>
             </div>
+            {/* LR response reason*/}
+            {record?.leaveStatus === "REJECTED" && record?.rejectReason && (
+              <div>
+                <MessageTwoTone className="mr-2" />
+                <Text>{t("timesheet.rejectReason")}:&nbsp;</Text>
+                <Text strong italic>
+                  {record?.rejectReason}
+                </Text>
+              </div>
+            )}
           </>
         )}
       </div>
