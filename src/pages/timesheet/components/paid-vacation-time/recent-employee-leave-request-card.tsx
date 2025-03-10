@@ -1,6 +1,6 @@
 import { LeaveRequest } from "@/domains/calendar";
 import React from "react";
-import { Card, CardProps, Skeleton, Tag } from "antd";
+import { Card, CardProps, Skeleton } from "antd";
 import { CalendarOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { Text } from "@/components";
@@ -12,7 +12,6 @@ import styles from "./index.module.css";
 
 export type RecentLeaveRequestProps = {
   cardProps?: CardProps;
-  className?: string;
 };
 
 const NoEvent: React.FC<{ t: TFunction<"translation", undefined> }> = ({
@@ -30,14 +29,13 @@ const NoEvent: React.FC<{ t: TFunction<"translation", undefined> }> = ({
   </span>
 );
 
-export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
-  cardProps,
-    className
-}) => {
+export const RecentEmployeeLeaveRequestCard: React.FC<
+  RecentLeaveRequestProps
+> = ({ cardProps }) => {
   const { t } = useTranslation();
 
   const { data, isLoading } = useCustom<BaseResponse<LeaveRequest[]>>({
-    url: "/timesheets/recent-leave-request",
+    url: "/timesheets/employee-recent-leave-request",
     method: "get",
   });
 
@@ -49,7 +47,7 @@ export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
   );
 
   return (
-    <div className={className}>
+    <div>
       <Card
         styles={{
           header: { padding: "8px 16px" },
@@ -67,7 +65,7 @@ export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
           >
             <CalendarOutlined />
             <Text size="sm" style={{ marginLeft: ".7rem" }}>
-              {t("timesheet.recentLeaveRequest")}
+              {t("timesheet.employeeRecentLeaveRequest")}
             </Text>
           </div>
         }
@@ -101,11 +99,6 @@ export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
           </>
         )}
       </Card>
-      <div>
-        <Tag color="purple">{t("timesheet.status.PENDING")}</Tag>
-        <Tag color="green">{t("timesheet.status.APPROVED")}</Tag>
-        <Tag color="red">{t("timesheet.status.REJECTED")}</Tag>
-      </div>
     </div>
   );
 };

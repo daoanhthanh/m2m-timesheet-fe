@@ -1,19 +1,17 @@
 import {
   ClockCircleOutlined,
-  DashboardOutlined,
-  UserOutlined,
 } from "@ant-design/icons";
 import { ResourceProps } from "@refinedev/core";
 
 const resources: ResourceProps[] = [
-  {
-    name: "dashboard",
-    list: "/",
-    meta: {
-      label: "Trang chủ",
-      icon: <DashboardOutlined />,
-    },
-  },
+  // {
+  //   name: "dashboard",
+  //   list: "/",
+  //   meta: {
+  //     label: "Trang chủ",st
+  //     icon: <DashboardOutlined />,
+  //   },
+  // },
   {
     name: "timesheets",
     list: "/timesheets",
@@ -26,18 +24,18 @@ const resources: ResourceProps[] = [
       // canDelete: true,
     },
   },
-  {
-    name: "employees",
-    list: "/employees",
-    create: "/employees/create",
-    show: "/employees/show/:id",
-    edit: "/employees/edit/:id",
-    meta: {
-      label: "Nhân viên",
-      icon: <UserOutlined />,
-      // canDelete: true,
-    },
-  },
+  // {
+  //   name: "employees",
+  //   list: "/employees",
+  //   create: "/employees/create",
+  //   show: "/employees/show/:id",
+  //   edit: "/employees/edit/:id",
+  //   meta: {
+  //     label: "Nhân viên",
+  //     icon: <UserOutlined />,
+  //     // canDelete: true,
+  //   },
+  // },
 ];
 
 export default resources;

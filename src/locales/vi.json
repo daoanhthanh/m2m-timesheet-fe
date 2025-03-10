@@ -81,8 +81,15 @@
     "endLeaveTime": "Thời gian kết thúc",
     "startLeaveTimeRequired": "Thời gian bắt đầu không được để trống",
     "endLeaveTimeRequired": "Thời gian kết thúc không được để trống",
-    "recentLeaveRequest": "Đơn nghỉ gần đây",
-    "noRecentLeaveRequest": "Không có đơn nghỉ nào",
+    "recentLeaveRequest": "Đơn phép gần đây",
+    "employeeRecentLeaveRequest": "Đơn phép nhân viên",
+    "noRecentLeaveRequest": "Không có đơn phép nào",
+    "paidLeaveRemainder": "Số giờ nghỉ được trả lương còn lại",
+    "specialLeaveRemainder": "Số giờ đặc biệt còn lại",
+    "tooltips": {
+      "specialLeave": "Ngày nghỉ đặc biệt dùng cho nhân viên thâm niên trên x năm",
+      "annualLeave": "Là ngày nghỉ phép được hưởng lương abc"
+    },
     "status": {
       "PENDING": "Đang chờ",
       "APPROVED": "Đã duyệt",

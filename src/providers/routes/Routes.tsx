@@ -4,7 +4,12 @@ import {
   CatchAllNavigate,
   NavigateToResource,
 } from "@refinedev/react-router-v6";
-import { Outlet, Route, Routes as ReactRoutes } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  Route,
+  Routes as ReactRoutes,
+} from "react-router-dom";
 
 import "@refinedev/antd/dist/reset.css";
 
@@ -44,7 +49,8 @@ const Routes = () => {
           </Authenticated>
         }
       >
-        <Route index element={<TimesheetTablePage />} />
+        {/*<Route index element={<TimesheetTablePage />} />*/}
+        <Route index element={<Navigate to="/timesheets" />} />
 
         <Route
           path="/timesheets"

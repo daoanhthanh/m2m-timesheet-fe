@@ -7,12 +7,14 @@ import {
 } from "@/providers/storage/localStorage";
 import { get, post } from "@/providers/http/request";
 import { BaseResponse } from "@/domains";
+import { fakeUser } from "@/providers/fake-provider-data";
 
 const checkMe = async () => {
   const maybeMe = await get<BaseResponse<User>>(endpoints.me);
 
   if (maybeMe.isFails()) {
-    return null;
+    // return null;
+    return fakeUser;
   }
   return maybeMe.data().data;
 };
