@@ -116,6 +116,9 @@
     },
     "show": {
       "title": "Chi tiết đơn nghỉ"
+    },
+    "form": {
+      "success": "Tạo đơn nghỉ thành công"
     }
   },
   "common": {
