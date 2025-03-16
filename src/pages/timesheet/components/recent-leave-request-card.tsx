@@ -1,4 +1,4 @@
-import { LeaveRequest } from "@/domains/calendar";
+import { LeaveRequest } from "@/types/calendar";
 import React from "react";
 import { Card, CardProps, Skeleton, Tag } from "antd";
 import { CalendarOutlined } from "@ant-design/icons";
@@ -7,7 +7,7 @@ import { Text } from "@/components";
 import { useCustom } from "@refinedev/core";
 import { RecentLeaveRequestItem } from "@/pages/timesheet/components/recent-leave-request-item";
 import type { TFunction } from "i18next";
-import { BaseResponse } from "@/domains";
+import { BaseResponse } from "types";
 import styles from "./index.module.css";
 
 export type RecentLeaveRequestProps = {
@@ -32,7 +32,7 @@ const NoEvent: React.FC<{ t: TFunction<"translation", undefined> }> = ({
 
 export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
   cardProps,
-    className
+  className,
 }) => {
   const { t } = useTranslation();
 

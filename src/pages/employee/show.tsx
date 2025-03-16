@@ -4,7 +4,7 @@ import { MarkdownField, Show } from "@refinedev/antd";
 
 import { Typography } from "antd";
 
-import { ICategory, IPost } from "@/domains";
+import { ICategory, IPost } from "types";
 
 const { Title, Text } = Typography;
 

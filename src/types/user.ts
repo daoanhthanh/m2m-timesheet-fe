@@ -1,5 +1,5 @@
 // ⚠️ Thứ tự xuất hiện của enum Role quan trọng, phải theo thứ tự sắp xếp của enum Role dưới backend.
-import { BaseEntity } from "@/domains";
+import { BaseEntity } from "@/types/index";
 
 export enum Role {
   Admin,
@@ -7,7 +7,7 @@ export enum Role {
   Employee,
 }
 
-export default interface User extends BaseEntity {
+export interface User extends BaseEntity {
   userID: string;
   userFullName: string;
   userLastName: string;

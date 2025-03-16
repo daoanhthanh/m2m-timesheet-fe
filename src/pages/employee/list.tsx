@@ -11,7 +11,7 @@ import { Input, Space, Table } from "antd";
 
 import AddRecordButton from "@/components/buttons/add-record-button";
 import FileHandleButton from "@/components/buttons/file-handle-button";
-import User from "@/domains/user/user";
+import User from "@/types/user";
 import Avatar from "@/components/avatar";
 
 import styles from "./styles.module.css";

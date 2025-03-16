@@ -1,4 +1,6 @@
 export * from "./paid-leave-remainder";
+export * from "./timesheet";
+export * from "./user";
 
 export type Scalars = {
   DateTime: string;

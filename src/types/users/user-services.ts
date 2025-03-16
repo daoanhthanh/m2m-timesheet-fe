@@ -1,4 +1,4 @@
-import { ChangePwRequest } from "@/domains/user/user";
+import { ChangePwRequest } from "@/types/user";
 import { post } from "@/providers/http/request";
 import { endpoints } from "@/providers/endpoints";
 import { OpenNotificationParams } from "@refinedev/core";

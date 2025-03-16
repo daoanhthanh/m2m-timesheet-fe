@@ -2,7 +2,7 @@ import React from "react";
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import { Badge, Popover } from "antd";
-import { TimeslotByDay } from "@/domains/calendar";
+import { TimeslotByDay } from "@/types/calendar";
 import { useTranslation } from "react-i18next";
 import "./index.scss";
 import type { PresetStatusColorType } from "antd/es/_util/colors";

@@ -22,7 +22,6 @@ import {
 import { Title } from "@/components/title";
 import React from "react";
 import { AuthPage } from "pages/auth";
-import TimesheetTablePage from "pages/dashboard";
 import { Layout } from "@/layout";
 import {
   LeaveRequestCreate,

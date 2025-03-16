@@ -2,7 +2,7 @@ import { Badge, Button, Drawer, Skeleton, Tag } from "antd";
 import React from "react";
 import { Text } from "@/components";
 import { useNavigation, useShow } from "@refinedev/core";
-import { LeaveRequest } from "@/domains/calendar";
+import { LeaveRequest } from "@/types/calendar";
 import {
   CalendarOutlined,
   CalendarTwoTone,

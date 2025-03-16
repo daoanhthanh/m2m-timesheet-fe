@@ -1,4 +1,4 @@
-import User from "@/domains/user/user";
+import User from "@/types/user";
 
 export const saveUserSession = (user: User) => {
   localStorage.setItem("user", JSON.stringify(user));

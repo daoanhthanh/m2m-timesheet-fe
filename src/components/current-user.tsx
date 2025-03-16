@@ -6,7 +6,7 @@ import { LogoutOutlined, SettingOutlined } from "@ant-design/icons";
 import { Button, Popover, Space } from "antd";
 
 import { Text } from "@/components";
-import User from "@/domains/user/user";
+import User from "@/types/user";
 import Avatar from "@/components/avatar";
 import ChangePasswordModal from "@/components/change-password";
 

@@ -1,4 +1,4 @@
-import { LeaveStatus } from "@/domains/calendar";
+import { LeaveStatus } from "@/types/calendar";
 import { PresetColorKey } from "antd/es/theme/interface/presetColors";
 import { SyncOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons";
 

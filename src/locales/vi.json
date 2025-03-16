@@ -71,10 +71,29 @@
       "short": "Nghỉ",
       "full": "Thời gian nghỉ"
     },
-    "leaveDate": "Ngày nghỉ",
+    "leaveDate": {
+      "full": "Thời điểm nghỉ",
+      "errMessage1": "Cả hai thời điểm: bắt đầu và kết thúc phải được chọn",
+      "errMessage2": "Thời gian kết thúc không được sau {{checkoutHour}}:{{checkoutMinute}}"
+    },
     "leaveDateRequired": "Ngày nghỉ không được để trống",
-    "leaveReason": "Lý do nghỉ",
+    "leaveReason": {
+      "full": "Lý do nghỉ"
+    },
+    "totalLeaveHours": {
+      "full": "Tổng số giờ nghỉ",
+      "errMessage": "Hãy chọn lại thời gian nghỉ"
+    },
     "leaveStatus": "Trạng thái",
+    "leaveType": {
+      "full": "Hình thức nghỉ",
+      "errMessage": "Hãy chọn một hình thức nghỉ",
+      "placeholder": "Chọn hình thức nghỉ"
+    },
+    "contactPhoneNumber": {
+      "full": "Điện thoại liên hệ",
+      "errMessage": "Số điện thoại cá nhân Việt Nam phải có 10 chữ số và bắt đầu bằng 03, 05, 07, 08 hoặc 09"
+    },
     "rejectReason": "Lý do từ chối",
     "createLeaveRequest": "Tạo đơn nghỉ",
     "startLeaveTime": "Thời gian bắt đầu",

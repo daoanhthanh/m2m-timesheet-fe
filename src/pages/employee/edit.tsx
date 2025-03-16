@@ -6,7 +6,7 @@ import { Form, Input, Select } from "antd";
 
 import MDEditor from "@uiw/react-md-editor";
 
-import { ICategory, IPost } from "@/domains";
+import { ICategory, IPost } from "types";
 
 export const EmployeeEdit = () => {
   const { formProps, saveButtonProps, queryResult } = useForm<IPost>();

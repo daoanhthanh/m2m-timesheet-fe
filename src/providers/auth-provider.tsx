@@ -1,12 +1,12 @@
 import { AuthProvider } from "@refinedev/core";
 import { endpoints } from "@/providers/endpoints";
-import User, { Role } from "@/domains/user/user";
+import User, { Role } from "@/types/user";
 import {
   clearSession,
   saveUserSession,
 } from "@/providers/storage/localStorage";
 import { get, post } from "@/providers/http/request";
-import { BaseResponse } from "@/domains";
+import { BaseResponse } from "types";
 import { fakeUser } from "@/providers/fake-provider-data";
 
 const checkMe = async () => {

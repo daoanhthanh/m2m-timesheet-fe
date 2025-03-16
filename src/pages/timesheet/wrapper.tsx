@@ -11,7 +11,7 @@ import type { CellRenderInfo } from "rc-picker/lib/interface";
 import * as React from "react";
 import CalendarCell from "pages/timesheet/components/calendar-cell";
 import { useTranslation } from "react-i18next";
-import { TimesheetByDay, TimeslotByDay } from "@/domains/calendar";
+import { TimesheetByDay, TimeslotByDay } from "@/types/calendar";
 import { RecentLeaveRequestCard } from "@/pages/timesheet/components/recent-leave-request-card";
 import AddRecordButton from "@/components/buttons/add-record-button";
 import { PaidVacationTime } from "pages/timesheet/components/paid-vacation-time";

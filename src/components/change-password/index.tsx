@@ -7,7 +7,7 @@ import { PasswordInput } from "antd-password-input-strength";
 
 import { Form, Input } from "antd";
 import { useNotification } from "@refinedev/core";
-import { changePassword } from "@/domains/user/user-services";
+import { changePassword } from "@/types/users/user-services";
 
 export interface ChangePasswordModalProps {
   opened: boolean;

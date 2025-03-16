@@ -1,5 +1,4 @@
-import type { Dayjs } from "dayjs";
-import { Scalars } from "@/domains";
+import { Scalars } from "types";
 
 export type LeaveStatus = "APPROVED" | "REJECTED" | "PENDING";
 
