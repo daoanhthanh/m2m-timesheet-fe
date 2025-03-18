@@ -1,4 +1,4 @@
-import { ClockCircleOutlined, OpenAIOutlined  } from "@ant-design/icons";
+import { ClockCircleOutlined, OpenAIOutlined } from "@ant-design/icons";
 import { ResourceProps } from "@refinedev/core";
 
 const resources: ResourceProps[] = [

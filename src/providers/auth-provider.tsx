@@ -1,20 +1,17 @@
 import { AuthProvider } from "@refinedev/core";
 import { endpoints } from "@/providers/endpoints";
-import User, { Role } from "@/types/user";
+import { BaseResponse, Role, User } from "types";
 import {
   clearSession,
   saveUserSession,
 } from "@/providers/storage/localStorage";
 import { get, post } from "@/providers/http/request";
-import { BaseResponse } from "types";
-import { fakeUser } from "@/providers/fake-provider-data";
 
 const checkMe = async () => {
   const maybeMe = await get<BaseResponse<User>>(endpoints.me);
 
   if (maybeMe.isFails()) {
-    // return null;
-    return fakeUser;
+    return null;
   }
   return maybeMe.data().data;
 };
