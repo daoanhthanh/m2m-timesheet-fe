@@ -1,4 +1,4 @@
-import { ClockCircleOutlined } from "@ant-design/icons";
+import { ClockCircleOutlined, OpenAIOutlined  } from "@ant-design/icons";
 import { ResourceProps } from "@refinedev/core";
 
 const resources: ResourceProps[] = [
@@ -19,7 +19,17 @@ const resources: ResourceProps[] = [
     meta: {
       label: "Chấm công",
       icon: <ClockCircleOutlined />,
-      // canDelete: true,
+    },
+  },
+  {
+    name: "forms",
+    list: "/forms",
+    create: "/forms/create",
+    show: "/forms/preview/:id",
+    edit: "/forms/builder/:id",
+    meta: {
+      label: "Đơn từ",
+      icon: <OpenAIOutlined />,
     },
   },
   // {
