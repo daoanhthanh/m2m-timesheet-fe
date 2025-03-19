@@ -10,19 +10,15 @@ import {
 } from "@ant-design/icons";
 import { formatDistanceToNowStrict } from "date-fns";
 import { vi } from "date-fns/locale/vi";
+import { Form } from "@/types";
 
 type PropsType = {
-  id: number;
-  formId: string;
-  name: string;
-  responses: number;
-  views: number;
-  createdAt: Date;
-  published: boolean;
-  backgroundColor: string;
+  data: Form;
 };
 
-export const FormItem = (props: PropsType) => {
+// type
+
+export const FormCard = (props: PropsType) => {
   const {
     id,
     formId,
@@ -31,13 +27,14 @@ export const FormItem = (props: PropsType) => {
     createdAt,
     responses = 0,
     views = 0,
-  } = props;
+  } = props.data;
 
   const router = useNavigation();
 
   const onClick = useCallback(() => {
-    router.push(`/dashboard/form/builder/${formId}`);
+    router.push(`/forms/builder/${formId}`);
   }, []);
+
   return (
     <div onClick={onClick} role="button" className="w-full h-auto">
       <div

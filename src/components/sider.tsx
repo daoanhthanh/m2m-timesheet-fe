@@ -16,7 +16,7 @@ import {
   UnorderedListOutlined,
 } from "@ant-design/icons";
 import { Button, Drawer, Grid, Layout, Menu, theme } from "antd";
-import { Title } from "@/components/title";
+import { Title } from "components/title";
 
 const drawerButtonStyles: CSSProperties = {
   borderTopLeftRadius: 0,

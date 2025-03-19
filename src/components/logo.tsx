@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import LogoLight from "@/assets/logo.png";
-import LogoDark from "@/assets/logo_dark.png";
+import LogoLight from "assets/logo.png";
+import LogoDark from "assets/logo_dark.png";
 
 // @ts-ignore
 export const Logo: FC<{

@@ -1,11 +1,11 @@
-import { LeaveRequest } from "@/types/calendar";
+import { LeaveRequest } from "types/calendar";
 import React from "react";
 import { Card, CardProps, Skeleton } from "antd";
 import { CalendarOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { Text } from "@/components";
+import { Text } from "components";
 import { useCustom } from "@refinedev/core";
-import { RecentLeaveRequestItem } from "@/pages/timesheet/components/recent-leave-request-item";
+import { RecentLeaveRequestItem } from "pages/timesheet/components/recent-leave-request-item";
 import type { TFunction } from "i18next";
 import { BaseResponse } from "types";
 import styles from "./index.module.css";

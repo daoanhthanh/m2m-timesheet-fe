@@ -3,8 +3,8 @@ import React from "react";
 import { ThemedLayoutContextProvider } from "@refinedev/antd";
 
 import { Grid, Layout as AntdLayout } from "antd";
-import { Header } from "@/components/header";
-import { Sider } from "@/components/sider";
+import { Header } from "components/header";
+import { Sider } from "components/sider";
 // import {GitHubBanner} from "@refinedev/core";
 
 export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {

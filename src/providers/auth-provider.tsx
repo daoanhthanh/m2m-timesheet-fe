@@ -1,11 +1,8 @@
 import { AuthProvider } from "@refinedev/core";
-import { endpoints } from "@/providers/endpoints";
+import { endpoints } from "providers/endpoints";
 import { BaseResponse, Role, User } from "types";
-import {
-  clearSession,
-  saveUserSession,
-} from "@/providers/storage/localStorage";
-import { get, post } from "@/providers/http/request";
+import { clearSession, saveUserSession } from "providers/storage/localStorage";
+import { get, post } from "providers/http/request";
 
 const checkMe = async () => {
   const maybeMe = await get<BaseResponse<User>>(endpoints.me);

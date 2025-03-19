@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./styles.css";
 
-import "@/providers/i18n";
+import "providers/i18n";
 
 const container = document.getElementById("root");
 // eslint-disable-next-line

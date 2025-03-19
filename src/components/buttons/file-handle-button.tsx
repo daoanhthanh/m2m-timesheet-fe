@@ -4,12 +4,12 @@ import { CloudDownloadOutlined, CloudUploadOutlined } from "@ant-design/icons";
 import type { UploadProps } from "antd";
 import { Button, Modal, Upload } from "antd";
 
-import Index from "@/components/warning-content";
+import Index from "components/warning-content";
 
 import styles from "./buttons.module.css";
 import { useNotification } from "@refinedev/core";
-import { get } from "@/providers/http/request";
-import { endpoints } from "@/providers/endpoints";
+import { get } from "providers/http/request";
+import { endpoints } from "providers/endpoints";
 
 export type FileHandleButtonProps = {
   type: "Export" | "Import";

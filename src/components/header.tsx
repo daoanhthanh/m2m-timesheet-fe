@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { Layout as AntdLayout, Switch, theme } from "antd";
 import { CurrentUser } from "./current-user";
-import { ColorModeContext } from "@/providers/contexts/color-mode";
+import { ColorModeContext } from "providers/contexts/color-mode";
 
 const { useToken } = theme;
 

@@ -1,8 +1,8 @@
 import { Badge, Button, Drawer, Skeleton, Tag } from "antd";
 import React from "react";
-import { Text } from "@/components";
+import { Text } from "components";
 import { useNavigation, useShow } from "@refinedev/core";
-import { LeaveRequest } from "@/types/calendar";
+import { LeaveRequest } from "types/calendar";
 import {
   CalendarOutlined,
   CalendarTwoTone,
@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import {
   getBadgeColorFromLRStatus,
   getBadgeIconFromLRStatus,
-} from "@/providers/utils/get-badge-color-from-lr-status";
+} from "providers/utils/get-badge-color-from-lr-status";
 import dayjs from "dayjs";
 
 export const LeaveRequestShow: React.FC = () => {

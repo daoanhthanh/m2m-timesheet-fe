@@ -22,11 +22,11 @@
 //     Typography,
 // } from "antd";
 //
-// import ChangePasswordModal from "@/components/change-password";
+// import ChangePasswordModal from "components/change-password";
 //
 //
-// import Avatar from "@/components/avatar";
-// import {Text} from "@/components";
+// import Avatar from "components/avatar";
+// import {Text} from "components";
 // import styles from "./index.module.css";
 //
 //

@@ -19,15 +19,15 @@ import {
   EmployeeList,
   EmployeeShow,
 } from "pages/employee";
-import { Title } from "@/components/title";
+import { Title } from "components/title";
 import React from "react";
 import { AuthPage } from "pages/auth";
-import { Layout } from "@/layout";
+import { Layout } from "layout";
 import {
   LeaveRequestCreate,
   LeaveRequestShow,
   TimesheetWrapper,
-} from "@/pages/timesheet";
+} from "pages/timesheet";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { FormListPage } from "pages/form";

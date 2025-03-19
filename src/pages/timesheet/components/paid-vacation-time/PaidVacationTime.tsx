@@ -1,6 +1,6 @@
 import { HttpError, useOne } from "@refinedev/core";
 import { AnnualLeaveRemainder } from "types";
-import { fakeAnnualLeaveRemainder } from "@/providers/fake-provider-data";
+import { fakeAnnualLeaveRemainder } from "providers/fake-provider-data";
 import { useTranslation } from "react-i18next";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";

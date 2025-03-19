@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Select } from "antd";
-import User from "@/types/user";
-import { get } from "@/providers/http/request";
-import { endpoints } from "@/providers/endpoints";
+import User from "types/user";
+import { get } from "providers/http/request";
+import { endpoints } from "providers/endpoints";
 import { Pagination } from "types";
 import styles from "./styles.module.css";
 

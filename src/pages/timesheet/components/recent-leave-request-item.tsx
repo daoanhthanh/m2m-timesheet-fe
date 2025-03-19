@@ -4,13 +4,13 @@ import { useNavigation } from "@refinedev/core";
 
 import { Badge } from "antd";
 
-import { Text } from "@/components";
-import dayjs from "@/providers/utils/date/viDayJS";
+import { Text } from "components";
+import dayjs from "providers/utils/date/viDayJS";
 
 import styles from "./index.module.css";
-import { LeaveRequest } from "@/types/calendar";
+import { LeaveRequest } from "types/calendar";
 import { useTranslation } from "react-i18next";
-import { getBadgeColorFromLRStatus } from "@/providers/utils/get-badge-color-from-lr-status";
+import { getBadgeColorFromLRStatus } from "providers/utils/get-badge-color-from-lr-status";
 
 type RecentLeaveRequestItemProps = {
   item: LeaveRequest;

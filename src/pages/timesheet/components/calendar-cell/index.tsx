@@ -2,14 +2,14 @@ import React from "react";
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import { Badge, Popover } from "antd";
-import { TimeslotByDay } from "@/types/calendar";
+import { TimeslotByDay } from "types/calendar";
 import { useTranslation } from "react-i18next";
 import "./index.scss";
 import type { PresetStatusColorType } from "antd/es/_util/colors";
 import type { CellRenderInfo } from "rc-picker/lib/interface";
-import getMonthName from "@/providers/month-list";
+import getMonthName from "providers/month-list";
 import { twMerge } from "tailwind-merge";
-import useThemeMode from "@/hooks/useThemeMode";
+import useThemeMode from "hooks/useThemeMode";
 
 export interface DateCellProps {
   value: Dayjs;

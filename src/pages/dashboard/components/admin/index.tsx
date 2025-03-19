@@ -1,5 +1,5 @@
 import { Table } from "antd";
-import TimeAndEmployeeSelector from "@/pages/dashboard/components/admin/time-and-employee-selector";
+import TimeAndEmployeeSelector from "pages/dashboard/components/admin/time-and-employee-selector";
 
 interface IData {
   key: number;

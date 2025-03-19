@@ -5,10 +5,10 @@ import { useGetIdentity, useLogout } from "@refinedev/core";
 import { LogoutOutlined, SettingOutlined } from "@ant-design/icons";
 import { Button, Popover, Space } from "antd";
 
-import { Text } from "@/components";
-import User from "@/types/user";
-import Avatar from "@/components/avatar";
-import ChangePasswordModal from "@/components/change-password";
+import { Text } from "components";
+import User from "types/user";
+import Avatar from "components/avatar";
+import ChangePasswordModal from "components/change-password";
 
 export const CurrentUser: React.FC = () => {
   const [openChangePw, setOpenChangePw] = useState(false);

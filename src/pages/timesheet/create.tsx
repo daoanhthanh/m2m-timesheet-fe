@@ -2,7 +2,7 @@ import { useForm } from "@refinedev/antd";
 import { DatePicker, Form, Input, Modal, Select } from "antd";
 import { useNavigation, useNotification } from "@refinedev/core";
 import { useTranslation } from "react-i18next";
-import { LeaveRequestForm } from "@/types/calendar";
+import { LeaveRequestForm } from "types/calendar";
 import dayjs, { type Dayjs } from "dayjs";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";

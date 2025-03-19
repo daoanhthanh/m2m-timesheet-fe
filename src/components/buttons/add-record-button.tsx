@@ -4,7 +4,7 @@ import { useGo, useNavigation } from "@refinedev/core";
 
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { Button, Grid } from "antd";
-import { Text } from "@/components";
+import { Text } from "components";
 import { useLocation } from "react-router-dom";
 
 interface AddRecordButtonProps {

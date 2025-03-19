@@ -5,11 +5,11 @@ import {
   CustomResponse,
   DataProvider,
 } from "@refinedev/core";
-import { API_URL } from "@/providers/endpoints";
+import { API_URL } from "providers/endpoints";
 import { generateSort, mapOperator } from "@refinedev/simple-rest";
 import { stringify } from "query-string";
-import { get, post, put, deleteRequest } from "@/providers/http/request";
-import { joinHostAndApi } from "@/providers/utils";
+import { get, post, put, deleteRequest } from "providers/http/request";
+import { joinHostAndApi } from "providers/utils";
 
 const generateFilter = (filters?: CrudFilters) => {
   const queryFilters: { [key: string]: string } = {};

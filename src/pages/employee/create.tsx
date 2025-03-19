@@ -5,7 +5,7 @@ import { useForm } from "@refinedev/antd";
 import { DatePicker, Form, Input, Modal, Radio, RadioChangeEvent } from "antd";
 
 import { useGetIdentity, useNavigation } from "@refinedev/core";
-import User from "@/types/user";
+import User from "types/user";
 
 export const EmployeeCreate = () => {
   const { formProps, saveButtonProps, queryResult, onFinish } = useForm<User>({

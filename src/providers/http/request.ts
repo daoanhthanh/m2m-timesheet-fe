@@ -1,4 +1,4 @@
-import { Either } from "@/providers/types/either";
+import { Either } from "providers/types/either";
 
 export class ApiResult<Return> {
   constructor(private underlying: Either<ApiError, Return>) {}

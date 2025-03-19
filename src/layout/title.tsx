@@ -4,7 +4,7 @@
 // import { useLink } from "@refinedev/core";
 //
 // import { Space, theme, Typography } from "antd";
-// import {Logo} from "@/components/logo";
+// import {Logo} from "components/logo";
 //
 //
 // const { useToken } = theme;

@@ -13,3 +13,4 @@
 // export * from "./single-element-form";
 // export * from "./tags";
 export * from "./text";
+export * from "./pagination-total";

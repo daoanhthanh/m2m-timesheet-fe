@@ -1,17 +1,86 @@
 import { List, useTable } from "@refinedev/antd";
+import { HttpError } from "@refinedev/core";
 
-import { Space } from "antd";
+import { Grid, Space } from "antd";
 
-import AddRecordButton from "@/components/buttons/add-record-button";
-import FileHandleButton from "@/components/buttons/file-handle-button";
+import AddRecordButton from "components/buttons/add-record-button";
+import FileHandleButton from "components/buttons/file-handle-button";
 import { BaseResponse, Form, User } from "types";
 
-import { FormItem } from "@/pages/form/components";
-import { Suspense } from "react";
+import { FormCard } from "pages/form/components";
+import { Suspense, useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useCustom } from "@refinedev/core";
 
+// type Props = React.PropsWithChildren;
+type View = "card" | "table";
+
 function FormList() {
+  const [view, setView] = useState<View>("table");
+
+  const screens = Grid.useBreakpoint();
+
+  const {
+    tableProps,
+    searchFormProps,
+    setCurrent,
+    setPageSize,
+    filters,
+    sorters,
+    setFilters,
+    tableQueryResult,
+  } = useTable<Form, HttpError, { name: string }>({
+    pagination: {
+      pageSize: 12,
+    },
+    sorters: {
+      initial: [
+        {
+          field: "createdAt",
+          order: "asc",
+        },
+      ],
+    },
+    filters: {
+      initial: [
+        {
+          field: "name",
+          value: undefined,
+          operator: "contains",
+        },
+        {
+          field: "responses",
+          value: undefined,
+          operator: "eq",
+        },
+        {
+          field: "views",
+          value: undefined,
+          operator: "eq",
+        },
+        {
+          field: "settings.primaryColor",
+          value: undefined,
+          operator: "eq",
+        },
+        {
+          field: "settings.backgroundColor",
+          value: undefined,
+          operator: "eq",
+        },
+      ],
+    },
+    onSearch: (values) => {
+      return [
+        {
+          field: "name",
+          operator: "contains",
+          value: values.name,
+        },
+      ];
+    },
+  });
+
   const { data, isLoading, isError } = useCustom<BaseResponse<Form[]>>({
     url: "forms",
     method: "get",
@@ -35,17 +104,7 @@ function FormList() {
       {
         // @ts-ignore
         forms.map((form) => (
-          <FormItem
-            key={form.id}
-            id={form.id}
-            formId={form.formId}
-            name={form.name}
-            published={form.published}
-            createdAt={form.createdAt}
-            responses={form.responses}
-            views={form.views}
-            backgroundColor={form.settings.backgroundColor}
-          />
+          <FormCard data={form} />
         ))
       }
     </>

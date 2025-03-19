@@ -14,5 +14,7 @@ export interface Form {
   views: number;
   createdAt: Date;
   published: boolean;
+  creatorName: string;
+  creatorId: number;
   settings: FormSettings;
 }

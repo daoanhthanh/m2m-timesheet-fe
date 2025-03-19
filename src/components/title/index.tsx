@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 
 import { Space, theme } from "antd";
 
-import { Logo } from "@/components/logo";
+import { Logo } from "components/logo";
 
 const { useToken } = theme;
 
