@@ -121,6 +121,15 @@
       "success": "Tạo đơn nghỉ thành công"
     }
   },
+  "forms": {
+    "create": {
+      "title": "Tạo đơn mới",
+      "untitledForm": "Đơn chưa đặt tên",
+      "addDescriptionHere": "Thêm mô tả ở đây",
+      "formName": "Tên đơn",
+      "formDescription": "Mô tả"
+    }
+  },
   "common": {
     "phoneNumber": "Số điện thoại",
     "save": "Thêm",

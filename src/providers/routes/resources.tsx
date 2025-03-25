@@ -1,4 +1,8 @@
-import { ClockCircleOutlined, OpenAIOutlined } from "@ant-design/icons";
+import {
+  ClockCircleOutlined,
+  OpenAIOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { ResourceProps } from "@refinedev/core";
 
 const resources: ResourceProps[] = [
@@ -32,18 +36,18 @@ const resources: ResourceProps[] = [
       icon: <OpenAIOutlined />,
     },
   },
-  // {
-  //   name: "employees",
-  //   list: "/employees",
-  //   create: "/employees/create",
-  //   show: "/employees/show/:id",
-  //   edit: "/employees/edit/:id",
-  //   meta: {
-  //     label: "Nhân viên",
-  //     icon: <UserOutlined />,
-  //     // canDelete: true,
-  //   },
-  // },
+  {
+    name: "employees",
+    list: "/employees",
+    create: "/employees/create",
+    show: "/employees/show/:id",
+    edit: "/employees/edit/:id",
+    meta: {
+      label: "Nhân viên",
+      icon: <UserOutlined />,
+      // canDelete: true,
+    },
+  },
 ];
 
 export default resources;

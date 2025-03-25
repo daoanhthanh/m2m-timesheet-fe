@@ -2,26 +2,22 @@ import React, { useState } from "react";
 
 import { useForm } from "@refinedev/antd";
 
-import { DatePicker, Form, Input, Modal, Radio, RadioChangeEvent } from "antd";
+import { Form, Input, Modal, RadioChangeEvent } from "antd";
 
 import { useGetIdentity, useNavigation } from "@refinedev/core";
-import User from "types/user";
+import { FormCreation, User } from "types";
+import { useTranslation } from "react-i18next";
 
-export const EmployeeCreate = () => {
-  const { formProps, saveButtonProps, queryResult, onFinish } = useForm<User>({
+export const FormCreate = () => {
+  const { formProps, saveButtonProps, onFinish } = useForm<FormCreation>({
     redirect: "list",
   });
+
+  const { t } = useTranslation();
 
   const { data: currentLoginUser } = useGetIdentity<User>();
 
   const { list } = useNavigation();
-
-  const [gender, setGender] = useState(1); // default is male
-  const onChangeGender = (e: RadioChangeEvent) => {
-    setGender(e.target.value);
-  };
-
-  const dateFormatList = ["DD/MM/YYYY", "DD-MM-YYYY", "DDMMYYYY"];
 
   const formLayout = {
     labelCol: { span: 6 },
@@ -31,12 +27,11 @@ export const EmployeeCreate = () => {
   return (
     <Modal
       open
-      title="Thêm nhân viên"
+      title={t("forms.create.title")}
       style={{ display: "inherit" }}
       onCancel={() => {
-        list("employees");
+        list("forms");
       }}
-      okText="Thêm"
       okButtonProps={{
         ...saveButtonProps,
       }}
@@ -53,8 +48,8 @@ export const EmployeeCreate = () => {
         }}
       >
         <Form.Item
-          label="Họ tên"
-          name="fullName"
+          label={t("forms.create.formName")}
+          name="name"
           rules={[
             {
               required: true,
@@ -64,44 +59,7 @@ export const EmployeeCreate = () => {
           <Input />
         </Form.Item>
 
-        <Form.Item
-          label="Sinh nhật"
-          name="dob"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <DatePicker placeholder={"DD/MM/YYYY"} format={dateFormatList} />
-        </Form.Item>
-        <Form.Item label="Số điện thoại" name="userPhoneNumber">
-          <Input type="number" />
-        </Form.Item>
-
-        <Form.Item label="Giới tính" name="gender">
-          <Radio.Group onChange={onChangeGender} value={gender}>
-            <Radio value={1}>Nam</Radio>
-            <Radio value={2}>Nữ</Radio>
-          </Radio.Group>
-        </Form.Item>
-
-        <Form.Item label="Mã số thuế" name="taxCode">
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[
-            {
-              type: "email",
-              message: "Hãy nhập địa chỉ email hợp lệ",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item label="Ghi chú" name="note">
+        <Form.Item label={t("forms.create.formDescription")} name="description">
           <Input.TextArea />
         </Form.Item>
       </Form>

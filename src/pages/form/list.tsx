@@ -83,7 +83,7 @@ function FormList() {
 
   const { data, isLoading, isError } = useCustom<BaseResponse<Form[]>>({
     url: "forms",
-    method: "get",
+    method: "post",
   });
 
   if (isLoading) {
@@ -138,9 +138,7 @@ export const FormListPage = () => {
             </Space>
           );
         }}
-        title={
-          <AddRecordButton entity="employees" buttonText="Tạo mẫu đơn mới" />
-        }
+        title={<AddRecordButton entity="forms" buttonText="Tạo mẫu đơn mới" />}
       >
         {/*@ts-ignore*/}
         {/*<Table {...tableProps} rowKey="id">*/}
