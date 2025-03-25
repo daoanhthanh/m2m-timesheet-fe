@@ -17,6 +17,8 @@ export const Title: React.FC<RefineLayoutThemedTitleProps> = ({
   const Link = useLink();
 
   const { theme } = useToken();
+  
+  console.log("current theme", theme);
 
   return (
     <Link
@@ -42,7 +44,7 @@ export const Title: React.FC<RefineLayoutThemedTitleProps> = ({
         >
           <Logo
             className={styles.companyLogo}
-            mode={theme.id == 4 ? "dark" : "light"}
+            mode={theme.id == 0 ? "light" : "dark"}
           />
         </div>
       </Space>
