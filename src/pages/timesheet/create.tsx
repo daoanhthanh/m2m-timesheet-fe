@@ -111,13 +111,12 @@ export const LeaveRequestCreate = () => {
       }}
       width={"45rem"}
     >
-      {/*@ts-ignore*/}
       <Form
         labelCol={{ span: 6 }}
         wrapperCol={{ span: 16 }}
         {...formProps}
         initialValues={initialValues}
-        onFinish={handleSubmit}
+        onFinish={(values) => handleSubmit(values as LeaveRequestForm)}
         className="space-y-4 pb-4"
       >
         <Form.Item

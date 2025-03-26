@@ -6,14 +6,6 @@ import {
 import { ResourceProps } from "@refinedev/core";
 
 const resources: ResourceProps[] = [
-  // {
-  //   name: "dashboard",
-  //   list: "/",
-  //   meta: {
-  //     label: "Trang chủ",st
-  //     icon: <DashboardOutlined />,
-  //   },
-  // },
   {
     name: "timesheets",
     list: "/timesheets",

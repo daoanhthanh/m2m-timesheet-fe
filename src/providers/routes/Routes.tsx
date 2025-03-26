@@ -30,7 +30,7 @@ import {
 } from "pages/timesheet";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-import { FormCreate, FormListPage } from "pages/form";
+import { FormCreate, FormListPageWrapper } from "pages/form";
 
 const Routes = () => {
   return (
@@ -66,8 +66,15 @@ const Routes = () => {
           <Route path="show/:id" element={<LeaveRequestShow />} />
         </Route>
 
-        <Route path="/forms">
-          <Route index element={<FormListPage />} />
+        <Route
+          path="/forms"
+          element={
+            <FormListPageWrapper>
+              <Outlet />
+            </FormListPageWrapper>
+          }
+        >
+          <Route index element={null} />
           <Route path="create" element={<FormCreate />} />
           <Route path="builder/:id" element={<EmployeeEdit />} />
           <Route path="preview/:id" element={<EmployeeShow />} />

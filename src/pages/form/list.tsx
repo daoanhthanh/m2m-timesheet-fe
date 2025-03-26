@@ -11,6 +11,7 @@ import { FormCard } from "pages/form/components";
 import { Suspense, useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useCustom } from "@refinedev/core";
+import * as React from "react";
 
 // type Props = React.PropsWithChildren;
 type View = "card" | "table";
@@ -111,12 +112,15 @@ function FormList() {
   );
 }
 
-export const FormListPage = () => {
+export const FormListPageWrapper: React.FC<React.PropsWithChildren> = ({
+  children,
+}) => {
   const { tableProps } = useTable<User>();
 
   return (
     <div className={"page-container"}>
       <List
+        breadcrumb={null}
         headerButtons={() => {
           return (
             <Space>
@@ -195,16 +199,12 @@ export const FormListPage = () => {
            xl:grid-cols-5
            "
         >
-          <Suspense
-            fallback={[1, 2, 3, 4].map((item) => (
-              <LoadingOutlined />
-              // <Loader size="3rem" className="animate-spin" />
-            ))}
-          >
+          <Suspense fallback={<LoadingOutlined />}>
             <FormList />
           </Suspense>
         </div>
       </List>
+      {children}
     </div>
   );
 };
