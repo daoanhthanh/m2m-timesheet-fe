@@ -7,13 +7,13 @@ import {
 import { useCreate, useGetIdentity } from "@refinedev/core";
 import { FormCreation, FormRequest, FormSettingsRequest, User } from "@/types";
 
-export function useCreateForm() {
+export const useCreateForm = () => {
   const { mutate } = useCreate();
   const { data: identity } = useGetIdentity<User>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const createForm = async (data: FormCreation) => {
+  const createForm =  (data: FormCreation) => {
     setLoading(true);
     setError(null);
 
@@ -88,4 +88,4 @@ export function useCreateForm() {
   };
 
   return { createForm, loading, error };
-}
+};

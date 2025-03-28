@@ -10,26 +10,26 @@ import { useTranslation } from "react-i18next";
 import {useCreateForm} from "@/services/form/form-services";
 
 export const FormCreate = () => {
-  const { formProps, saveButtonProps } = useForm<FormCreation>({
+  let { formProps, saveButtonProps, onFinish } = useForm<FormCreation>({
     redirect: "list",
+
   });
 
   const { createForm } = useCreateForm();
-
-
-  const onFinish =  (values: FormCreation) => {
-    createForm(values);
-  }
+  //
+  // const onFinish =  (values: FormCreation) => {
+  //   createForm(values);
+  // }
 
   const { t } = useTranslation();
-  
+
   const { list } = useNavigation();
 
   const formLayout = {
     labelCol: { span: 6 },
     wrapperCol: { span: 16 },
   };
-  
+
 
   return (
     <Modal
@@ -39,9 +39,7 @@ export const FormCreate = () => {
       onCancel={() => {
         list("forms");
       }}
-      okButtonProps={{
-        ...saveButtonProps,
-      }}
+      okButtonProps={saveButtonProps}
       width={"30rem"}
     >
       <Form
@@ -49,7 +47,7 @@ export const FormCreate = () => {
         {...formProps}
         onFinish={(values: {}) => {
           onFinish(
-            values as FormCreation 
+            values as FormCreation
           )
         }}
       >
