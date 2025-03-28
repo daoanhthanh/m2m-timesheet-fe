@@ -27,7 +27,7 @@ export interface ErrorResponse {
 }
 
 export interface BaseEntity {
-  id: string;
+  id: number;
   createdAt: "2024-06-05T03:02:40.008456";
   createdBy: string; // user id, using string to prevent JS floating point limitation
   updatedAt: "2024-06-09T04:32:23.203081";

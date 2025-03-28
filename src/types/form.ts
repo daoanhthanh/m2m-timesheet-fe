@@ -11,16 +11,36 @@ export interface FormSettings {
   updatedAt: Date;
 }
 
+export type FormSettingsRequest = Pick<
+  FormSettings,
+  "primaryColor" | "backgroundColor"
+>;
+
 export interface Form {
   id: number;
   formId: string;
   name: string;
-  description: string;
+  description?: string;
+  jsonBlocks: string;
   responses: number;
   views: number;
-  createdAt: Date;
   published: boolean;
-  creatorName: string;
   creatorId: number;
-  settings: FormSettings;
+  creatorName: string;
+  settings: FormSettings | FormSettingsRequest;
+  createdAt: Date;
+  updatedAt: Date;
 }
+
+export type FormRequest = Pick<
+  Form,
+  | "name"
+  | "description"
+  | "jsonBlocks"
+  | "responses"
+  | "views"
+  | "published"
+  | "creatorId"
+  | "creatorName"
+  | "settings"
+>;

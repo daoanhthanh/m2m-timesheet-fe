@@ -1,5 +1,5 @@
 import { List, useTable } from "@refinedev/antd";
-import { HttpError } from "@refinedev/core";
+import {HttpError, useList} from "@refinedev/core";
 
 import { Grid, Space } from "antd";
 
@@ -82,10 +82,13 @@ function FormList() {
     },
   });
 
-  const { data, isLoading, isError } = useCustom<BaseResponse<Form[]>>({
-    url: "forms",
-    method: "post",
+  const { data: forms, isLoading, isError } = useList<Form>({
+    resource: "forms",
   });
+  
+  // const { data: formData, isLoading: isFormDataLoading, isError: isFormDataError } = useQuery<BaseResponse<Form[]>>(
+      
+  // )
 
   if (isLoading) {
     return (
@@ -99,13 +102,13 @@ function FormList() {
     return <div>Failed to load data</div>;
   }
 
-  let forms = data?.data?.data;
   return (
     <>
       {
-        // @ts-ignore
-        forms.map((form) => (
-          <FormCard data={form} />
+        forms.map((form: Form) => (
+            <div key={form.id}>
+              <FormCard data={form}/>
+            </div>
         ))
       }
     </>

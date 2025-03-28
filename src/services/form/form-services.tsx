@@ -1,86 +1,91 @@
+import { useState } from "react";
 import { generateUniqueId } from "@/providers/utils";
 import {
   defaultBackgroundColor,
   defaultPrimaryColor,
 } from "@/providers/constants";
 import { useCreate, useGetIdentity } from "@refinedev/core";
-import { Form, User } from "@/types";
+import { FormCreation, FormRequest, FormSettingsRequest, User } from "@/types";
 
-export async function createForm(data: { name: string; description: string }) {
+export function useCreateForm() {
   const { mutate } = useCreate();
   const { data: identity } = useGetIdentity<User>();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  try {
-    const jsonBlocks = JSON.stringify([
-      {
-        id: generateUniqueId(),
-        blockType: "RowLayout",
-        attributes: {},
-        isLocked: true,
-        childBlocks: [
-          {
-            id: generateUniqueId(),
-            blockType: "Heading",
-            attributes: {
-              label: data.name || "forms.create.untitledForm",
-              level: 1,
-              fontSize: "4x-large",
-              fontWeight: "normal",
-            },
-          },
-          {
-            id: generateUniqueId(),
-            blockType: "Paragraph",
-            attributes: {
-              label: "Paragraph",
-              text: data.description || "forms.create.untitledForm",
-              fontSize: "small",
-              fontWeight: "normal",
-            },
-          },
-        ],
-      },
-    ]);
+  const createForm = async (data: FormCreation) => {
+    setLoading(true);
+    setError(null);
 
-    const formSettings = {
-      data: {
+    try {
+      const jsonBlocks = JSON.stringify([
+        {
+          id: generateUniqueId(),
+          blockType: "RowLayout",
+          attributes: {},
+          isLocked: true,
+          childBlocks: [
+            {
+              id: generateUniqueId(),
+              blockType: "Heading",
+              attributes: {
+                label: data.name || "forms.create.untitledForm",
+                level: 1,
+                fontSize: "4x-large",
+                fontWeight: "normal",
+              },
+            },
+            {
+              id: generateUniqueId(),
+              blockType: "Paragraph",
+              attributes: {
+                label: "Paragraph",
+                text: data.description || "forms.create.untitledForm",
+                fontSize: "small",
+                fontWeight: "normal",
+              },
+            },
+          ],
+        },
+      ]);
+
+      const formSettings: FormSettingsRequest = {
         primaryColor: defaultPrimaryColor,
         backgroundColor: defaultBackgroundColor,
-      },
-    };
+      };
 
-    const form: Form = {
-      // data: {
-      name: data.name,
-      description: data.description,
-      userId: user.id,
-      creatorName: user?.given_name || "",
-      settingsId: formSettings.id,
-      jsonBlocks,
-      // },
-    };
+      const form: FormRequest = {
+        name: data.name,
+        description: data.description,
+        jsonBlocks,
+        responses: 0,
+        views: 0,
+        published: false,
+        creatorId: identity!.id,
+        creatorName: identity!.userFullName || "",
+        settings: formSettings,
+      };
 
-    mutate({
-      resource: "forms",
-      values: form,
-    });
+      mutate({
+        resource: "forms",
+        values: form,
+      });
 
-    if (!form) {
+      setLoading(false);
+      return {
+        success: true,
+        message: "Form created successfully",
+        form,
+      };
+    } catch (e) {
+      setLoading(false);
+      setError("Something went wrong");
       return {
         success: false,
-        message: "Could not create form, please try again",
+        message: "Something went wrong",
       };
     }
+  };
 
-    return {
-      success: true,
-      message: "Form created successfully",
-      form,
-    };
-  } catch (e) {
-    return {
-      success: false,
-      message: "Something went wrong",
-    };
-  }
+  return { createForm, loading, error };
 }

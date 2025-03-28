@@ -1,28 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { useForm } from "@refinedev/antd";
 
-import { Form, Input, Modal, RadioChangeEvent } from "antd";
+import { Form, Input, Modal } from "antd";
 
-import { useGetIdentity, useNavigation } from "@refinedev/core";
-import { FormCreation, User } from "types";
+import { useNavigation } from "@refinedev/core";
+import { FormCreation } from "types";
 import { useTranslation } from "react-i18next";
+import {useCreateForm} from "@/services/form/form-services";
 
 export const FormCreate = () => {
-  const { formProps, saveButtonProps, onFinish } = useForm<FormCreation>({
+  const { formProps, saveButtonProps } = useForm<FormCreation>({
     redirect: "list",
   });
 
+  const { createForm } = useCreateForm();
+
+
+  const onFinish =  (values: FormCreation) => {
+    createForm(values);
+  }
+
   const { t } = useTranslation();
-
-  const { data: currentLoginUser } = useGetIdentity<User>();
-
+  
   const { list } = useNavigation();
 
   const formLayout = {
     labelCol: { span: 6 },
     wrapperCol: { span: 16 },
   };
+  
 
   return (
     <Modal
@@ -40,11 +47,10 @@ export const FormCreate = () => {
       <Form
         {...formLayout}
         {...formProps}
-        onFinish={(values) => {
-          onFinish({
-            ...values,
-            salesOwnerId: currentLoginUser?.id,
-          }).then((r) => {});
+        onFinish={(values: {}) => {
+          onFinish(
+            values as FormCreation 
+          )
         }}
       >
         <Form.Item
