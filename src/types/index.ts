@@ -2,6 +2,7 @@ export * from "./paid-leave-remainder";
 export * from "./timesheet";
 export * from "./user";
 export * from "./form";
+export * from "./form-builder";
 
 export type Scalars = {
   DateTime: string;

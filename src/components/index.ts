@@ -14,3 +14,4 @@
 // export * from "./tags";
 export * from "./text";
 export * from "./pagination-total";
+export * from "./card";

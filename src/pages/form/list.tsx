@@ -209,7 +209,7 @@ export const FormListPageWrapper: React.FC<React.PropsWithChildren> = ({
           </Suspense>
         </div>
       </List>
-      {children}
+      {/*{children}*/}
     </div>
   );
 };

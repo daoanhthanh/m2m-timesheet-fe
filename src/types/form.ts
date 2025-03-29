@@ -27,7 +27,7 @@ export interface Form {
   published: boolean;
   creatorId: number;
   creatorName: string;
-  settings: FormSettings | FormSettingsRequest;
+  settings: FormSettings;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -42,5 +42,6 @@ export type FormRequest = Pick<
   | "published"
   | "creatorId"
   | "creatorName"
-  | "settings"
->;
+> & {
+  settings: FormSettingsRequest;
+};
