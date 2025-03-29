@@ -3,20 +3,21 @@ import React from "react";
 import { useForm } from "@refinedev/antd";
 
 import { Form, Input, Modal } from "antd";
+import { Form as FormType } from "types/form";
 
 import { useGetIdentity, useNavigation } from "@refinedev/core";
 import { FormCreation, User } from "types";
 import { useTranslation } from "react-i18next";
-import { createForm } from "@/services/form/form-services";
+import { createFormRequest } from "@/services/form/form-services";
 
 export const FormCreate = () => {
   let { formProps, saveButtonProps, onFinish } = useForm<FormCreation>({
-    redirect: "list",
+    redirect: false,
   });
 
   const { data: creator } = useGetIdentity<User>();
   const { t } = useTranslation();
-  const { list } = useNavigation();
+  const { list, edit } = useNavigation();
 
   const formLayout = {
     labelCol: { span: 6 },
@@ -38,7 +39,13 @@ export const FormCreate = () => {
         {...formLayout}
         {...formProps}
         onFinish={(values: {}) => {
-          onFinish(createForm(values as FormCreation, creator));
+          onFinish(createFormRequest(values as FormCreation, creator!)).then(
+            //@ts-ignore
+            (res: FormType) => {
+              edit("forms", res.formId);
+              console.log("Data sau khi tao", res);
+            },
+          );
         }}
       >
         <Form.Item

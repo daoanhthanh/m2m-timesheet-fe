@@ -3,10 +3,9 @@ import {
   defaultBackgroundColor,
   defaultPrimaryColor,
 } from "@/providers/constants";
-// import { useCreate, useGetIdentity } from "@refinedev/core";
 import { FormCreation, FormRequest, FormSettingsRequest, User } from "@/types";
 
-export const createForm = (data: FormCreation, creator: User) => {
+export const createFormRequest = (data: FormCreation, creator: User) => {
   const jsonBlocks = JSON.stringify([
     {
       id: generateUniqueId(),

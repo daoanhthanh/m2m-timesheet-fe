@@ -89,7 +89,7 @@ const dataProvider: DataProvider = {
 
     const response = await post<unknown, any>(url, variables, headers);
 
-    return response.data();
+    return response.data().data;
   },
 
   update: async ({ resource, id, variables, meta }) => {
