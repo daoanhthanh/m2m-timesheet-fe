@@ -1,24 +1,20 @@
 import React, { CSSProperties, useState } from "react";
 import { Layout } from "antd";
 import { cn } from "@/providers/utils";
-import FormBlockBox from "@/pages/form/components/builder/form-block-box";
+import FormBlockBox from "./form-block-box";
 import FormSettings from "./form-settings";
+import { BuilderContextProvider } from "@/hooks/use-form-builder";
 
 const { Sider, Content } = Layout;
 
-const contentStyle: React.CSSProperties = {
+const contentStyle: CSSProperties = {
   textAlign: "center",
   minHeight: 120,
-  lineHeight: "120px",
-  color: "#fff",
-  backgroundColor: "#0958d9",
 };
 
-const siderStyle: React.CSSProperties = {
+const siderStyle: CSSProperties = {
   textAlign: "center",
-  lineHeight: "120px",
-  color: "#fff",
-  backgroundColor: "#1677ff",
+  backgroundColor: "transparent",
 };
 
 const layoutStyle: CSSProperties = {
@@ -32,56 +28,45 @@ const Builder = () => {
   const [tab, setTab] = useState<"blocks" | "settings">("blocks");
 
   return (
-    <Layout style={layoutStyle}>
-      <Sider width="25%" style={siderStyle}>
-        <div className="w-full">
-          <div
-            className="w-full flex flex-row
-           gap-1 h-[39px] rounded-full bg-gray-100 p-1"
-          >
-            <button
-              className={cn(
-                `p-[5px] flex-1 bg-transparent
-                transition-colors
-                ease-in-out rounded-full text-center
-                font-medium text-sm
-                              `,
-                {
-                  "bg-white": tab === "blocks",
-                },
-              )}
-              onClick={() => setTab("blocks")}
-            >
-              Blocks
-            </button>
-            <button
-              className={cn(
-                `p-[5px] flex-1 bg-transparent
-                transition-colors
-                ease-in-out rounded-full text-center
-                font-medium text-sm
-                              `,
-                {
-                  "bg-white": tab === "settings",
-                },
-              )}
-              onClick={() => setTab("settings")}
-            >
-              Settings
-            </button>
+    <BuilderContextProvider>
+      <Layout style={layoutStyle}>
+        <Sider width="300px" style={siderStyle} className="p-1">
+          <div className="w-full h-full p-4 bg-white rounded-lg shadow-sm">
+            <div className="w-full flex flex-row gap-1 h-[39px] rounded-full bg-gray-300 p-1">
+              <button
+                className={cn(
+                  "p-[5px] flex-1 bg-transparent transition-colors ease-in-out rounded-full text-center font-medium text-sm text-gray-500",
+                  {
+                    "bg-white text-gray-900": tab === "blocks",
+                  },
+                )}
+                onClick={() => setTab("blocks")}
+              >
+                Blocks
+              </button>
+              <button
+                className={cn(
+                  "p-[5px] flex-1 bg-transparent transition-colors ease-in-out rounded-full text-center font-medium text-sm text-gray-500",
+                  {
+                    "bg-white text-gray-900": tab === "settings",
+                  },
+                )}
+                onClick={() => setTab("settings")}
+              >
+                Settings
+              </button>
+            </div>
+            {tab === "blocks" && <FormBlockBox />}
+            {tab === "settings" && <FormSettings />}
           </div>
-          {/* {Form Blocks} */}
-          {tab === "blocks" && <FormBlockBox />}
-          {/* {Form Settings} */}
-          {tab === "settings" && <FormSettings />}
-        </div>
-      </Sider>
+        </Sider>
 
-      <Content style={contentStyle}>Content</Content>
-      <Sider width="25%" style={siderStyle}>
-        Sider
-      </Sider>
-    </Layout>
+        <Content style={contentStyle}>Content</Content>
+        <Sider width="25%" style={siderStyle}>
+          Sider
+        </Sider>
+      </Layout>
+    </BuilderContextProvider>
   );
 };
 

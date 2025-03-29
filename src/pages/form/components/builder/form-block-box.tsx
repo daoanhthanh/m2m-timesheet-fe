@@ -38,19 +38,10 @@ const FormBlockBox = () => {
           </span>
         </Button>
       </div>
-      <div
-        className="flex flex-col 
-      space-y-3
-      w-full"
-      >
+      <div className="flex flex-col space-y-3 w-full">
         {layoutBlocks?.length > 0 && (
           <div className="mb-2">
-            <h5
-              className="text-[13px]
-           text-gray-500 font-medium"
-            >
-              Layouts
-            </h5>
+            <p className="text-gray-500 font-medium">Layouts</p>
 
             <div className="pt-1 grid grid-cols-3 gap-3">
               {layoutBlocks?.map((block) => (
@@ -66,12 +57,7 @@ const FormBlockBox = () => {
 
         <Divider className="!bg-gray-200" />
         <div>
-          <h5
-            className="text-[13px]
-           text-gray-500 font-medium"
-          >
-            Fields
-          </h5>
+          <p className="text-gray-500 font-medium">Fields</p>
 
           <div className="pt-1 grid grid-cols-3 gap-3">
             {fieldBlocks?.map((block) => (
