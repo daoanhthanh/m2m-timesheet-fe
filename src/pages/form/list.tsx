@@ -1,5 +1,5 @@
 import { List, useTable } from "@refinedev/antd";
-import {HttpError, useList} from "@refinedev/core";
+import { HttpError, useList } from "@refinedev/core";
 
 import { Grid, Space } from "antd";
 
@@ -82,12 +82,16 @@ function FormList() {
     },
   });
 
-  const { data: forms, isLoading, isError } = useList<Form>({
+  const {
+    data: forms,
+    isLoading,
+    isError,
+  } = useList<Form>({
     resource: "forms",
   });
-  
+
   // const { data: formData, isLoading: isFormDataLoading, isError: isFormDataError } = useQuery<BaseResponse<Form[]>>(
-      
+
   // )
 
   if (isLoading) {
@@ -104,13 +108,11 @@ function FormList() {
 
   return (
     <>
-      {
-        forms.map((form: Form) => (
-            <div key={form.id}>
-              <FormCard data={form}/>
-            </div>
-        ))
-      }
+      {forms.map((form: Form) => (
+        <div key={form.id}>
+          <FormCard data={form} />
+        </div>
+      ))}
     </>
   );
 }

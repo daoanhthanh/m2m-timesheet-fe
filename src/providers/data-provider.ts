@@ -15,7 +15,7 @@ const generateFilter = (filters?: CrudFilters) => {
   const queryFilters: { [key: string]: string } = {};
 
   if (filters) {
-    filters.map((filter) => {
+    filters.forEach((filter) => {
       if (filter.operator === "or" || filter.operator === "and") {
         throw new Error(
           `[@refinedev/simple-rest]: \`operator: ${filter.operator}\` is not supported. You can create custom data provider. https://refine.dev/docs/api-reference/core/providers/data-provider/#creating-a-data-provider`,
@@ -79,7 +79,7 @@ const dataProvider: DataProvider = {
       headers: headersFromMeta,
     });
 
-    return response.data();
+    return response.data().data;
   },
 
   create: async ({ resource, variables, meta }) => {
@@ -87,9 +87,7 @@ const dataProvider: DataProvider = {
 
     const { headers } = meta ?? {};
 
-    const response = await post<unknown, any>(url, variables, {
-      headers,
-    });
+    const response = await post<unknown, any>(url, variables, headers);
 
     return response.data();
   },

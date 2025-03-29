@@ -4,32 +4,24 @@ import { useForm } from "@refinedev/antd";
 
 import { Form, Input, Modal } from "antd";
 
-import { useNavigation } from "@refinedev/core";
-import { FormCreation } from "types";
+import { useGetIdentity, useNavigation } from "@refinedev/core";
+import { FormCreation, User } from "types";
 import { useTranslation } from "react-i18next";
-import {useCreateForm} from "@/services/form/form-services";
+import { createForm } from "@/services/form/form-services";
 
 export const FormCreate = () => {
   let { formProps, saveButtonProps, onFinish } = useForm<FormCreation>({
     redirect: "list",
-
   });
 
-  const { createForm } = useCreateForm();
-  //
-  // const onFinish =  (values: FormCreation) => {
-  //   createForm(values);
-  // }
-
+  const { data: creator } = useGetIdentity<User>();
   const { t } = useTranslation();
-
   const { list } = useNavigation();
 
   const formLayout = {
     labelCol: { span: 6 },
     wrapperCol: { span: 16 },
   };
-
 
   return (
     <Modal
@@ -46,9 +38,7 @@ export const FormCreate = () => {
         {...formLayout}
         {...formProps}
         onFinish={(values: {}) => {
-          onFinish(
-            values as FormCreation
-          )
+          onFinish(createForm(values as FormCreation, creator));
         }}
       >
         <Form.Item
