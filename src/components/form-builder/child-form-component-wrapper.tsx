@@ -1,6 +1,6 @@
 import React from "react";
 import { FormBlockInstance, HandleBlurFunc } from "types";
-import { FormBlocks } from "@/providers/constants";
+import { FormBlocks } from "types";
 
 const ChildFormComponentWrapper = ({
   blockInstance,

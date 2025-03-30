@@ -1,7 +1,7 @@
 import { BlockBtnElement } from "@/components/form-builder";
 import React, { useState } from "react";
 import { useFormBuilder } from "hooks/use-form-builder";
-import { FormBlocks } from "@/providers/constants";
+import { FormBlocks } from "types";
 import { Button, Divider, Input } from "antd";
 
 const FormBlockBox = () => {

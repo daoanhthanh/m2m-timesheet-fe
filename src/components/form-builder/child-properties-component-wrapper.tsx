@@ -1,5 +1,5 @@
 import { FormBlockInstance } from "types";
-import { FormBlocks } from "@/providers/constants";
+import { FormBlocks } from "types";
 import React from "react";
 
 const ChildPropertiesComponentWrapper = ({

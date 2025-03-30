@@ -9,7 +9,7 @@ import type { PresetStatusColorType } from "antd/es/_util/colors";
 import type { CellRenderInfo } from "rc-picker/lib/interface";
 import getMonthName from "providers/month-list";
 import { twMerge } from "tailwind-merge";
-import useThemeMode from "hooks/useThemeMode";
+import { useThemeMode } from "hooks";
 
 export interface DateCellProps {
   value: Dayjs;

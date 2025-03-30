@@ -1,5 +1,6 @@
 import {
   FormBlockInstance,
+  FormBlocks,
   FormBlockType,
   FormCategoryType,
   FormErrorsType,
@@ -10,7 +11,7 @@ import ChildCanvasComponentWrapper from "./child-canvas-component-wrapper";
 import ChildFormComponentWrapper from "./child-form-component-wrapper";
 import ChildPropertiesComponentWrapper from "./child-properties-component-wrapper";
 import { Card, CardContent, CardFooter } from "components";
-import { allBlockLayouts, FormBlocks } from "providers/constants";
+import { allBlockLayouts } from "providers/constants";
 import {
   Active,
   DragEndEvent,

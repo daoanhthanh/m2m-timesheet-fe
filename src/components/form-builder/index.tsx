@@ -6,3 +6,5 @@ export * from "./star-rating-block";
 export * from "./text-field";
 export * from "./text-area-block";
 export * from "./block-btn-element";
+export * from "./builder-drag-overlay";
+export * from "./builder-block-properties";

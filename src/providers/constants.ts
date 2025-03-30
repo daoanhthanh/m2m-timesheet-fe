@@ -1,12 +1,3 @@
-import { RowLayoutBlock } from "@/components/form-builder/row-layout-block";
-import { FormBlocksType } from "@/types";
-import { HeadingBlock } from "@/components/form-builder/heading-block";
-import { ParagraphBlock } from "@/components/form-builder/paragraph-block";
-import { TextFieldBlock } from "@/components/form-builder/text-field";
-import { TextAreaBlock } from "@/components/form-builder/text-area-block";
-import { RadioSelectBlock } from "@/components/form-builder/radio-select-block";
-import { StarRatingBlock } from "@/components/form-builder/star-rating-block";
-
 export const defaultPrimaryColor = "#673ab7";
 export const defaultBackgroundColor = "#f0ebf8";
 
@@ -26,14 +17,4 @@ export const fontSizeClass = {
   "x-large": "text-xl", // Tailwind class for extra large font
   "2x-large": "text-2xl",
   "4x-large": "text-4xl",
-};
-
-export const FormBlocks: FormBlocksType = {
-  RowLayout: RowLayoutBlock,
-  Heading: HeadingBlock,
-  Paragraph: ParagraphBlock,
-  TextField: TextFieldBlock,
-  TextArea: TextAreaBlock,
-  RadioSelect: RadioSelectBlock,
-  StarRating: StarRatingBlock,
 };

@@ -1,4 +1,13 @@
 import React from "react";
+import {
+  HeadingBlock,
+  ParagraphBlock,
+  RadioSelectBlock,
+  RowLayoutBlock,
+  StarRatingBlock,
+  TextAreaBlock,
+  TextFieldBlock,
+} from "@/components/form-builder";
 
 export type FormCategoryType = "Layout" | "Field";
 
@@ -56,4 +65,14 @@ export type FormBlockInstance = {
 
 export type FormBlocksType = {
   [key in FormBlockType]: ObjectBlockType;
+};
+
+export const FormBlocks: FormBlocksType = {
+  RowLayout: RowLayoutBlock,
+  Heading: HeadingBlock,
+  Paragraph: ParagraphBlock,
+  TextField: TextFieldBlock,
+  TextArea: TextAreaBlock,
+  RadioSelect: RadioSelectBlock,
+  StarRating: StarRatingBlock,
 };
