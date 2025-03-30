@@ -56,42 +56,40 @@ export const FormBuilderSidebar = ({
       {/*  </header>*/}
       {/*</SidebarHeader>*/}
       <SidebarContent className="p-5 bg-white h-full">
-        <div className="w-full">
-          <div className="w-full flex flex-row gap-1 h-[39px] rounded-full bg-gray-100 p-1">
-            <button
-              className={cn(
-                `p-[5px] flex-1 bg-transparent
+        <div className="w-full flex flex-row gap-1 h-[39px] rounded-full bg-gray-100 p-1">
+          <button
+            className={cn(
+              `p-[5px] flex-1 bg-transparent
                 transition-colors
                 ease-in-out rounded-full text-center
                 font-medium text-sm text-gray-400`,
-                {
-                  "bg-white text-gray-600": tab === "blocks",
-                },
-              )}
-              onClick={() => setTab("blocks")}
-            >
-              Blocks
-            </button>
-            <button
-              className={cn(
-                `p-[5px] flex-1 bg-transparent
+              {
+                "bg-white text-gray-600": tab === "blocks",
+              },
+            )}
+            onClick={() => setTab("blocks")}
+          >
+            Blocks
+          </button>
+          <button
+            className={cn(
+              `p-[5px] flex-1 bg-transparent
                 transition-colors
                 ease-in-out rounded-full text-center
                 font-medium text-sm text-gray-400`,
-                {
-                  "bg-white text-gray-600": tab === "settings",
-                },
-              )}
-              onClick={() => setTab("settings")}
-            >
-              Settings
-            </button>
-          </div>
-          {/* {Form Blocks} */}
-          {tab === "blocks" && <FormBlockBox />}
-          {/* {Form Settings} */}
-          {tab === "settings" && <FormSettings />}
+              {
+                "bg-white text-gray-600": tab === "settings",
+              },
+            )}
+            onClick={() => setTab("settings")}
+          >
+            Settings
+          </button>
         </div>
+        {/* {Form Blocks} */}
+        {tab === "blocks" && <FormBlockBox />}
+        {/* {Form Settings} */}
+        {tab === "settings" && <FormSettings />}
       </SidebarContent>
     </Sider>
   );
