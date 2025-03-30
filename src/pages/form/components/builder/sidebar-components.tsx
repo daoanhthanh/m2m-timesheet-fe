@@ -1,5 +1,5 @@
 import { cn } from "@/providers/utils";
-import { Button, Input, Divider, Skeleton } from "antd";
+import { Button, Input, Divider, Skeleton, Layout } from "antd";
 import * as React from "react";
 import { PanelLeft } from "lucide-react";
 import { useIsMobile } from "@/hooks";
@@ -409,7 +409,7 @@ const SidebarContent = React.forwardRef<
       ref={ref}
       data-sidebar="content"
       className={cn(
-        "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
+        "flex flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden border-2 rounded-xl",
         className,
       )}
       {...props}

@@ -3,7 +3,7 @@ import { Loader } from "lucide-react";
 import { DndContext, MouseSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { useFormBuilder } from "@/hooks/use-form-builder";
 import { BuilderDragOverlay } from "@/components/form-builder";
-import { SidebarProvider } from "./builder-sidebar";
+import { SidebarProvider } from "./sidebar-components";
 import { Builder } from "@/pages/form/components/builder/builder";
 
 export const FormBuilder = () => {
@@ -33,11 +33,11 @@ export const FormBuilder = () => {
       <SidebarProvider
         open={isSidebarOpen}
         onOpenChange={setIsSidebarOpen}
-        className="h-[calc(100vh_-_64px)] "
+        className="h-full"
         style={
           {
             "--sidebar-width": "300px",
-            "--sidbar-height": "40px",
+            "--sidebar-height": "40px",
           } as React.CSSProperties
         }
       >
