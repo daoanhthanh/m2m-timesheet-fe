@@ -1,8 +1,9 @@
 import React from "react";
 import { SidebarInset, SidebarTrigger } from "./sidebar-components";
 import { defaultBackgroundColor } from "@/providers/constants";
-import { Drawer, Layout } from "antd";
+import { Layout } from "antd";
 import { FormBuilderSidebar } from "@/pages/form/components/builder/from-builder-sidebar";
+import { BuilderBlockProperties } from "@/components/form-builder";
 
 export const Builder1 = (props: { isSidebarOpen: boolean }) => {
   return (
@@ -29,8 +30,8 @@ const { Sider, Content } = Layout;
 
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
-  color: "#fff",
-  backgroundColor: "#0958d9",
+  // color: "#fff",
+  // backgroundColor: "#0958d9",
 };
 
 const siderStyle: React.CSSProperties = {
@@ -53,8 +54,6 @@ export const Builder = (props: { isSidebarOpen: boolean }) => (
       <Content style={contentStyle}>Content</Content>
     </Layout>
 
-    <Sider width="var(--sidebar-width)" style={siderStyle}>
-      Sider
-    </Sider>
+    <BuilderBlockProperties />
   </Layout>
 );

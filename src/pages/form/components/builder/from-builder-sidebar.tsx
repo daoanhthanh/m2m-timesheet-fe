@@ -4,10 +4,8 @@ import { Sidebar, SidebarContent } from "./sidebar-components";
 import { cn } from "@/providers/utils";
 import FormBlockBox from "@/pages/form/components/builder/form-block-box";
 import FormSettings from "@/pages/form/components/builder/form-settings";
-import { Drawer, Layout } from "antd";
+import { Layout } from "antd";
 import { PanelLeft } from "lucide-react";
-
-import DrawerPanel from "antd/es/drawer/DrawerPanel";
 
 export const FormBuilderSidebar = ({
   rest,

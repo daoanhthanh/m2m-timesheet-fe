@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "antd";
-import { EyeOutlined } from "@ant-design/icons";
+import { Button, Tooltip } from "antd";
+import { Eye } from "lucide-react";
 
 // const PreviewDialog = () => {
 //   const { blockLayouts } = useBuilder();
@@ -81,9 +81,10 @@ import { EyeOutlined } from "@ant-design/icons";
 
 export const PreviewDialog = () => {
   return (
-    <Button>
-      <EyeOutlined />
-      Preview
-    </Button>
+    <Tooltip placement="bottomLeft" title={"Preview Form"}>
+      <Button>
+        <Eye />
+      </Button>
+    </Tooltip>
   );
 };
