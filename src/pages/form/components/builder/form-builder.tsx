@@ -29,7 +29,6 @@ export const FormBuilder = () => {
   return (
     <DndContext sensors={useSensors(mouseSensor)}>
       <BuilderDragOverlay />
-
       <SidebarProvider
         open={isSidebarOpen}
         onOpenChange={setIsSidebarOpen}

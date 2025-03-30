@@ -58,7 +58,7 @@ export function BuilderContextProvider({
 
   const [selectedBlockLayout, setSelectedBlockLayout] =
     useState<FormBlockInstance | null>(null);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -73,6 +73,8 @@ export function BuilderContextProvider({
         }
 
         const { data } = await response.json();
+        document.title = "Ahihi"
+        console.log("Dao Anh Thanh")
         const { form } = data;
         if (form) {
           console.log(form, "form useeffect");

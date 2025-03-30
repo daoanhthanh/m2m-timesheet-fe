@@ -26,18 +26,12 @@ export const Builder1 = (props: { isSidebarOpen: boolean }) => {
   );
 };
 
-const { Sider, Content } = Layout;
+const { Content } = Layout;
 
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
   // color: "#fff",
   // backgroundColor: "#0958d9",
-};
-
-const siderStyle: React.CSSProperties = {
-  textAlign: "center",
-  color: "#fff",
-  backgroundColor: "#1677ff",
 };
 
 const layoutStyle: React.CSSProperties = {
@@ -47,8 +41,6 @@ const layoutStyle: React.CSSProperties = {
 export const Builder = (props: { isSidebarOpen: boolean }) => (
   // <Flex gap="middle" wrap>
   <Layout style={layoutStyle}>
-    {/*<Sider width="var(--sidebar-width)" style={siderStyle}>*/}
-    {/*</Sider>*/}
     <FormBuilderSidebar />
     <Layout>
       <Content style={contentStyle}>Content</Content>
