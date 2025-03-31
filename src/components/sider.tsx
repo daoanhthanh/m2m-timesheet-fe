@@ -197,11 +197,34 @@ export const Sider: React.FC = () => {
     top: 0,
     left: 0,
     height: "100vh",
-    zIndex: 999,
+    zIndex: 99,
   };
 
   return (
     <>
+      <div
+        style={{
+          width: "256px",
+          padding: "0 16px",
+          position: "fixed",
+          top: 0,
+          justifyContent: "center",
+          alignItems: "center",
+          height: "var(--header-height)",
+          backgroundColor: token.colorBgElevated,
+          fontSize: "14px",
+          zIndex: 110,
+        }}
+      >
+        <Title
+          collapsed={siderCollapsed}
+          wrapperStyles={
+            {
+              // width: "100px",
+            }
+          }
+        />
+      </div>
       <Layout.Sider
         style={siderStyles}
         width={256}
@@ -241,27 +264,7 @@ export const Sider: React.FC = () => {
           </Button>
         }
       >
-        <div
-          style={{
-            width: siderCollapsed ? "80px" : "256px",
-            padding: siderCollapsed ? "0" : "0 16px",
-            display: "flex",
-            justifyContent: siderCollapsed ? "center" : "flex-start",
-            alignItems: "center",
-            height: "64px",
-            backgroundColor: token.colorBgElevated,
-            fontSize: "14px",
-          }}
-        >
-          <Title
-            collapsed={siderCollapsed}
-            wrapperStyles={
-              {
-                // width: "100px",
-              }
-            }
-          />
-        </div>
+        <div className="h-[var(--header-height)]"></div>
         {renderMenu()}
       </Layout.Sider>
     </>

@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
     justifyContent: "flex-end",
     alignItems: "center",
     padding: "0px 24px",
-    height: "64px",
+    height: "var(--header-height)",
     position: "sticky",
     top: 0,
     zIndex: 100,

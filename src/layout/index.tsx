@@ -14,7 +14,15 @@ export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <ThemedLayoutContextProvider>
       {/*<GitHubBanner/>*/}
-      <AntdLayout hasSider style={{ minHeight: "100vh" }}>
+      <AntdLayout
+        hasSider
+        style={
+          {
+            minHeight: "100vh",
+            "--header-height": "64px",
+          } as React.CSSProperties
+        }
+      >
         <Sider />
         <AntdLayout>
           <Header />
