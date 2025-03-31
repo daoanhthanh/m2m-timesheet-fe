@@ -208,6 +208,7 @@ export const Sider: React.FC = () => {
           padding: "0 16px",
           position: "fixed",
           top: 0,
+          display: "flex",
           justifyContent: "center",
           alignItems: "center",
           height: "var(--header-height)",
