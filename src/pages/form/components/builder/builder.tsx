@@ -3,7 +3,10 @@ import { SidebarInset, SidebarTrigger } from "./sidebar-components";
 import { defaultBackgroundColor } from "@/providers/constants";
 import { Layout } from "antd";
 import { FormBuilderSidebar } from "@/pages/form/components/builder/from-builder-sidebar";
-import { BuilderBlockProperties } from "@/components/form-builder";
+import {
+  BuilderBlockProperties,
+  BuilderCanvas,
+} from "@/components/form-builder";
 
 export const Builder1 = (props: { isSidebarOpen: boolean }) => {
   return (
@@ -30,6 +33,8 @@ const { Content } = Layout;
 
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
+  overflowY: "scroll",
+  maxHeight: "100%",
   // color: "#fff",
   // backgroundColor: "#0958d9",
 };
@@ -43,7 +48,9 @@ export const Builder = (props: { isSidebarOpen: boolean }) => (
   <Layout style={layoutStyle}>
     <FormBuilderSidebar />
     <Layout>
-      <Content style={contentStyle}>Content</Content>
+      <Content style={contentStyle}>
+        <BuilderCanvas />
+      </Content>
     </Layout>
 
     <BuilderBlockProperties />

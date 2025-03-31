@@ -76,7 +76,7 @@ const Routes = () => {
         >
           <Route index element={null} />
           <Route path="create" element={<FormCreate />} />
-          <Route path="preview/:id" element={<EmployeeShow />} />
+          <Route path="preview/:formId" element={<EmployeeShow />} />
         </Route>
 
         <Route path="/forms/builder/:formId" element={<FormBuilderPage />} />

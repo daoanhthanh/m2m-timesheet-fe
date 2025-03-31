@@ -72,11 +72,6 @@ export function BuilderContextProvider({
 
         const response = await get<BaseResponse<Form>>(url);
 
-        //     await fetch(`http://localhost:8888/api/v1/forms/${formId}`, {
-        //     method: "GET",
-        //     credentials: "include"
-        // });
-
         console.log(response);
 
         if (!response.isSuccess()) {
@@ -89,9 +84,7 @@ export function BuilderContextProvider({
         document.title = `Form | ${form!.name}`;
         console.log("Dao Anh Thanh");
         if (form) {
-          console.log(form, "form useEffect");
           setFormData(form);
-
           // Parse `blocks` from the form's `jsonBlocks`
           if (form.jsonBlocks) {
             const parsedBlocks = JSON.parse(form.jsonBlocks);
