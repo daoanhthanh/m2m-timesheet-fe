@@ -4,21 +4,17 @@ import type { RefineLayoutThemedTitleProps } from "@refinedev/antd";
 import { useLink } from "@refinedev/core";
 import styles from "./styles.module.css";
 
-import { Space, theme } from "antd";
+import { Space } from "antd";
 
 import { Logo } from "components/logo";
-
-const { useToken } = theme;
+import { useThemeMode } from "@/hooks";
 
 export const Title: React.FC<RefineLayoutThemedTitleProps> = ({
   collapsed,
   wrapperStyles,
 }) => {
   const Link = useLink();
-
-  const { theme } = useToken();
-
-  console.log("current theme", theme);
+  const themeMode = useThemeMode();
 
   return (
     <Link
@@ -42,10 +38,7 @@ export const Title: React.FC<RefineLayoutThemedTitleProps> = ({
             ...wrapperStyles,
           }}
         >
-          <Logo
-            className={styles.companyLogo}
-            mode={theme.id == 0 ? "light" : "dark"}
-          />
+          <Logo className={styles.companyLogo} mode={themeMode} />
         </div>
       </Space>
     </Link>
