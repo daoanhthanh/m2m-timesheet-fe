@@ -62,9 +62,9 @@ export const FormBuilderSidebar = ({
               `p-[5px] flex-1 bg-transparent
                 transition-colors
                 ease-in-out rounded-full text-center
-                font-medium text-sm text-gray-500`,
+                font-medium text-sm text-gray-400`,
               {
-                "bg-white text-gray-900": tab === "blocks",
+                "bg-white text-gray-600": tab === "blocks",
               },
             )}
             onClick={() => setTab("blocks")}
@@ -76,9 +76,9 @@ export const FormBuilderSidebar = ({
               `p-[5px] flex-1 bg-transparent
                 transition-colors
                 ease-in-out rounded-full text-center
-                font-medium text-sm text-gray-500`,
+                font-medium text-sm text-gray-400`,
               {
-                "bg-white text-gray-900": tab === "settings",
+                "bg-white text-gray-600": tab === "settings",
               },
             )}
             onClick={() => setTab("settings")}

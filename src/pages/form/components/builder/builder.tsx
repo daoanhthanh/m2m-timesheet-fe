@@ -8,51 +8,43 @@ import {
   BuilderCanvas,
 } from "@/components/form-builder";
 
-export const Builder1 = (props: { isSidebarOpen: boolean }) => {
-  return (
-    <>
-      {/*<BuilderSidebar />*/}
-      <SidebarInset className="!p-0 flex-1">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundColor: defaultBackgroundColor,
-          }}
-        >
-          <SidebarTrigger className=" absolute top-0 z-50" />
-          {/*<BuilderCanvas />*/}
-          {/*<FloatingShareButton isSidebarOpen={props.isSidebarOpen} />*/}
-        </div>
-      </SidebarInset>
-      {/*<BuilderBlockProperties />*/}
-    </>
-  );
-};
-
-const { Content } = Layout;
-
-const contentStyle: React.CSSProperties = {
-  textAlign: "center",
-  overflowY: "scroll",
-  maxHeight: "100%",
-  // color: "#fff",
-  // backgroundColor: "#0958d9",
-};
-
 const layoutStyle: React.CSSProperties = {
   backgroundColor: "transparent",
+  display: "flex",
+  flexDirection: "row",
+  height: "100vh", // Full height to enable independent scrolling
+  padding: "16px 0", // Maintain top and bottom padding
+  overflow: "hidden", // Prevent scrolling on the entire layout
+};
+
+const sidebarStyle: React.CSSProperties = {
+  flex: "0 0 auto", // Fixed width for the sidebar
+  height: "100%", // Full height
+  overflow: "hidden", // Prevent scrolling
+};
+
+const canvasStyle: React.CSSProperties = {
+  flex: "1 1 auto", // Take remaining space
+  height: "100%", // Full height
+  overflowY: "auto", // Enable vertical scrolling
+};
+
+const propertiesStyle: React.CSSProperties = {
+  flex: "0 0 auto", // Fixed width for the properties panel
+  height: "100%", // Full height
+  overflow: "hidden", // Prevent scrolling
 };
 
 export const Builder = (props: { isSidebarOpen: boolean }) => (
-  // <Flex gap="middle" wrap>
   <Layout style={layoutStyle}>
-    <FormBuilderSidebar />
-    <Layout>
-      <Content style={contentStyle}>
-        <BuilderCanvas />
-      </Content>
-    </Layout>
-
-    <BuilderBlockProperties />
+    <div style={sidebarStyle}>
+      <FormBuilderSidebar />
+    </div>
+    <div style={canvasStyle}>
+      <BuilderCanvas />
+    </div>
+    <div style={propertiesStyle}>
+      <BuilderBlockProperties />
+    </div>
   </Layout>
 );

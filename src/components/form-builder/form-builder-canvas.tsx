@@ -33,7 +33,7 @@ export const BuilderCanvas = () => {
       setActiveBlock(event.active);
     },
     onDragEnd: (event: DragEndEvent) => {
-      console.log("DRAG END", event);
+
       const { active, over } = event;
       if (!over || !active) return;
       setActiveBlock(null);
@@ -54,7 +54,7 @@ export const BuilderCanvas = () => {
           FormBlocks[blockType as FormBlockType].createInstance(
             generateUniqueId(),
           );
-        console.log("NEW BLOCK Layout Instance", newBlockLayout);
+
         addBlockLayout(newBlockLayout);
         return;
       }
@@ -112,15 +112,10 @@ export const BuilderCanvas = () => {
   });
   return (
     <div
-      className="relative w-full
-  h-[calc(100vh_-_65px)] px-5 md:px-0 pt-4 pb-[120px] overflow-auto
-  transition-all duration-300 scrollbar
-  "
+      className="relative w-full h-full overflow-y-auto transition-all duration-300 scrollbar"
     >
       <div
-        className="w-full 
-        h-full max-w-[650px]
-        mx-auto"
+        className="w-full max-w-[650px] mx-auto"
       >
         {/* {Droppable Canvas} */}
         <div
@@ -128,7 +123,7 @@ export const BuilderCanvas = () => {
           className={cn(
             `
          w-full relative bg-transparent px-2 rounded-md
-         flex flex-col min-h-svh items-center
+         flex flex-col items-center
          justify-start pt-1 pb-14
         `,
             droppable.isOver &&
@@ -217,7 +212,7 @@ function CanvasBlockLayoutWrapper({
             ref={bottomCorner.setNodeRef}
             className="
         absolute bottom-0 w-full h-1/2
-        pointer-events-none 
+        pointer-events-none
         "
           >
             {bottomCorner.isOver && (
