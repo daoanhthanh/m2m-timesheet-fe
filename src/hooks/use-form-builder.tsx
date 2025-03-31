@@ -1,7 +1,9 @@
-import { Form, FormBlockInstance } from "types";
+import { BaseResponse, Form, FormBlockInstance } from "types";
 import { generateUniqueId } from "providers/uuid-v4";
 import { useParams } from "react-router-dom";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { get } from "@/providers/http/request";
+import { API_URL } from "providers/endpoints";
 
 type FormBuilderContextType = {
   loading: boolean;
@@ -48,8 +50,9 @@ export function BuilderContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const params = useParams();
-  const formId = params.formId as string;
+  const { formId } = useParams<{ formId: string }>();
+
+  console.log("querying formId", formId);
 
   const [formData, setFormData] = useState<Form | null>(null);
   const [loading, setLoading] = useState(true);
@@ -64,20 +67,29 @@ export function BuilderContextProvider({
       try {
         setLoading(true);
         if (!formId) return;
-        const response = await fetch(`/api/fetchFormById?formId=${formId}`, {
-          method: "GET",
-        });
 
-        if (!response.ok) {
+        const url = `${API_URL}/forms/${formId}`;
+
+        const response = await get<BaseResponse<Form>>(url);
+
+        //     await fetch(`http://localhost:8888/api/v1/forms/${formId}`, {
+        //     method: "GET",
+        //     credentials: "include"
+        // });
+
+        console.log(response);
+
+        if (!response.isSuccess()) {
           throw new Error("Failed to fetch form");
         }
 
-        const { data } = await response.json();
-        document.title = "Ahihi";
+        const { data } = response.data();
+        const form = data;
+
+        document.title = `Form | ${form!.name}`;
         console.log("Dao Anh Thanh");
-        const { form } = data;
         if (form) {
-          console.log(form, "form useeffect");
+          console.log(form, "form useEffect");
           setFormData(form);
 
           // Parse `blocks` from the form's `jsonBlocks`

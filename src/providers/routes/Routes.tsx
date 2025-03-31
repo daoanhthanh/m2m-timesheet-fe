@@ -79,7 +79,7 @@ const Routes = () => {
           <Route path="preview/:id" element={<EmployeeShow />} />
         </Route>
 
-        <Route path="/forms/builder/:id" element={<FormBuilderPage />} />
+        <Route path="/forms/builder/:formId" element={<FormBuilderPage />} />
 
         <Route path="/employees">
           <Route index element={<EmployeeList />} />
