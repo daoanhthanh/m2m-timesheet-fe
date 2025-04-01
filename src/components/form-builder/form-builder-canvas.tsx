@@ -33,7 +33,6 @@ export const BuilderCanvas = () => {
       setActiveBlock(event.active);
     },
     onDragEnd: (event: DragEndEvent) => {
-
       const { active, over } = event;
       if (!over || !active) return;
       setActiveBlock(null);
@@ -112,11 +111,12 @@ export const BuilderCanvas = () => {
   });
   return (
     <div
-      className="relative w-full h-full overflow-y-auto transition-all duration-300 scrollbar"
+      className="relative w-full h-full
+    max-h-[calc(100vh_-_var(--header-height)_-_64px)]
+    overflow-y-scroll transition-all
+    duration-300 scrollbar-minimal"
     >
-      <div
-        className="w-full max-w-[650px] mx-auto"
-      >
+      <div className="w-full max-w-[650px] mx-auto">
         {/* {Droppable Canvas} */}
         <div
           ref={droppable.setNodeRef}
@@ -124,8 +124,7 @@ export const BuilderCanvas = () => {
             `
          w-full relative bg-transparent px-2 rounded-md
          flex flex-col items-center
-         justify-start pt-1 pb-14
-        `,
+         justify-start`,
             droppable.isOver &&
               blockLayouts.length === 0 &&
               "ring-4 ring-primary/20 ring-inset",
