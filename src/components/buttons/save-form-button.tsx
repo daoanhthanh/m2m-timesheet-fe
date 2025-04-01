@@ -6,7 +6,7 @@ export const SaveFormBtn = () => {
   return (
     <Tooltip placement="bottom" title={"Save Form"}>
       <Button>
-        <Save />
+        <Save size={18} />
       </Button>
     </Tooltip>
   );

@@ -83,7 +83,7 @@ export const PreviewDialog = () => {
   return (
     <Tooltip placement="bottomLeft" title={"Preview Form"}>
       <Button>
-        <Eye />
+        <Eye size={18} />
       </Button>
     </Tooltip>
   );

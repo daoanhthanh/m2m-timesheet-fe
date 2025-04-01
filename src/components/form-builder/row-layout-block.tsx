@@ -25,6 +25,7 @@ import { useFormBuilder } from "@/hooks/use-form-builder";
 import { generateUniqueId } from "@/providers/uuid-v4";
 import { cn } from "@/providers/utils";
 import { Button } from "antd";
+import { CopyOutlined, DeleteOutlined } from "@ant-design/icons";
 
 const blockCategory: FormCategoryType = "Layout";
 const blockType: FormBlockType = "RowLayout";
@@ -136,12 +137,8 @@ function RowLayoutCanvasComponent({
       <Card
         ref={droppable.setNodeRef}
         className={cn(
-          `!w-full bg-white relative border
-          shadow-sm
-            min-h-[120px]
-            max-w-[768px]
-                rounded-md !p-0
-                `,
+          `!w-full bg-white relative border 
+          shadow-sm min-h-[120px] max-w-[768px] rounded-md !p-0`,
           blockInstance.isLocked && "!rounded-t-none",
         )}
         onClick={() => {
@@ -228,33 +225,29 @@ function RowLayoutCanvasComponent({
         </CardContent>
 
         {isSelected && !blockInstance.isLocked && (
-          <CardFooter
-            className="flex items-center
-                   gap-3 
-          justify-end
-          border-t py-3
-          "
-          >
+          <CardFooter className="flex items-center gap-3 justify-end border-t py-3">
             <Button
               variant="outlined"
               size="small"
+              color="cyan"
               onClick={(e: { stopPropagation: () => void }) => {
                 e.stopPropagation();
                 duplicateBlockLayout(blockInstance.id);
               }}
             >
-              <Copy />
+              <CopyOutlined />
             </Button>
 
             <Button
-              variant="outlined"
+              variant="solid"
               size="small"
+              color="danger"
               onClick={(e: { stopPropagation: () => void }) => {
                 e.stopPropagation();
                 removeBlockLayout(blockInstance.id);
               }}
             >
-              <Trash2Icon />
+              <DeleteOutlined />
             </Button>
           </CardFooter>
         )}
