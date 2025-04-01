@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --scrollbar-width: 8px; /* Default scrollbar width */
+  --main-component-background-light: #ffffff;
+  --main-component-background-dark: #141414;
+}
+
 .page-container {
   @media screen and (max-width: 820px) {
     margin-top: 15px;
@@ -18,7 +24,21 @@
   margin: 0 auto;
 }
 
-/*.page-container {*/
-/*  max-width: 1664px;*/
-/*  margin: 0 auto;*/
-/*}*/
+/* Minimalistic scrollbar styles */
+.scrollbar-minimal::-webkit-scrollbar {
+  width: 6px; /* Narrower scrollbar */
+  height: 6px; /* Narrower horizontal scrollbar */
+}
+
+.scrollbar-minimal::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2); /* Subtle thumb color */
+  border-radius: 3px; /* Rounded corners */
+}
+
+.scrollbar-minimal::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.4); /* Slightly darker on hover */
+}
+
+.scrollbar-minimal::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track */
+}

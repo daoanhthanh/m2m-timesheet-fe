@@ -19,13 +19,14 @@ import {
   useDraggable,
   useDroppable,
 } from "@dnd-kit/core";
-import { Copy, GripHorizontal, Rows2, Trash2Icon, X } from "lucide-react";
-import { useState } from "react";
+import { GripHorizontal, Rows2, X } from "lucide-react";
+import { useState, useEffect } from "react";
 import { useFormBuilder } from "@/hooks/use-form-builder";
 import { generateUniqueId } from "@/providers/uuid-v4";
 import { cn } from "@/providers/utils";
 import { Button } from "antd";
 import { CopyOutlined, DeleteOutlined } from "@ant-design/icons";
+import { useThemeMode } from "@/hooks";
 
 const blockCategory: FormCategoryType = "Layout";
 const blockType: FormBlockType = "RowLayout";
@@ -64,6 +65,14 @@ function RowLayoutCanvasComponent({
     duplicateBlockLayout,
     updateBlockLayout,
   } = useFormBuilder();
+
+  const theme = useThemeMode();
+
+  useEffect(() => {
+    // This effect will run whenever the `theme` value changes
+    console.log("Theme changed to:", theme);
+    // You can add any other logic you need to handle the theme change here
+  }, [theme]);
 
   const [activeBlock, setActiveBlock] = useState<Active | null>(null);
 
@@ -137,9 +146,11 @@ function RowLayoutCanvasComponent({
       <Card
         ref={droppable.setNodeRef}
         className={cn(
-          `!w-full bg-white relative border 
-          shadow-sm min-h-[120px] max-w-[768px] rounded-md !p-0`,
-          blockInstance.isLocked && "!rounded-t-none",
+          `!w-full relative border 
+        shadow-sm min-h-[120px] max-w-[768px] rounded-md !p-0`,
+          theme === "light"
+            ? "bg-[var(--main-component-background-light)]"
+            : "bg-[var(--main-component-background-dark)]",
         )}
         onClick={() => {
           handleSelectedLayout(blockInstance);

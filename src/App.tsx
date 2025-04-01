@@ -21,7 +21,6 @@ import authProvider from "providers/auth-provider";
 import Routes from "providers/routes/Routes";
 import dataProvider from "providers/data-provider";
 import { ColorModeContextProvider } from "providers/contexts/color-mode";
-import "styles/global.css";
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
