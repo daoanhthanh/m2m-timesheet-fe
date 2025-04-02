@@ -213,13 +213,14 @@ function RowLayoutCanvasComponent({
                     {isSelected && !blockInstance.isLocked && (
                       <Button
                         size="small"
-                        variant="dashed"
+                        variant="outlined"
+                        color="danger"
                         className="!bg-transparent"
                         onClick={(e: { stopPropagation: () => void }) =>
                           removeChildBlock(e, childBlock.id)
                         }
                       >
-                        <X />
+                        <X size={12} />
                       </Button>
                     )}
                   </div>
