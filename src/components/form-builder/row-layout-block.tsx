@@ -68,12 +68,6 @@ function RowLayoutCanvasComponent({
 
   const theme = useThemeMode();
 
-  useEffect(() => {
-    // This effect will run whenever the `theme` value changes
-    console.log("Theme changed to:", theme);
-    // You can add any other logic you need to handle the theme change here
-  }, [theme]);
-
   const [activeBlock, setActiveBlock] = useState<Active | null>(null);
 
   const childBlocks = blockInstance.childBlocks || [];

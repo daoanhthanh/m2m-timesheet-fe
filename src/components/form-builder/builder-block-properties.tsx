@@ -1,9 +1,10 @@
 import React from "react";
-import { useFormBuilder } from "@/hooks";
+import { useFormBuilder, useThemeMode } from "@/hooks";
 import { FormBlocks } from "@/types";
 import { PreviewDialog, PublishFormBtn, SaveFormBtn } from "components/buttons";
 import { MousePointerClickIcon } from "lucide-react";
 import { Layout } from "antd";
+import { cn } from "@/providers/utils";
 
 export const BuilderBlockProperties = () => {
   const { selectedBlockLayout } = useFormBuilder();
@@ -12,13 +13,27 @@ export const BuilderBlockProperties = () => {
     selectedBlockLayout &&
     FormBlocks[selectedBlockLayout.blockType]?.propertiesComponent;
 
+  const theme = useThemeMode();
+
   return (
     <Layout.Sider
       width="var(--sidebar-width)"
-      className="h-full bg-transparent"
+      className={cn(
+        "h-full border-2 rounded-xl max-h-[calc(100vh_-_var(--header-height)_-_64px)] overflow-hidden",
+        theme === "light"
+          ? "bg-[var(--main-component-background-light)]"
+          : "bg-[var(--main-component-background-dark)]",
+      )}
     >
-      <div className="flex flex-col items-center h-full border-2 rounded-xl">
-        <div className="grid grid-cols-3 w-full items-center pb-2 pt-3 sticky border-b top-0 gap-2 px-2">
+      <div className="flex flex-col items-center h-full overflow-y-scroll scrollbar-minimal">
+        <div
+          className={cn(
+            "grid grid-cols-3 w-full items-center pb-2 pt-3 sticky border-b top-0 gap-2 px-2 z-10",
+            theme === "light"
+              ? "bg-[var(--main-component-background-light)]"
+              : "bg-[var(--main-component-background-dark)]",
+          )}
+        >
           <PreviewDialog />
           <SaveFormBtn />
           <PublishFormBtn />
