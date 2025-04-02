@@ -14,6 +14,8 @@ import {BaseResponse, Form, FormBlockInstance} from "@/types";
 import {useNotification} from "@refinedev/core";
 import { useCustom } from "@refinedev/core";
 import {LeaveRequest} from "@/types/calendar";
+import { withBody } from "@/providers/http/request";
+import {endpoints} from "@/providers/endpoints";
 
 const { TextArea } = Input;
 const { Text } = Typography;
@@ -21,7 +23,7 @@ const { Text } = Typography;
 export const AIAssistanceBtn = () => {
   const { formData, blockLayouts, setBlockLayouts } = useFormBuilder();
   const [userRequest, setUserRequest] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [popoverVisible, setPopoverVisible] = useState(false);
   const [showTips, setShowTips] = useState(false);
 
@@ -40,14 +42,21 @@ export const AIAssistanceBtn = () => {
     try {
       setLoading(true);
       
-      const formName = formData?.name || "";
-      const formDescription = formData?.description || "";
-
-      const PROMPT = "";
-
-      const result = "await AIChatSession.sendMessage(PROMPT)";
-      const responseText = "await result.response.text()";
-      const parsedResponse = JSON?.parse(responseText);
+      const responseText = await withBody<String,  BaseResponse<string>>(
+          "POST",
+          endpoints.askAI,
+          userRequest,
+          {
+            headers: {
+              "Content-Type": "text/plain"
+            }
+          }
+          
+      )
+      
+      console.log("responseText", JSON.stringify(responseText.data().data!));
+      
+      const parsedResponse = JSON?.parse(responseText.data().data!);
       const actionType = parsedResponse.actionType;
       const generatedBlocks = parsedResponse.blocks;
       const addUniqueIdToGeneratedBlocks = addUniqueIds(generatedBlocks);

@@ -7,6 +7,7 @@ export const endpoints = {
   me: `${API_URL}/auth/me`,
   logout: `${API_URL}/auth/logout`,
   changePassword: `${API_URL}/auth/change-password`,
+  askAI: `${API_URL}/forms/ask-ai`,
   employee: {
     list: `${API_URL}/employees`,
   },

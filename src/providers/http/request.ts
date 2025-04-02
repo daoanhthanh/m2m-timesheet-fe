@@ -79,7 +79,7 @@ async function doRequest<U>(
   }
 }
 
-const withBody = async <Body, Return>(
+export const withBody = async <Body, Return>(
   method: "POST" | "PUT",
   api: string,
   body: Body,
