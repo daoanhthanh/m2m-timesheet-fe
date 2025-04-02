@@ -43,7 +43,10 @@ const App: React.FC = () => {
         ""
       )}
       <ColorModeContextProvider>
-        <ConfigProvider locale={vi_VN}>
+        <ConfigProvider
+          locale={vi_VN}
+          theme={{ cssVar: true }}
+        >
           <AntdApp>
             <Refine
               authProvider={authProvider}

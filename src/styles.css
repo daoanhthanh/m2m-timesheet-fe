@@ -6,6 +6,7 @@
   --scrollbar-width: 8px; /* Default scrollbar width */
   --main-component-background-light: #ffffff;
   --main-component-background-dark: #141414;
+  --main-sider-background-color: #73b27b;
 }
 
 .page-container {
@@ -46,4 +47,8 @@
 
 .scrollbar-minimal::-webkit-scrollbar-track {
   background: transparent;
+}
+
+.ant-layout-sider-zero-width-trigger {
+  background-color: var(--toastify-color-error) !important;
 }

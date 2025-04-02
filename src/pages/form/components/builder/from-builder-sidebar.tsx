@@ -3,7 +3,7 @@ import { Sidebar, SidebarContent } from "./sidebar-components";
 import { cn } from "@/providers/utils";
 import FormBlockBox from "@/pages/form/components/builder/form-block-box";
 import FormSettings from "@/pages/form/components/builder/form-settings";
-import { Layout } from "antd";
+import { Layout, Segmented } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { ThemeMode } from "@/providers/contexts/color-mode";
 
@@ -34,15 +34,21 @@ export const FormBuilderSidebar: React.FC<Props> = ({ theme }) => {
             : "bg-[var(--main-component-background-dark)]",
         )}
       >
-        <div className="w-full flex flex-row gap-1 h-[39px] rounded-full bg-gray-100 p-1">
+        <div
+          className={cn(
+            "w-full flex flex-row gap-1 h-[39px] rounded-full bg-[var(--ant-color-primary-border)] p-1",
+            {
+              "dark:bg-gray-800": theme === "dark",
+            },
+          )}
+        >
           <button
             className={cn(
-              `p-[5px] flex-1 bg-transparent
-                transition-colors
-                ease-in-out rounded-full text-center
-                font-medium text-sm text-gray-400`,
+              `p-[5px] flex-1 bg-transparent transition-colors
+                  ease-in-out rounded-full text-center font-medium text-sm`,
               {
-                "bg-white text-gray-600": tab === "blocks",
+                "bg-[var(--ant-color-primary-active)] text-[#f5f5f5] shadow-md":
+                  tab === "blocks",
               },
             )}
             onClick={() => setTab("blocks")}
@@ -51,12 +57,11 @@ export const FormBuilderSidebar: React.FC<Props> = ({ theme }) => {
           </button>
           <button
             className={cn(
-              `p-[5px] flex-1 bg-transparent
-                transition-colors
-                ease-in-out rounded-full text-center
-                font-medium text-sm text-gray-400`,
+              `p-[5px] flex-1 bg-transparent transition-colors 
+                  ease-in-out rounded-full text-center font-medium text-sm`,
               {
-                "bg-white text-gray-600": tab === "settings",
+                "bg-[var(--ant-color-primary-active)] text-[#f5f5f5] shadow-md":
+                  tab === "settings",
               },
             )}
             onClick={() => setTab("settings")}
@@ -64,6 +69,7 @@ export const FormBuilderSidebar: React.FC<Props> = ({ theme }) => {
             Settings
           </button>
         </div>
+
         {/* {Form Blocks} */}
         {tab === "blocks" && <FormBlockBox />}
         {/* {Form Settings} */}
