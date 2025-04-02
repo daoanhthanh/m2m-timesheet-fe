@@ -5,12 +5,13 @@ import FormBlockBox from "@/pages/form/components/builder/form-block-box";
 import FormSettings from "@/pages/form/components/builder/form-settings";
 import { Layout } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { ThemeMode } from "@/providers/contexts/color-mode";
 
-export const FormBuilderSidebar = ({
-  rest,
-}: {
-  rest?: React.ComponentProps<typeof Sidebar>;
-}) => {
+export type Props = {
+  theme: ThemeMode;
+};
+
+export const FormBuilderSidebar: React.FC<Props> = ({ theme }) => {
   const { Sider } = Layout;
 
   const [tab, setTab] = useState<"blocks" | "settings">("blocks");
@@ -25,7 +26,14 @@ export const FormBuilderSidebar = ({
       className="h-full bg-transparent"
       width="var(--sidebar-width)"
     >
-      <SidebarContent className="p-5 bg-white h-full">
+      <SidebarContent
+        className={cn(
+          "p-5 h-full",
+          theme === "light"
+            ? "bg-[var(--main-component-background-light)]"
+            : "bg-[var(--main-component-background-dark)]",
+        )}
+      >
         <div className="w-full flex flex-row gap-1 h-[39px] rounded-full bg-gray-100 p-1">
           <button
             className={cn(

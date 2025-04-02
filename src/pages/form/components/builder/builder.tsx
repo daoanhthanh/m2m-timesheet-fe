@@ -5,6 +5,7 @@ import {
   BuilderBlockProperties,
   BuilderCanvas,
 } from "@/components/form-builder";
+import { useThemeMode } from "@/hooks";
 
 const layoutStyle: React.CSSProperties = {
   backgroundColor: "transparent",
@@ -13,10 +14,14 @@ const layoutStyle: React.CSSProperties = {
   overflow: "hidden", // Prevent scrolling on the entire layout
 };
 
-export const Builder = (props: { isSidebarOpen: boolean }) => (
-  <Layout style={layoutStyle}>
-    <FormBuilderSidebar />
-    <BuilderCanvas />
-    <BuilderBlockProperties />
-  </Layout>
-);
+export const Builder = (props: { isSidebarOpen: boolean }) => {
+  const theme = useThemeMode();
+
+  return (
+    <Layout style={layoutStyle}>
+      <FormBuilderSidebar theme={theme} />
+      <BuilderCanvas />
+      <BuilderBlockProperties />
+    </Layout>
+  );
+};
