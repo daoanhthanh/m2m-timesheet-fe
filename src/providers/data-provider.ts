@@ -97,9 +97,7 @@ const dataProvider: DataProvider = {
 
     const { headers } = meta ?? {};
 
-    const response = await put<unknown, any>(url, variables, {
-      headers,
-    });
+    const response = await put<unknown, any>(url, variables, headers);
 
     return response.data();
   },

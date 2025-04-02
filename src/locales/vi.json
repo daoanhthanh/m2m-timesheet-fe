@@ -127,7 +127,8 @@
       "untitledForm": "Đơn chưa đặt tên",
       "addDescriptionHere": "Thêm mô tả ở đây",
       "formName": "Tên đơn",
-      "formDescription": "Mô tả"
+      "formDescription": "Mô tả",
+      "success": "Đơn <i>{{formName}}</i> đã được tạo thành công."
     }
   },
   "common": {
