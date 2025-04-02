@@ -1,15 +1,33 @@
 import React, { useState } from "react";
-import { Sidebar, SidebarContent } from "./sidebar-components";
+import { SidebarContent } from "./sidebar-components";
 import { cn } from "@/providers/utils";
 import FormBlockBox from "@/pages/form/components/builder/form-block-box";
 import FormSettings from "@/pages/form/components/builder/form-settings";
-import { Layout, Segmented } from "antd";
+import { Layout } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { ThemeMode } from "@/providers/contexts/color-mode";
 
 export type Props = {
   theme: ThemeMode;
 };
+
+const TabButton: React.FC<{
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}> = ({ active, onClick, children }) => (
+  <button
+    className={cn(
+      "p-[5px] flex-1 bg-transparent transition-colors ease-in-out rounded-full text-center font-medium text-sm",
+      {
+        "bg-[var(--ant-color-primary-active)] text-[#f5f5f5] shadow-md": active,
+      },
+    )}
+    onClick={onClick}
+  >
+    {children}
+  </button>
+);
 
 export const FormBuilderSidebar: React.FC<Props> = ({ theme }) => {
   const { Sider } = Layout;
@@ -38,36 +56,19 @@ export const FormBuilderSidebar: React.FC<Props> = ({ theme }) => {
           className={cn(
             "w-full flex flex-row gap-1 h-[39px] rounded-full bg-[var(--ant-color-primary-border)] p-1",
             {
-              "dark:bg-gray-800": theme === "dark",
+              "bg-[var(--ant-color-primary-border)]": theme === "dark",
             },
           )}
         >
-          <button
-            className={cn(
-              `p-[5px] flex-1 bg-transparent transition-colors
-                  ease-in-out rounded-full text-center font-medium text-sm`,
-              {
-                "bg-[var(--ant-color-primary-active)] text-[#f5f5f5] shadow-md":
-                  tab === "blocks",
-              },
-            )}
-            onClick={() => setTab("blocks")}
-          >
+          <TabButton active={tab === "blocks"} onClick={() => setTab("blocks")}>
             Blocks
-          </button>
-          <button
-            className={cn(
-              `p-[5px] flex-1 bg-transparent transition-colors 
-                  ease-in-out rounded-full text-center font-medium text-sm`,
-              {
-                "bg-[var(--ant-color-primary-active)] text-[#f5f5f5] shadow-md":
-                  tab === "settings",
-              },
-            )}
+          </TabButton>
+          <TabButton
+            active={tab === "settings"}
             onClick={() => setTab("settings")}
           >
             Settings
-          </button>
+          </TabButton>
         </div>
 
         {/* {Form Blocks} */}
