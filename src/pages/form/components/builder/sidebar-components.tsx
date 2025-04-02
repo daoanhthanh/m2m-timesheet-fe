@@ -137,6 +137,7 @@ const SidebarProvider = React.forwardRef<
             {
               "--sidebar-width": SIDEBAR_WIDTH,
               "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
+              "--ant-color-text-placeholder": "red !important",
               ...style,
             } as React.CSSProperties
           }

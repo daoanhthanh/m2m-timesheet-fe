@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useFormBuilder } from "hooks/use-form-builder";
 import { FormBlocks } from "types";
 import { Button, Divider, Input } from "antd";
+import { AIAssistanceBtn } from "@/components/buttons";
 
 const FormBlockBox = () => {
   const { formData } = useFormBuilder();
@@ -31,12 +32,12 @@ const FormBlockBox = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        {/*<AIAssistanceBtn />*/}
-        <Button>
-          <span className="text-sm font-medium text-gray-600 tracking-wider">
-            AI
-          </span>
-        </Button>
+        <AIAssistanceBtn />
+        {/*<Button>*/}
+        {/*  <span className="text-sm font-medium text-gray-600 tracking-wider">*/}
+        {/*    AI*/}
+        {/*  </span>*/}
+        {/*</Button>*/}
       </div>
       <div className="flex flex-col space-y-3 w-full">
         {layoutBlocks?.length > 0 && (

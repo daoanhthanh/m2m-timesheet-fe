@@ -33,6 +33,16 @@ const App: React.FC = () => {
     getLocale: () => i18n.language,
   };
 
+  const customTheme = {
+    cssVar: {
+      prefix: "ant",
+      key: "custom-theme",
+    },
+    token: {
+      colorTextPlaceholder: "#8a8a8a", // This will override --ant-color-text-placeholder
+    },
+  };
+
   return (
     <BrowserRouter>
       {import.meta.env.VITE_IS_TRIAL == "true" ? (
@@ -43,7 +53,7 @@ const App: React.FC = () => {
         ""
       )}
       <ColorModeContextProvider>
-        <ConfigProvider locale={vi_VN} theme={{ cssVar: true }}>
+        <ConfigProvider locale={vi_VN} theme={customTheme}>
           <AntdApp>
             <Refine
               authProvider={authProvider}
