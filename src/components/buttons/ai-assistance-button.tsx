@@ -10,12 +10,12 @@ import {
 } from "antd";
 import { Sparkles, Loader } from "lucide-react";
 import { useFormBuilder } from "@/hooks";
-import {BaseResponse, Form, FormBlockInstance} from "@/types";
-import {useNotification} from "@refinedev/core";
+import { BaseResponse, Form, FormBlockInstance } from "@/types";
+import { useNotification } from "@refinedev/core";
 import { useCustom } from "@refinedev/core";
-import {LeaveRequest} from "@/types/calendar";
+import { LeaveRequest } from "@/types/calendar";
 import { withBody } from "@/providers/http/request";
-import {endpoints} from "@/providers/endpoints";
+import { endpoints } from "@/providers/endpoints";
 
 const { TextArea } = Input;
 const { Text } = Typography;
@@ -28,8 +28,8 @@ export const AIAssistanceBtn = () => {
   const [showTips, setShowTips] = useState(false);
 
   const isPublished = formData?.published;
-  
-  const {open} = useNotification();
+
+  const { open } = useNotification();
 
   const GenerateFormQuestionsWithAI = async () => {
     if (!userRequest) {
@@ -41,22 +41,33 @@ export const AIAssistanceBtn = () => {
     }
     try {
       setLoading(true);
-      
-      const responseText = await withBody<String,  BaseResponse<string>>(
-          "POST",
-          endpoints.askAI,
-          userRequest,
-          {
-            headers: {
-              "Content-Type": "text/plain"
-            }
-          }
-          
-      )
-      
-      console.log("responseText", JSON.stringify(responseText.data().data!));
-      
-      const parsedResponse = JSON?.parse(responseText.data().data!);
+
+      // const responseText = await withBody<String,  BaseResponse<string>>(
+      //     "POST",
+      //     endpoints.askAI,
+      //     JSON.stringify(userRequest),
+      //     {
+      //       headers: {
+      //         "Content-Type": "text/plain"
+      //       }
+      //     }
+      //
+      // )
+
+      const responseText = await fetch(endpoints.askAI, {
+        method: "POST",
+        credentials: "include",
+        body: userRequest,
+        headers: {
+          "Content-Type": "text/plain",
+        },
+      });
+
+      const resData = await responseText.json();
+
+      console.log("responseText", JSON?.parse(resData.data));
+
+      const parsedResponse = JSON?.parse(resData.data);
       const actionType = parsedResponse.actionType;
       const generatedBlocks = parsedResponse.blocks;
       const addUniqueIdToGeneratedBlocks = addUniqueIds(generatedBlocks);
