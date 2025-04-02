@@ -10,8 +10,10 @@ import {
 } from "antd";
 import { Sparkles, Loader } from "lucide-react";
 import { useFormBuilder } from "@/hooks";
-import { toast } from "react-toastify";
-import { FormBlockInstance } from "@/types";
+import {BaseResponse, Form, FormBlockInstance} from "@/types";
+import {useNotification} from "@refinedev/core";
+import { useCustom } from "@refinedev/core";
+import {LeaveRequest} from "@/types/calendar";
 
 const { TextArea } = Input;
 const { Text } = Typography;
@@ -19,19 +21,25 @@ const { Text } = Typography;
 export const AIAssistanceBtn = () => {
   const { formData, blockLayouts, setBlockLayouts } = useFormBuilder();
   const [userRequest, setUserRequest] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [popoverVisible, setPopoverVisible] = useState(false);
   const [showTips, setShowTips] = useState(false);
 
   const isPublished = formData?.published;
+  
+  const {open} = useNotification();
 
   const GenerateFormQuestionsWithAI = async () => {
     if (!userRequest) {
-      toast("Please enter a request");
+      open?.({
+        type: "error",
+        message: "Please enter a request",
+      });
       return;
     }
     try {
       setLoading(true);
+      
       const formName = formData?.name || "";
       const formDescription = formData?.description || "";
 
@@ -58,7 +66,10 @@ export const AIAssistanceBtn = () => {
       setUserRequest("");
     } catch (error) {
       console.log(error, "error");
-      toast("Failed to generate summary");
+      open?.({
+        type: "error",
+        message: "Failed to generate summary",
+      });
     } finally {
       setLoading(false);
     }
