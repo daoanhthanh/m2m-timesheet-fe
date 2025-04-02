@@ -18,7 +18,7 @@ export const Title: React.FC<RefineLayoutThemedTitleProps> = ({
 
   return (
     <Link
-      to="/login"
+      to="/"
       style={{
         display: "inline-block",
         textDecoration: "none",
