@@ -25,7 +25,7 @@ export const BuilderBlockProperties = () => {
           : "bg-[var(--main-component-background-dark)]",
       )}
     >
-      <div className="flex flex-col items-center h-full overflow-y-scroll scrollbar-minimal">
+      <div className="flex flex-col items-center h-full">
         <div
           className={cn(
             "grid grid-cols-3 w-full items-center pb-2 pt-3 sticky border-b top-0 gap-2 px-2 z-10",
@@ -39,20 +39,20 @@ export const BuilderBlockProperties = () => {
           <PublishFormBtn />
         </div>
 
-        {/* {Layout Property} */}
+        {/*{Layout Property} */}
         {!selectedBlockLayout ? (
           <div
             className="text-gray-400 gap-1
                         text-center text-[15px] w-full flex flex-col
                         items-center
-                        justify-center flex-1 h-auto"
+                        justify-center flex-1 h-full"
           >
             <MousePointerClickIcon />
             <p>Click the layout to modify block</p>
           </div>
         ) : (
-          <div className="w-full pt-1">
-            <div className="px-2 pt-3 pb-3 border-b border-gray-200">
+          <div className="w-full overflow-y-scroll scrollbar-minimal pt-1">
+            <div className="px-2 pt-3 pb-3">
               <h5 className="text-left font-medium text-sm">
                 Layout Block Properties
               </h5>
