@@ -82,7 +82,6 @@ export function BuilderContextProvider({
         const form = data;
 
         document.title = `Form | ${form!.name}`;
-        console.log("Dao Anh Thanh");
         if (form) {
           setFormData(form);
           // Parse `blocks` from the form's `jsonBlocks`

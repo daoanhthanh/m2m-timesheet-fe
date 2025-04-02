@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { Form } from "@/types";
 
 export const SaveFormBtn = () => {
-  const { formData } = useFormBuilder();
+  const { formData, blockLayouts } = useFormBuilder();
   const formId = formData?.formId;
   const { t } = useTranslation();
 
@@ -36,6 +36,18 @@ export const SaveFormBtn = () => {
 
   const saveFormData = async () => {
     if (!formId) return;
+    const lockedBlockLayout = blockLayouts.find((block) => block.isLocked);
+
+    formData.name = lockedBlockLayout?.childBlocks?.find(
+      (child) => child.blockType === "Heading",
+    )?.attributes?.label as string;
+
+    formData.description = lockedBlockLayout?.childBlocks?.find(
+      (child) => child.blockType === "Paragraph",
+    )?.attributes?.text as string;
+
+    formData.jsonBlocks = JSON.stringify(blockLayouts);
+
     mutate({
       id: formId,
       values: formData,
