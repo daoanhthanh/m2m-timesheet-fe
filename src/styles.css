@@ -25,6 +25,11 @@
 }
 
 /* Minimalistic scrollbar styles */
+.scrollbar-minimal {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(141, 137, 137, 0.6) transparent; /* Firefox */
+}
+
 .scrollbar-minimal::-webkit-scrollbar {
   width: 7px; /* Narrower scrollbar */
   height: 6px; /* Narrower horizontal scrollbar */
