@@ -17,7 +17,7 @@ const blockType: FormBlockType = "Paragraph";
 
 type fontSizeType = "small" | "medium" | "large";
 
-type fontWeightType = "normal" | "lighter";
+type fontWeightType = "bold" | "normal" | "lighter";
 
 type attributesType = {
   label: string;
