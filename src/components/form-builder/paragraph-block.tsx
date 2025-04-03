@@ -137,6 +137,7 @@ function ParagraphPropertiesComponent({
         </Form.Item>
         <Form.Item label="Font Weight" name="fontWeight">
           <Select>
+            <Select.Option value="bold">Bold</Select.Option>
             <Select.Option value="normal">Normal</Select.Option>
             <Select.Option value="lighter">Lighter</Select.Option>
           </Select>

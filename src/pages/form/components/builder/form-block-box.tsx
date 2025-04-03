@@ -33,16 +33,11 @@ const FormBlockBox = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
         <AIAssistanceBtn />
-        {/*<Button>*/}
-        {/*  <span className="text-sm font-medium text-gray-600 tracking-wider">*/}
-        {/*    AI*/}
-        {/*  </span>*/}
-        {/*</Button>*/}
       </div>
       <div className="flex flex-col space-y-3 w-full">
         {layoutBlocks?.length > 0 && (
           <div className="mb-2">
-            <p className="text-gray-500 font-medium">Layouts</p>
+            <p className="font-medium pb-2">Layouts</p>
 
             <div className="pt-1 grid grid-cols-3 gap-3">
               {layoutBlocks?.map((block) => (
@@ -58,7 +53,7 @@ const FormBlockBox = () => {
 
         <Divider className="!bg-gray-200" />
         <div>
-          <p className="text-gray-500 font-medium">Fields</p>
+          <p className="font-medium py-2">Fields</p>
 
           <div className="pt-1 grid grid-cols-3 gap-3">
             {fieldBlocks?.map((block) => (

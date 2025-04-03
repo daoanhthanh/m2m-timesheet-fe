@@ -10,11 +10,8 @@ import {
 } from "antd";
 import { Sparkles, Loader } from "lucide-react";
 import { useFormBuilder } from "@/hooks";
-import { BaseResponse, Form, FormBlockInstance } from "@/types";
+import { FormBlockInstance } from "@/types";
 import { useNotification } from "@refinedev/core";
-import { useCustom } from "@refinedev/core";
-import { LeaveRequest } from "@/types/calendar";
-import { withBody } from "@/providers/http/request";
 import { endpoints } from "@/providers/endpoints";
 
 const { TextArea } = Input;
@@ -42,18 +39,6 @@ export const AIAssistanceBtn = () => {
     try {
       setLoading(true);
 
-      // const responseText = await withBody<String,  BaseResponse<string>>(
-      //     "POST",
-      //     endpoints.askAI,
-      //     JSON.stringify(userRequest),
-      //     {
-      //       headers: {
-      //         "Content-Type": "text/plain"
-      //       }
-      //     }
-      //
-      // )
-
       const responseText = await fetch(endpoints.askAI, {
         method: "POST",
         credentials: "include",
@@ -64,8 +49,6 @@ export const AIAssistanceBtn = () => {
       });
 
       const resData = await responseText.json();
-
-      console.log("responseText", JSON?.parse(resData.data));
 
       const parsedResponse = JSON?.parse(resData.data);
       const actionType = parsedResponse.actionType;
@@ -196,13 +179,19 @@ export const AIAssistanceBtn = () => {
           }}
         >
           <Button
-            type="primary"
+            type={loading ? "default" : "primary"}
             style={{
               border: "none",
               boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
             }}
           >
-            <Sparkles size={18} />
+            {loading ? (
+              <Spin
+                indicator={<Loader size="15px" className="animate-spin" />}
+              />
+            ) : (
+              <Sparkles size={18} />
+            )}
           </Button>
         </Popover>
       </Tooltip>
