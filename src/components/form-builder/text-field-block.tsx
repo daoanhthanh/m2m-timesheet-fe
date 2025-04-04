@@ -213,13 +213,13 @@ function TextFieldPropertiesComponent({
 
   return (
     <div className="w-full pb-4">
-      <div className="w-full flex flex-row items-center justify-between gap-1 bg-gray-100 h-auto p-1 px-2 mb-[10px]">
-        <span className="text-sm font-medium text-gray-600 tracking-wider">
+      <div className="w-full rounded-[var(--ant-border-radius)] flex flex-row items-center justify-between gap-1 bg-gray-100 h-auto p-1 px-2 mb-[10px]">
+        <p className="text-sm font-medium text-gray-600 tracking-wider">
           {`${t("forms.builder.sidebar.fields.textField.name")} ${
             positionIndex && positionIndex > 1 ? `(${positionIndex})` : ""
           }`}
-        </span>
-        <ChevronDown className="w-4 h-4" />
+        </p>
+        {/*<ChevronDown className="w-4 h-4" />*/}
       </div>
       <Form {...form}>
         <form

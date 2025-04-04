@@ -3,7 +3,7 @@ export * from "./paragraph-block";
 export * from "./radio-select-block";
 export * from "./row-layout-block";
 export * from "./star-rating-block";
-export * from "./text-field";
+export * from "./text-field-block";
 export * from "./text-area-block";
 export * from "./block-btn-element";
 export * from "./builder-drag-overlay";

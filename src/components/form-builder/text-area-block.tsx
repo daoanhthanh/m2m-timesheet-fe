@@ -10,6 +10,7 @@ import { ChevronDown, LetterTextIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Form as AntdForm, Input, Switch, Typography } from "antd";
 import { useFormBuilder } from "@/hooks/use-form-builder";
+import { useTranslation } from "react-i18next";
 
 const blockCategory: FormCategoryType = "Field";
 const blockType: FormBlockType = "TextArea";
@@ -178,6 +179,7 @@ function TextAreaPropertiesComponent({
 }) {
   const block = blockInstance as NewInstance;
   const { updateChildBlock } = useFormBuilder();
+  const { t } = useTranslation();
 
   const [form] = AntdForm.useForm();
 
@@ -204,11 +206,12 @@ function TextAreaPropertiesComponent({
 
   return (
     <div className="w-full pb-4">
-      <div className="w-full flex flex-row items-center justify-between gap-1 bg-gray-100 h-auto p-1 px-2 mb-[10px]">
-        <span className="text-sm font-medium text-gray-600 tracking-wider">
-          Textarea {positionIndex}
-        </span>
-        <ChevronDown className="w-4 h-4" />
+      <div className="w-full rounded-[var(--ant-border-radius)] flex flex-row items-center justify-between gap-1 bg-gray-100 h-auto p-1 px-2 mb-[10px]">
+        <p className="text-sm font-medium text-gray-600 tracking-wider">
+          {/*Textarea {positionIndex}*/}
+          {`${t("forms.builder.sidebar.fields.textarea.name")} ${positionIndex && positionIndex > 1 ? `(${positionIndex})` : ""}`}
+        </p>
+        {/*<ChevronDown className="w-4 h-4" />*/}
       </div>
       <AntdForm
         form={form}

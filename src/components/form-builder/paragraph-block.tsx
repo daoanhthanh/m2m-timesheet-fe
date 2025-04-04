@@ -11,6 +11,7 @@ import {
 import { fontSizeClass, fontWeightClass } from "providers/constants";
 import { z } from "zod";
 import { useFormBuilder } from "@/hooks/use-form-builder";
+import { useTranslation } from "react-i18next";
 
 const blockCategory: FormCategoryType = "Field";
 const blockType: FormBlockType = "Paragraph";
@@ -91,6 +92,7 @@ function ParagraphPropertiesComponent({
 }) {
   const { updateChildBlock } = useFormBuilder();
   const block = blockInstance as NewInstance;
+  const { t } = useTranslation();
 
   const [form] = Form.useForm();
 
@@ -116,10 +118,11 @@ function ParagraphPropertiesComponent({
   return (
     <div className="w-full pb-4">
       <div className="w-full flex flex-row items-center justify-between gap-1 bg-gray-100 h-auto p-1 px-2 mb-[10px]">
-        <span className="text-sm font-medium text-gray-600 tracking-wider">
-          Paragraph {positionIndex}
-        </span>
-        <ChevronDown className="w-4 h-4" />
+        <p className="text-sm font-medium text-gray-600 tracking-wider">
+          {/*Paragraph {positionIndex}*/}
+          {`${t("forms.builder.sidebar.fields.paragraph.name")} ${positionIndex && positionIndex > 1 ? `(${positionIndex})` : ""}`}
+        </p>
+        {/*<ChevronDown className="w-4 h-4" />*/}
       </div>
       <Form
         form={form}

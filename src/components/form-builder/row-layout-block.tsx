@@ -27,6 +27,7 @@ import { cn } from "@/providers/utils";
 import { Button } from "antd";
 import { CopyOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useThemeMode } from "@/hooks";
+import { useTranslation } from "react-i18next";
 
 const blockCategory: FormCategoryType = "Layout";
 const blockType: FormBlockType = "RowLayout";
@@ -68,6 +69,8 @@ function RowLayoutCanvasComponent({
   } = useFormBuilder();
 
   const theme = useThemeMode();
+
+  const { t } = useTranslation();
 
   const [activeBlock, setActiveBlock] = useState<Active | null>(null);
 
@@ -133,6 +136,31 @@ function RowLayoutCanvasComponent({
     updateBlockLayout(blockInstance.id, filteredBlock);
   }
 
+  const PlaceHolder = () => {
+    return (
+      <div
+        className="flex flex-col items-center
+        justify-center border border-dotted
+        border-primary
+        bg-primary/10
+        hover:bg-primary/5
+        w-full h-28
+        text-primary font-medium
+        text-base
+        gap-1
+        "
+      >
+        <p
+          className="
+          text-center text-primary/80
+          "
+        >
+          {t("forms.builder.instructions")}
+        </p>
+      </div>
+    );
+  };
+
   if (draggable.isDragging) return;
   return (
     <div ref={draggable.setNodeRef} className="max-w-full ">
@@ -189,7 +217,7 @@ function RowLayoutCanvasComponent({
                      text-xs bg-primary text-white 
         text-center w-28 p-1 rounded-b-full shadow-md"
                   >
-                    Drag it here
+                    {t("forms.builder.dragHere")}
                   </div>
                 </div>
               )}
@@ -342,31 +370,6 @@ function RowLayoutPropertiesComponent({
           </div>
         ))}
       </div>
-    </div>
-  );
-}
-
-function PlaceHolder() {
-  return (
-    <div
-      className="flex flex-col items-center
-        justify-center border border-dotted
-        border-primary
-        bg-primary/10
-        hover:bg-primary/5
-        w-full h-28
-        text-primary font-medium
-        text-base
-        gap-1
-        "
-    >
-      <p
-        className="
-          text-center text-primary/80
-          "
-      >
-        Drag and drop a block here to get started
-      </p>
     </div>
   );
 }

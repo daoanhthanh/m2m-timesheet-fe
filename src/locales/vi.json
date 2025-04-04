@@ -131,6 +131,8 @@
       "success": "Đơn <i>{{formName}}</i> đã được tạo thành công."
     },
     "builder": {
+      "dragHere": "Kéo thả vào đây",
+      "instructions": "Kéo thả các trường vào đây",
       "sidebar": {
         "searchBlock": "Tìm kiếm thành phần",
         "blockButton": "Thành phần",
@@ -181,7 +183,10 @@
       },
       "properties": {
         "guideline": "Nhấn chuột vào bố cục để chỉnh sửa",
-        "title": "Thuộc tính bố cục"
+        "title": "Thuộc tính bố cục",
+        "radio": {
+          "addOption": "Thêm lựa chọn"
+        }
       }
     }
   },

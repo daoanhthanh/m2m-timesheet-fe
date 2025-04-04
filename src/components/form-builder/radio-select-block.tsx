@@ -10,6 +10,7 @@ import {
 } from "@/types";
 import { useFormBuilder } from "@/hooks/use-form-builder";
 import { z } from "zod";
+import { useTranslation } from "react-i18next";
 
 const blockCategory: FormCategoryType = "Field";
 const blockType: FormBlockType = "RadioSelect";
@@ -164,6 +165,8 @@ function RadioSelectPropertiesComponent({
   const block = blockInstance as NewInstance;
   const { updateChildBlock } = useFormBuilder();
 
+  const { t } = useTranslation();
+
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -187,11 +190,11 @@ function RadioSelectPropertiesComponent({
 
   return (
     <div className="w-full pb-4">
-      <div className="w-full flex flex-row items-center justify-between gap-1 bg-gray-100 h-auto p-1 px-2 mb-[10px]">
-        <span className="text-sm font-medium text-gray-600 tracking-wider">
-          Radio {positionIndex}
-        </span>
-        <ChevronDown className="w-4 h-4" />
+      <div className="w-full rounded-[var(--ant-border-radius)] flex flex-row items-center justify-between gap-1 bg-gray-100 h-auto p-1 px-2 mb-[10px]">
+        <p className="text-sm font-medium text-gray-600 tracking-wider">
+          {`${t("forms.builder.sidebar.fields.radio.name")} ${positionIndex && positionIndex > 1 ? `(${positionIndex})` : ""}`}
+        </p>
+        {/*<ChevronDown className="w-4 h-4" />*/}
       </div>
       <Form
         form={form}
@@ -205,26 +208,28 @@ function RadioSelectPropertiesComponent({
           <Form.List name="options">
             {(fields, { add, remove }) => (
               <>
-                {fields.map(({ key, name, fieldKey }) => (
-                  <div key={key} className="flex items-center gap-2">
+                {fields.map(({ key, name }) => (
+                  <div key={key} className="flex items-center gap-2 my-2">
                     <Form.Item
                       name={name}
-                      fieldKey={fieldKey}
-                      rules={[
-                        { required: true, message: "Option is required" },
-                      ]}
+                      key={key}
+                      rules={[{ required: true }]}
+                      className="mb-0"
                     >
                       <Input />
                     </Form.Item>
+
                     <Button
                       type="link"
+                      size="small"
                       onClick={() => remove(name)}
-                      icon={<X />}
-                    />
+                    >
+                      <X color="var(--ant-red-7)" size={18} />
+                    </Button>
                   </div>
                 ))}
                 <Button type="dashed" onClick={() => add()}>
-                  Add Option
+                  {t("forms.builder.properties.radio.addOption")}
                 </Button>
               </>
             )}
