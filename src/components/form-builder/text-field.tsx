@@ -21,6 +21,7 @@ import { Input, Switch, Typography } from "antd";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormBuilder } from "@/hooks/use-form-builder";
+import { useTranslation } from "react-i18next";
 
 const blockCategory: FormCategoryType = "Field";
 const blockType: FormBlockType = "TextField";
@@ -56,7 +57,8 @@ export const TextFieldBlock: ObjectBlockType = {
   }),
   blockBtnElement: {
     icon: TextCursorInput,
-    label: "Text field",
+    label: "forms.builder.sidebar.fields.textField.name",
+    description: "forms.builder.sidebar.fields.textField.description",
   },
   canvasComponent: TextFieldCanvasComponent,
   formComponent: TextFieldFormComponent,
@@ -176,6 +178,7 @@ function TextFieldPropertiesComponent({
   const block = blockInstance as NewInstance;
 
   const { updateChildBlock } = useFormBuilder();
+  const { t } = useTranslation();
 
   const form = useForm<propertiesValidateSchemaType>({
     resolver: zodResolver(propertiesValidateSchema),
@@ -207,11 +210,14 @@ function TextFieldPropertiesComponent({
       },
     });
   }
+
   return (
     <div className="w-full pb-4">
       <div className="w-full flex flex-row items-center justify-between gap-1 bg-gray-100 h-auto p-1 px-2 mb-[10px]">
         <span className="text-sm font-medium text-gray-600 tracking-wider">
-          TextField {positionIndex}
+          {`${t("forms.builder.sidebar.fields.textField.name")} ${
+            positionIndex && positionIndex > 1 ? `(${positionIndex})` : ""
+          }`}
         </span>
         <ChevronDown className="w-4 h-4" />
       </div>

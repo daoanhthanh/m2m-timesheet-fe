@@ -13,8 +13,8 @@ export const BlockBtnElement = ({
   disabled?: boolean;
 }) => {
   const { icon: Icon, label } = formBlock.blockBtnElement;
-  
-  const {t} = useTranslation();
+
+  const { t } = useTranslation();
 
   const draggable = useDraggable({
     id: `block-btn-${formBlock.blockType}`,

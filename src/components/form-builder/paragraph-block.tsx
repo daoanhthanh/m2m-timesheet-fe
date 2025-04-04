@@ -51,7 +51,8 @@ export const ParagraphBlock: ObjectBlockType = {
   // Button in the UI that allows the user to add a new block
   blockBtnElement: {
     icon: TextIcon,
-    label: "Paragraph",
+    label: "forms.builder.sidebar.fields.paragraph.name",
+    description: "forms.builder.sidebar.fields.paragraph.description",
   },
   canvasComponent: ParagraphCanvasFormComponent,
   formComponent: ParagraphCanvasFormComponent,

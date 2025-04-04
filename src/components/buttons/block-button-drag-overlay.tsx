@@ -11,8 +11,8 @@ export const BlockBtnDragOverlay = ({
 }) => {
   const { icon: Icon, label } = formBlock.blockBtnElement;
 
-  const {t} = useTranslation();
-  
+  const { t } = useTranslation();
+
   return (
     <Button
       className={cn(

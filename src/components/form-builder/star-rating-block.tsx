@@ -48,7 +48,8 @@ export const StarRatingBlock: ObjectBlockType = {
   }),
   blockBtnElement: {
     icon: StarIcon, // Replace with your star icon
-    label: "Star Rating",
+    label: "forms.builder.sidebar.fields.startRating.name",
+    description: "forms.builder.sidebar.fields.startRating.description",
   },
   canvasComponent: StarRatingCanvasComponent,
   formComponent: StarRatingFormComponent,

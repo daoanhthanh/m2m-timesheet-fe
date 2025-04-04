@@ -5,6 +5,7 @@ import { PreviewDialog, PublishFormBtn, SaveFormBtn } from "components/buttons";
 import { MousePointerClickIcon } from "lucide-react";
 import { Layout } from "antd";
 import { cn } from "@/providers/utils";
+import { useTranslation } from "react-i18next";
 
 export const BuilderBlockProperties = () => {
   const { selectedBlockLayout } = useFormBuilder();
@@ -14,6 +15,8 @@ export const BuilderBlockProperties = () => {
     FormBlocks[selectedBlockLayout.blockType]?.propertiesComponent;
 
   const theme = useThemeMode();
+
+  const { t } = useTranslation();
 
   return (
     <Layout.Sider
@@ -48,14 +51,14 @@ export const BuilderBlockProperties = () => {
                         justify-center flex-1 h-full"
           >
             <MousePointerClickIcon />
-            <p>Click the layout to modify block</p>
+            <p>{t("forms.builder.properties.guideline")}</p>
           </div>
         ) : (
           <div className="w-full overflow-y-scroll scrollbar-minimal pt-1">
             <div className="px-2 pt-3 pb-3">
-              <h5 className="text-left font-medium text-sm">
-                Layout Block Properties
-              </h5>
+              <p className="text-left mb-2 font-medium">
+                {t("forms.builder.properties.title")}
+              </p>
 
               {LayoutPropertyBlock && (
                 <LayoutPropertyBlock blockInstance={selectedBlockLayout} />

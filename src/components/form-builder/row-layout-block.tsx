@@ -46,6 +46,7 @@ export const RowLayoutBlock: ObjectBlockType = {
   blockBtnElement: {
     icon: Rows2,
     label: "forms.builder.sidebar.fields.rowLayout.name",
+    description: "forms.builder.sidebar.fields.rowLayout.description",
   },
 
   canvasComponent: RowLayoutCanvasComponent,

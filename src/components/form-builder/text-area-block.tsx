@@ -48,7 +48,8 @@ export const TextAreaBlock: ObjectBlockType = {
   }),
   blockBtnElement: {
     icon: LetterTextIcon, // Replace with your custom icon
-    label: "Textarea",
+    label: "forms.builder.sidebar.fields.textarea.name",
+    description: "forms.builder.sidebar.fields.textarea.description",
   },
   canvasComponent: TextAreaCanvasComponent,
   formComponent: TextAreaFormComponent,

@@ -132,6 +132,7 @@
     },
     "builder": {
       "sidebar": {
+        "searchBlock": "Tìm kiếm thành phần",
         "blockButton": "Thành phần",
         "settingsButton": "Cài đặt",
         "layouts": {
@@ -144,7 +145,30 @@
             "name": "Hàng",
             "description": "Bố cục hàng cho các trường bên trong"
           },
-          "textField": "Trường văn bản",
+          "heading": {
+            "name": "Tiêu đề",
+            "description": "Tiêu đề cho đơn của bạn"
+          },
+          "paragraph": {
+            "name": "Đoạn văn",
+            "description": "Đoạn văn bản mô tả cho đơn của bạn"
+          },
+          "textField": {
+            "name": "Trả lời ngắn",
+            "description": "Trường văn bản đơn giản cho người dùng nhập thông tin"
+          },
+          "textarea": {
+            "name": "Trả lời dài",
+            "description": "Trường văn bản lớn cho người dùng nhập thông tin"
+          },
+          "radio": {
+            "name": "Chọn một",
+            "description": "Trường chọn một trong nhiều lựa chọn"
+          },
+          "startRating": {
+            "name": "Đánh giá",
+            "description": "Trường đánh giá với sao"
+          },
           "numberField": "Trường số",
           "emailField": "Trường email",
           "phoneField": "Trường điện thoại",
@@ -154,6 +178,10 @@
           "checkboxField": "Hộp kiểm",
           "radioButtonField": "Nút radio"
         }
+      },
+      "properties": {
+        "guideline": "Nhấn chuột vào bố cục để chỉnh sửa",
+        "title": "Thuộc tính bố cục"
       }
     }
   },

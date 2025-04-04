@@ -44,7 +44,8 @@ export const RadioSelectBlock: ObjectBlockType = {
 
   blockBtnElement: {
     icon: CircleIcon,
-    label: "Radio",
+    label: "forms.builder.sidebar.fields.radio.name",
+    description: "forms.builder.sidebar.fields.radio.description",
   },
 
   canvasComponent: RadioSelectCanvasComponent,

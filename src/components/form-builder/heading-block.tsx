@@ -57,7 +57,8 @@ export const HeadingBlock: ObjectBlockType = {
   }),
   blockBtnElement: {
     icon: HeadingIcon,
-    label: "Heading",
+    label: "forms.builder.sidebar.fields.heading.name",
+    description: "forms.builder.sidebar.fields.heading.description",
   },
   canvasComponent: HeadingCanvasFormComponent, // Renders the heading block on the canvas
   formComponent: HeadingCanvasFormComponent, // Customize as needed

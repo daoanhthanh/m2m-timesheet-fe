@@ -35,6 +35,7 @@ export type ObjectBlockType = {
   blockBtnElement: {
     icon: React.ElementType;
     label: string;
+    description?: string;
   };
 
   canvasComponent: React.FC<{
