@@ -39,6 +39,7 @@ const FormBlockBox = () => {
       <div className="flex flex-col space-y-3 w-full">
         {layoutBlocks?.length > 0 && (
           <div className="mb-2">
+            
             <p className="font-medium pb-2">
               {t("forms.builder.sidebar.layouts.name")}
             </p>

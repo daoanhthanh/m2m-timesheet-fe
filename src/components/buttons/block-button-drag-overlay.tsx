@@ -2,6 +2,7 @@ import React from "react";
 import { ObjectBlockType } from "@/types";
 import { Button } from "antd";
 import { cn } from "@/providers/utils";
+import { useTranslation } from "react-i18next";
 
 export const BlockBtnDragOverlay = ({
   formBlock,
@@ -10,6 +11,8 @@ export const BlockBtnDragOverlay = ({
 }) => {
   const { icon: Icon, label } = formBlock.blockBtnElement;
 
+  const {t} = useTranslation();
+  
   return (
     <Button
       className={cn(
@@ -34,7 +37,7 @@ export const BlockBtnDragOverlay = ({
           -mt-1 text-gray-600    "
         style={{ fontWeight: 500 }}
       >
-        {label}
+        {t(label)}
       </h5>
     </Button>
   );

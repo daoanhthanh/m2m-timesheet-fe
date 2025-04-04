@@ -3,6 +3,7 @@ import React from "react";
 import { useDraggable } from "@dnd-kit/core";
 import { Button } from "antd";
 import { cn } from "@/providers/utils";
+import { useTranslation } from "react-i18next";
 
 export const BlockBtnElement = ({
   formBlock,
@@ -12,6 +13,8 @@ export const BlockBtnElement = ({
   disabled?: boolean;
 }) => {
   const { icon: Icon, label } = formBlock.blockBtnElement;
+  
+  const {t} = useTranslation();
 
   const draggable = useDraggable({
     id: `block-btn-${formBlock.blockType}`,
@@ -49,7 +52,7 @@ export const BlockBtnElement = ({
           -mt-1 text-gray-600    "
         style={{ fontWeight: 500 }}
       >
-        {label}
+        {t(label)}
       </h5>
     </Button>
   );

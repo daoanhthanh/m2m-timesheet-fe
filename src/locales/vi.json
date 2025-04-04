@@ -140,6 +140,10 @@
         },
         "fields": {
           "name": "Trường",
+          "rowLayout": {
+            "name": "Hàng",
+            "description": "Bố cục hàng cho các trường bên trong"
+          },
           "textField": "Trường văn bản",
           "numberField": "Trường số",
           "emailField": "Trường email",
