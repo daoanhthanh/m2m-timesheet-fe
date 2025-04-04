@@ -6,7 +6,7 @@ import FormSettings from "@/pages/form/components/builder/form-settings";
 import { Layout } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { ThemeMode } from "@/providers/contexts/color-mode";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export type Props = {
   theme: ThemeMode;
@@ -35,8 +35,8 @@ export const FormBuilderSidebar: React.FC<Props> = ({ theme }) => {
 
   const [tab, setTab] = useState<"blocks" | "settings">("blocks");
   const [collapsed, setCollapsed] = useState(false);
-  
-  const {t} = useTranslation();
+
+  const { t } = useTranslation();
 
   return (
     <Sider

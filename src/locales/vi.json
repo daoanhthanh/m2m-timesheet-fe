@@ -135,8 +135,20 @@
         "blockButton": "Thành phần",
         "settingsButton": "Cài đặt",
         "layouts": {
-            "name": "Bố cục",
-            "rowLayout": "Hàng"
+          "name": "Bố cục",
+          "rowLayout": "Hàng"
+        },
+        "fields": {
+          "name": "Trường",
+          "textField": "Trường văn bản",
+          "numberField": "Trường số",
+          "emailField": "Trường email",
+          "phoneField": "Trường điện thoại",
+          "dateField": "Trường ngày tháng",
+          "selectField": "Trường chọn một",
+          "multiSelectField": "Trường chọn nhiều",
+          "checkboxField": "Hộp kiểm",
+          "radioButtonField": "Nút radio"
         }
       }
     }
