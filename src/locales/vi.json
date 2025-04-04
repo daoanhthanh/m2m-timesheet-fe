@@ -129,6 +129,16 @@
       "formName": "Tên đơn",
       "formDescription": "Mô tả",
       "success": "Đơn <i>{{formName}}</i> đã được tạo thành công."
+    },
+    "builder": {
+      "sidebar": {
+        "blockButton": "Thành phần",
+        "settingsButton": "Cài đặt",
+        "layouts": {
+            "name": "Bố cục",
+            "rowLayout": "Hàng"
+        }
+      }
     }
   },
   "common": {
