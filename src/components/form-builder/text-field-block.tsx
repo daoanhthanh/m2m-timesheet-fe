@@ -233,7 +233,7 @@ function TextFieldPropertiesComponent({
               <FormItem className="text-end">
                 <div className="flex items-baseline justify-between w-full gap-2">
                   <FormLabel className="text-[13px]  font-normal">
-                    Label
+                    {t("forms.builder.properties.textField.label")}
                   </FormLabel>
                   <div className=" w-full max-w-[187px]">
                     <FormControl>
@@ -264,7 +264,7 @@ function TextFieldPropertiesComponent({
               <FormItem className="">
                 <div className="flex items-baseline justify-between w-full gap-2">
                   <FormLabel className="text-[13px]  font-normal">
-                    Note
+                    {t("forms.builder.properties.textField.note")}
                   </FormLabel>
                   <div className=" w-full max-w-[187px]">
                     <FormControl>
@@ -283,7 +283,7 @@ function TextFieldPropertiesComponent({
                       className="text-[11px] 
                     mt-2 pl-1"
                     >
-                      Provide a short note to guide users
+                      {t("forms.builder.properties.textField.noteGuideline")}
                     </FormDescription>
                   </div>
                 </div>
@@ -300,7 +300,7 @@ function TextFieldPropertiesComponent({
               <FormItem className="text-end">
                 <div className="flex items-baseline justify-between w-full gap-2">
                   <FormLabel className="text-[13px]  font-normal">
-                    Placeholder
+                    {t("forms.builder.properties.textField.placeHolder")}
                   </FormLabel>
                   <div className="w-full max-w-[187px]">
                     <FormControl>
@@ -330,7 +330,7 @@ function TextFieldPropertiesComponent({
               <FormItem className="text-end">
                 <div className="flex items-center justify-between w-full gap-2">
                   <FormLabel className="text-[13px] font-normal">
-                    Required
+                    {t("forms.builder.properties.textField.required")}
                   </FormLabel>
                   <FormControl>
                     <Switch

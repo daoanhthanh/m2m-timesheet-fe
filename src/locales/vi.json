@@ -179,6 +179,21 @@
           "multiSelectField": "Trường chọn nhiều",
           "checkboxField": "Hộp kiểm",
           "radioButtonField": "Nút radio"
+        },
+        "askAI": {
+          "title": "AI sẽ giúp bạn tạo đơn",
+          "beta": "Thử nghiệm",
+          "generate": "Tạo đơn",
+          "contentPlaceHolder": "Mô tả đơn hoặc những câu hỏi mà bạn muốn AI giúp tạo đơn",
+          "tips": {
+            "show": "Mẹo",
+            "hide": "Ẩn mẹo",
+            "title": "Hãy cho AI biết:",
+            "1": "Đơn này sẽ nói về gì? (vd: Đơn nghỉ phép, đơn yêu cầu hỗ trợ kỹ thuật, ...)",
+            "2": "Đơn này sẽ thu thập những thông tin gì (vd: tên, sđt, email, ...)",
+            "3": "Giọng điệu mà bạn muốn dùng (vd: thân thiện, nghiêm túc, hài hước, ...)",
+            "4": "Bạn muốn có có bao nhiêu câu hỏi"
+          }
         }
       },
       "properties": {
@@ -186,9 +201,20 @@
         "title": "Thuộc tính bố cục",
         "radio": {
           "addOption": "Thêm lựa chọn"
+        },
+        "textField": {
+          "label": "Tiêu đề",
+          "note": "Ghi chú",
+          "noteGuideline": "Cung cấp mô tả ngắn để hướng dẫn người dùng",
+          "placeHolder": "Placeholder",
+          "required": "Bắt buộc"
         }
       }
     }
+  },
+  "errors": {
+    "enterRequest": "Vui lòng nhập yêu cầu",
+    "generateFailed": "Tạo đơn thất bại"
   },
   "common": {
     "phoneNumber": "Số điện thoại",

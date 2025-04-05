@@ -13,12 +13,13 @@ import { useFormBuilder } from "@/hooks";
 import { FormBlockInstance } from "@/types";
 import { useNotification } from "@refinedev/core";
 import { endpoints } from "@/providers/endpoints";
+import { useTranslation } from "react-i18next";
 
 const { TextArea } = Input;
 const { Text } = Typography;
 
 export const AIAssistanceBtn = () => {
-  const { formData, blockLayouts, setBlockLayouts } = useFormBuilder();
+  const { formData, setBlockLayouts } = useFormBuilder();
   const [userRequest, setUserRequest] = useState("");
   const [loading, setLoading] = useState(false);
   const [popoverVisible, setPopoverVisible] = useState(false);
@@ -26,13 +27,15 @@ export const AIAssistanceBtn = () => {
 
   const isPublished = formData?.published;
 
+  const { t } = useTranslation();
+
   const { open } = useNotification();
 
   const GenerateFormQuestionsWithAI = async () => {
     if (!userRequest) {
       open?.({
         type: "error",
-        message: "Please enter a request",
+        message: t("errors.enterRequest"),
       });
       return;
     }
@@ -71,7 +74,7 @@ export const AIAssistanceBtn = () => {
       console.log(error, "error");
       open?.({
         type: "error",
-        message: "Failed to generate summary",
+        message: t("errors.generateFailed"),
       });
     } finally {
       setLoading(false);
@@ -93,7 +96,7 @@ export const AIAssistanceBtn = () => {
         value={userRequest}
         rows={4}
         readOnly={isPublished}
-        placeholder="Describe the form or questions you want to generate with AI..."
+        placeholder={t("forms.builder.sidebar.askAI.contentPlaceHolder")}
         onChange={(e) => setUserRequest(e.target.value)}
         style={{ marginBottom: "16px" }}
       />
@@ -109,7 +112,9 @@ export const AIAssistanceBtn = () => {
           onClick={() => setShowTips(!showTips)}
           style={{ cursor: "pointer" }}
         >
-          {showTips ? "Hide tips" : "Tips"}
+          {showTips
+            ? t("forms.builder.sidebar.askAI.tips.hide")
+            : t("forms.builder.sidebar.askAI.tips.show")}
         </Text>
         <Button
           type="primary"
@@ -117,7 +122,7 @@ export const AIAssistanceBtn = () => {
           disabled={loading || isPublished}
           icon={<Sparkles size={18} />}
         >
-          Generate
+          {t("forms.builder.sidebar.askAI.generate")}
           {loading && (
             <Spin indicator={<Loader size="15px" className="animate-spin" />} />
           )}
@@ -133,21 +138,15 @@ export const AIAssistanceBtn = () => {
             padding: "16px",
           }}
         >
-          <p className="font-bold">Let the AI know:</p>
+          <p className="font-bold">
+            {t("forms.builder.sidebar.askAI.tips.title")}
+          </p>
 
           <ul className="pl-4 list-disc space-y-2">
-            <li>
-              What form you want it to create (e.g., a booking form for a
-              hotel)?
-            </li>
-            <li>
-              What information you'd like to collect (e.g., email, name,
-              description)?
-            </li>
-            <li>
-              What tone you'd like the questions in (e.g., formal, informal)?
-            </li>
-            <li>How many questions do you want to ask?</li>
+            <li>{t("forms.builder.sidebar.askAI.tips.1")}</li>
+            <li>{t("forms.builder.sidebar.askAI.tips.2")}</li>
+            <li>{t("forms.builder.sidebar.askAI.tips.3")}</li>
+            <li>{t("forms.builder.sidebar.askAI.tips.4")}</li>
           </ul>
         </Collapse>
       )}
@@ -162,9 +161,9 @@ export const AIAssistanceBtn = () => {
           placement="rightTop"
           title={
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Text>Ask to generate form or questions</Text>
+              <Text>{t("forms.builder.sidebar.askAI.title")}</Text>
               <Text type="secondary" style={{ fontSize: "12px" }}>
-                Beta
+                {t("forms.builder.sidebar.askAI.beta")}
               </Text>
             </div>
           }

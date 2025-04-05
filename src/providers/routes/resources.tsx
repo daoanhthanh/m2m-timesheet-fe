@@ -1,5 +1,6 @@
 import {
   ClockCircleOutlined,
+  FileTextOutlined,
   OpenAIOutlined,
   UserOutlined,
 } from "@ant-design/icons";
@@ -25,7 +26,7 @@ const resources: ResourceProps[] = [
     edit: "/forms/builder/:id",
     meta: {
       label: "Đơn từ",
-      icon: <OpenAIOutlined />,
+      icon: <FileTextOutlined />,
     },
   },
   {
