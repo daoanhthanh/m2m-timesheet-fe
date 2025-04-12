@@ -11,7 +11,7 @@ import {
 // import { Label } from "@/components/ui/label";
 // import { cn } from "@/providers/lib";
 import { Typography } from "antd";
-import { cn } from "@/providers/utils";
+import { cn } from "@/utils";
 
 const Form = FormProvider;
 

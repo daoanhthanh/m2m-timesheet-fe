@@ -1,4 +1,4 @@
-import { cn } from "@/providers/utils";
+import { cn } from "@/utils";
 import { Button, Input, Divider, Skeleton, Layout } from "antd";
 import * as React from "react";
 import { PanelLeft } from "lucide-react";

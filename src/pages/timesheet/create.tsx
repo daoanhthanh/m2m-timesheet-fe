@@ -6,7 +6,7 @@ import { LeaveRequestForm } from "types/calendar";
 import dayjs, { type Dayjs } from "dayjs";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { fakeAvailableLeaveTypes } from "providers/fake-provider-data";
+import { fakeAvailableLeaveTypes } from "@/utils/fake-provider-data";
 import { calculateLeaveHour } from "services";
 
 export const LeaveRequestCreate = () => {

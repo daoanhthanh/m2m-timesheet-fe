@@ -12,7 +12,7 @@ import { Sparkles, Loader } from "lucide-react";
 import { useFormBuilder } from "@/hooks";
 import { FormBlockInstance } from "@/types";
 import { useNotification } from "@refinedev/core";
-import { endpoints } from "@/providers/endpoints";
+import { endpoints } from "@/utils/endpoints";
 import { useTranslation } from "react-i18next";
 
 const { TextArea } = Input;

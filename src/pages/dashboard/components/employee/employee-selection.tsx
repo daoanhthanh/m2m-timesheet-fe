@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { Select } from "antd";
-import User from "types/user";
+import { AuthUser, User, Guid } from "types/user";
 import { get } from "providers/http/request";
-import { endpoints } from "providers/endpoints";
+import { endpoints } from "@/utils/endpoints";
 import { Pagination } from "types";
 import styles from "./styles.module.css";
 
 export interface EmProps {
-  currentUserId: string;
+  currentUserId: Guid;
   currentUserName: string;
 }
 
 interface OptionType {
   label: string;
-  value: string;
+  value: number | string;
 }
 
 export default function EmployeeSelection(props: EmProps) {

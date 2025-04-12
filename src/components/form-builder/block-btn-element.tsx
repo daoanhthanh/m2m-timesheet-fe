@@ -2,7 +2,7 @@ import { ObjectBlockType } from "types";
 import React from "react";
 import { useDraggable } from "@dnd-kit/core";
 import { Button } from "antd";
-import { cn } from "@/providers/utils";
+import { cn } from "@/utils";
 import { useTranslation } from "react-i18next";
 
 export const BlockBtnElement = ({
@@ -43,7 +43,7 @@ export const BlockBtnElement = ({
       {...draggable.attributes}
     >
       <Icon
-        className="!w-8 !h-8 
+        className="!w-8 !h-8
         !stroke-[0.9]
           !cursor-grab"
       />

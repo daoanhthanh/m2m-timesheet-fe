@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import {
   getBadgeColorFromLRStatus,
   getBadgeIconFromLRStatus,
-} from "providers/utils/get-badge-color-from-lr-status";
+} from "@/utils/get-badge-color-from-lr-status";
 import dayjs from "dayjs";
 
 export const LeaveRequestShow: React.FC = () => {

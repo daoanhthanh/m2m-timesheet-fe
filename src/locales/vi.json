@@ -212,6 +212,50 @@
       }
     }
   },
+  "employees": {
+    "entity": "nhân viên",
+    "title": "Nhân viên",
+    "exportButton": "Xuất danh sách",
+    "importButton": "Nhập danh sách",
+    "fields": {
+      "name": "Tên nhân viên",
+      "email": "Email",
+      "phoneNumber": "Số điện thoại",
+      "department": "Phòng ban",
+      "position": "Chức vụ"
+    },
+    "create": {
+      "addBtn": "Thêm nhân viên",
+      "addAction": "Thêm",
+      "fullName": "Họ và tên",
+      "dob": "Sinh nhật",
+      "phoneNumber": "Số điện thoại",
+      "gender": "Giới tính",
+      "genderMale": "Nam",
+      "genderFemale": "Nữ",
+      "taxCode": "Mã số thuế",
+      "emailValidation": "Hãy nhập địa chỉ email hợp lệ",
+      "note": "Ghi chú",
+      "acronym": "Tên viết tắt",
+      "password": "Mật khẩu",
+      "repeatPassword": "Nhập lại mật khẩu",
+      "name": "Tên",
+      "title": "Chức danh",
+      "color": "Màu sắc",
+      "language": "Ngôn ngữ",
+      "timezone": "Múi giờ",
+      "active": "Kích hoạt",
+      "systemAccount": "Tài khoản hệ thống",
+      "requestNewPassword": "Yêu cầu mật khẩu mới",
+      "refreshPassword": "Tạo lại mật khẩu",
+      "copyToClipboard": "Sao chép vào clipboard",
+      "sendPWEmail": "Email mật khẩu",
+      "sendPWEmailTooltip": "Gửi mật khẩu đến email của nhân viên sau khi tạo thành công",
+      "activeTooltip": "Người dùng bị vô hiệu hóa, không thể đăng nhập và bị ẩn trong báo cáo và hộp chọn",
+      "systemAccountTooltip": "Sẽ bị ẩn trong báo cáo và danh sách thả xuống",
+      "requestNewPasswordTooltip": "Lần tiếp theo người dùng đăng nhập, họ phải nhập mật khẩu mới"
+    }
+  },
   "errors": {
     "enterRequest": "Vui lòng nhập yêu cầu",
     "generateFailed": "Tạo đơn thất bại"

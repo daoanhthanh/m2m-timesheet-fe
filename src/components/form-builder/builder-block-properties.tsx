@@ -4,7 +4,7 @@ import { FormBlocks } from "@/types";
 import { PreviewDialog, PublishFormBtn, SaveFormBtn } from "components/buttons";
 import { MousePointerClickIcon } from "lucide-react";
 import { Layout } from "antd";
-import { cn } from "@/providers/utils";
+import { cn } from "@/utils";
 import { useTranslation } from "react-i18next";
 
 export const BuilderBlockProperties = () => {

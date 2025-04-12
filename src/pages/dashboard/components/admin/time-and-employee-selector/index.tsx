@@ -4,12 +4,12 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import styles from "./styles.module.css";
 import EmployeeSelection from "../../employee/employee-selection";
 import { useGetIdentity } from "@refinedev/core";
-import User from "types/user";
+import { AuthUser } from "types/user";
 
 const TimeAndEmployeeSelector = () => {
   const currentYear = new Date().getFullYear();
 
-  const { data } = useGetIdentity<User>();
+  const { data } = useGetIdentity<AuthUser>();
 
   const [year, setYear] = useState(currentYear);
 
@@ -34,8 +34,8 @@ const TimeAndEmployeeSelector = () => {
           disabled={year >= currentYear}
         />
         <EmployeeSelection
-          currentUserId={data!.id}
-          currentUserName={data!.userFullName}
+          currentUserId={data!.identifier}
+          currentUserName={data!.name}
         />
       </Col>
       <Col>

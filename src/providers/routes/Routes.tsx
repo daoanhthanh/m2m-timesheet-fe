@@ -16,7 +16,7 @@ import "@refinedev/antd/dist/reset.css";
 import {
   EmployeeCreate,
   EmployeeEdit,
-  EmployeeList,
+  EmployeeListWrapper,
   EmployeeShow,
 } from "pages/employee";
 import { Title } from "components/title";
@@ -81,8 +81,15 @@ const Routes = () => {
 
         <Route path="/forms/builder/:formId" element={<FormBuilderPage />} />
 
-        <Route path="/employees">
-          <Route index element={<EmployeeList />} />
+        <Route
+          path="/employees"
+          element={
+            <EmployeeListWrapper>
+              <Outlet />
+            </EmployeeListWrapper>
+          }
+        >
+          <Route index element={null} />
           <Route path="create" element={<EmployeeCreate />} />
           <Route path="edit/:id" element={<EmployeeEdit />} />
           <Route path="show/:id" element={<EmployeeShow />} />

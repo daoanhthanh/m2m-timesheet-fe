@@ -6,10 +6,10 @@ import {
   useDroppable,
 } from "@dnd-kit/core";
 import { useFormBuilder } from "@/hooks";
-import { allBlockLayouts } from "@/providers/constants";
+import { allBlockLayouts } from "@/utils/constants";
 import { FormBlockInstance, FormBlocks, FormBlockType } from "@/types";
-import { generateUniqueId } from "@/providers/uuid-v4";
-import { cn } from "@/providers/utils";
+import { generateUniqueId } from "@/utils/uuid-v4";
+import { cn } from "@/utils";
 
 export const BuilderCanvas = () => {
   const {

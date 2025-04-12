@@ -1,11 +1,13 @@
-import { generateUniqueId } from "@/providers/utils";
+import { generateUniqueId } from "@/utils";
+import { defaultBackgroundColor, defaultPrimaryColor } from "@/utils/constants";
 import {
-  defaultBackgroundColor,
-  defaultPrimaryColor,
-} from "@/providers/constants";
-import { FormCreation, FormRequest, FormSettingsRequest, User } from "@/types";
+  FormCreation,
+  FormRequest,
+  FormSettingsRequest,
+  AuthUser,
+} from "@/types";
 
-export const createFormRequest = (data: FormCreation, creator: User) => {
+export const createFormRequest = (data: FormCreation, creator: AuthUser) => {
   const jsonBlocks = JSON.stringify([
     {
       id: generateUniqueId(),
@@ -50,7 +52,7 @@ export const createFormRequest = (data: FormCreation, creator: User) => {
     views: 0,
     published: false,
     creatorId: creator.id,
-    creatorName: creator.userFullName || "",
+    creatorName: creator.name || "",
     settings: formSettings,
   };
 

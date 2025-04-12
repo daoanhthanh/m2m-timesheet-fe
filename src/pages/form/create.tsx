@@ -6,7 +6,7 @@ import { Form, Input, Modal } from "antd";
 import { Form as FormType } from "types/form";
 
 import { useGetIdentity, useNavigation } from "@refinedev/core";
-import { FormCreation, User } from "types";
+import { FormCreation, AuthUser } from "types";
 import { useTranslation } from "react-i18next";
 import { createFormRequest } from "@/services/form/form-services";
 
@@ -15,7 +15,7 @@ export const FormCreate = () => {
     redirect: false,
   });
 
-  const { data: creator } = useGetIdentity<User>();
+  const { data: creator } = useGetIdentity<AuthUser>();
   const { t } = useTranslation();
   const { list, edit } = useNavigation();
 

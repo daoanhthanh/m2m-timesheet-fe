@@ -11,7 +11,7 @@ import ChildCanvasComponentWrapper from "./child-canvas-component-wrapper";
 import ChildFormComponentWrapper from "./child-form-component-wrapper";
 import ChildPropertiesComponentWrapper from "./child-properties-component-wrapper";
 import { Card, CardContent, CardFooter } from "components";
-import { allBlockLayouts } from "providers/constants";
+import { allBlockLayouts } from "@/utils/constants";
 import {
   Active,
   DragEndEvent,
@@ -22,8 +22,8 @@ import {
 import { GripHorizontal, Rows2, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useFormBuilder } from "@/hooks/use-form-builder";
-import { generateUniqueId } from "@/providers/uuid-v4";
-import { cn } from "@/providers/utils";
+import { generateUniqueId } from "@/utils/uuid-v4";
+import { cn } from "@/utils";
 import { Button } from "antd";
 import { CopyOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useThemeMode } from "@/hooks";
@@ -169,7 +169,7 @@ function RowLayoutCanvasComponent({
       <Card
         ref={droppable.setNodeRef}
         className={cn(
-          `!w-full relative border 
+          `!w-full relative border
         shadow-sm min-h-[120px] max-w-[768px] rounded-md !p-0`,
           theme === "light"
             ? "bg-[var(--main-component-background-light)]"
@@ -209,12 +209,12 @@ function RowLayoutCanvasComponent({
               activeBlock?.data?.current?.isBlockBtnElement &&
               droppable.isOver && (
                 <div
-                  className="relative border border-dotted 
+                  className="relative border border-dotted
                 border-primary bg-primary/10 w-full h-28"
                 >
                   <div
                     className="absolute left-1/2 top-0 -translate-x-1/2
-                     text-xs bg-primary text-white 
+                     text-xs bg-primary text-white
         text-center w-28 p-1 rounded-b-full shadow-md"
                   >
                     {t("forms.builder.dragHere")}
@@ -228,8 +228,8 @@ function RowLayoutCanvasComponent({
               <div
                 className="
                       flex w-full flex-col
-                       items-center 
-                       justify-start 
+                       items-center
+                       justify-start
                        gap-4 py-4 px-3"
               >
                 {childBlocks?.map((childBlock) => (
@@ -329,7 +329,7 @@ function RowLayoutFormComponent({
                 <div
                   key={childBlock.id}
                   className="flex items-center
-                        justify-center 
+                        justify-center
                         gap-1 h-auto w-full"
                 >
                   <ChildFormComponentWrapper

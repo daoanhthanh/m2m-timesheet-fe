@@ -142,7 +142,7 @@ export const FormListPageWrapper: React.FC<React.PropsWithChildren> = ({
                 accept=".xlsx"
                 onSubmit={() => console.log("submitted")}
                 label="Nhập danh sách"
-                mockedFile="mau_file_nhan_vien.xlsx"
+                template="mau_file_nhan_vien.xlsx"
               />
             </Space>
           );

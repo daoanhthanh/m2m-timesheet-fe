@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Popover as AntdPopover } from "antd";
 
-import { cn } from "providers/lib";
+import { cn } from "utils";
 
 const Popover = ({
   children,
@@ -20,19 +20,23 @@ const PopoverTrigger = React.forwardRef<
 ));
 PopoverTrigger.displayName = "PopoverTrigger";
 
-const PopoverAnchor = ({ children }: { children: React.ReactNode }) => (
-  <>{children}</>
-);
+// const PopoverAnchor = ({ children }: { children: React.ReactNode }) => (
+//   <>{children}</>
+// );
+//
+// const PopoverContent = ({
+//   content,
+//   className,
+//   ...props
+// }: React.ComponentPropsWithoutRef<typeof AntdPopover>) => (
+//   <Popover
+//     content={<div className={cn("p-4", className)}>{content}</div>}
+//     {...props}
+//   />
+// );
 
-const PopoverContent = ({
-  content,
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof AntdPopover>) => (
-  <Popover
-    content={<div className={cn("p-4", className)}>{content}</div>}
-    {...props}
-  />
-);
-
-export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor };
+export {
+  Popover,
+  PopoverTrigger,
+  // , PopoverContent, PopoverAnchor
+};

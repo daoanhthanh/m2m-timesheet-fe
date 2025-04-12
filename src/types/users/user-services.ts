@@ -1,6 +1,6 @@
 import { ChangePwRequest } from "types/user";
 import { post } from "providers/http/request";
-import { endpoints } from "providers/endpoints";
+import { endpoints } from "@/utils/endpoints";
 import { OpenNotificationParams } from "@refinedev/core";
 
 export const changePassword = async (

@@ -1,9 +1,9 @@
 import { BaseResponse, Form, FormBlockInstance } from "types";
-import { generateUniqueId } from "providers/uuid-v4";
+import { generateUniqueId } from "@/utils/uuid-v4";
 import { useParams } from "react-router-dom";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { get } from "@/providers/http/request";
-import { API_URL } from "providers/endpoints";
+import { API_URL } from "@/utils/endpoints";
 
 type FormBuilderContextType = {
   loading: boolean;

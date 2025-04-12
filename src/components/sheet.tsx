@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Drawer } from "antd";
 import { X } from "lucide-react";
-import { cn } from "@/providers/utils";
+import { cn } from "@/utils";
 
 // Replace SheetPrimitive with Drawer
 const Sheet = ({

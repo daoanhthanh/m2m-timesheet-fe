@@ -6,7 +6,11 @@ import ImgCrop from "antd-img-crop";
 
 type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 
-const UploadAvatarButton: React.FC = () => {
+type Props = {
+  className?: string;
+};
+
+export const UploadAvatarButton: React.FC<Props> = ({ className }) => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
 
   const onChange: UploadProps["onChange"] = ({ fileList }) => {
@@ -30,19 +34,19 @@ const UploadAvatarButton: React.FC = () => {
   };
 
   return (
-    <ImgCrop rotationSlider cropShape={"round"}>
-      <Upload
-        action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-        listType="picture-circle"
-        fileList={fileList}
-        multiple={false}
-        onChange={onChange}
-        onPreview={onPreview}
-      >
-        {fileList.length ? "+ Ảnh khác" : "+ Thêm ảnh"}
-      </Upload>
-    </ImgCrop>
+    <div className={className}>
+      <ImgCrop rotationSlider cropShape={"round"}>
+        <Upload
+          action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+          listType="picture-circle"
+          fileList={fileList}
+          multiple={false}
+          onChange={onChange}
+          onPreview={onPreview}
+        >
+          {fileList.length ? "+ Ảnh khác" : "+ Thêm ảnh"}
+        </Upload>
+      </ImgCrop>
+    </div>
   );
 };
-
-export default UploadAvatarButton;

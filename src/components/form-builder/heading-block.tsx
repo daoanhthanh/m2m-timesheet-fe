@@ -8,7 +8,7 @@ import {
   FormCategoryType,
   ObjectBlockType,
 } from "types";
-import { fontSizeClass, fontWeightClass } from "providers/constants";
+import { fontSizeClass, fontWeightClass } from "@/utils/constants";
 import { useFormBuilder } from "@/hooks/use-form-builder";
 import { useTranslation } from "react-i18next";
 

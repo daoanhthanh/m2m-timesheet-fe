@@ -3,8 +3,8 @@ import { AnnualLeaveRemainder, AvailableLeaveType } from "types";
 import { GetOneResponse } from "@refinedev/core";
 
 export const fakeUser: User = {
-  id: "1",
-  userID: "admin",
+  id: 1,
+  // userID: 1,
   userFullName: "Admin",
   userLastName: "Admin",
   role: Role.Admin,

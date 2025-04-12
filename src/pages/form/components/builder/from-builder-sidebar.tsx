@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SidebarContent } from "./sidebar-components";
-import { cn } from "@/providers/utils";
+import { cn } from "@/utils";
 import FormBlockBox from "@/pages/form/components/builder/form-block-box";
 import FormSettings from "@/pages/form/components/builder/form-settings";
 import { Layout } from "antd";

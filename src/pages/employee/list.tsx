@@ -15,36 +15,45 @@ import { User } from "types";
 import Avatar from "components/avatar";
 
 import styles from "./styles.module.css";
+import * as React from "react";
+import { useTranslation } from "react-i18next";
 
-export const EmployeeList = () => {
+export const EmployeeListWrapper: React.FC<React.PropsWithChildren> = ({
+  children,
+}) => {
   const { tableProps } = useTable<User>();
+  const { t } = useTranslation();
 
   return (
     <div className={"page-container"}>
       <List
+        breadcrumb={null}
         headerButtons={() => {
           return (
             <Space>
               <FileHandleButton
                 type={"Export"}
-                entity={"nhân viên"}
+                entity={t("employees.entity")}
                 onSubmit={() => console.log("submitted")}
-                label={"Xuất danh sách"}
+                label={t("employees.exportButton")}
               />
 
               <FileHandleButton
                 type="Import"
-                entity="nhân viên"
+                entity={t("employees.entity")}
                 accept=".xlsx"
                 onSubmit={() => console.log("submitted")}
-                label="Nhập danh sách"
-                mockedFile="mau_file_nhan_vien.xlsx"
+                label={t("employees.importButton")}
+                template="mau_file_nhan_vien.xlsx"
               />
             </Space>
           );
         }}
         title={
-          <AddRecordButton entity="employees" buttonText="Thêm nhân viên nha" />
+          <AddRecordButton
+            entity="employees"
+            buttonText={t("employees.create.addBtn")}
+          />
         }
       >
         {/*@ts-ignore*/}
@@ -96,6 +105,7 @@ export const EmployeeList = () => {
           />
         </Table>
       </List>
+      {children}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { FC, memo } from "react";
 import type { AvatarProps } from "antd";
 import { Avatar as AntdAvatar } from "antd";
 
-import { getNameInitials, getRandomColorFromString } from "providers/utils";
+import { getNameInitials, getRandomColorFromString } from "@/utils";
 
 type Props = AvatarProps & {
   userName?: string;

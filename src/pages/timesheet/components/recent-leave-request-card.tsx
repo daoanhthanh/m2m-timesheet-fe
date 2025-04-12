@@ -37,8 +37,13 @@ export const RecentLeaveRequestCard: React.FC<RecentLeaveRequestProps> = ({
   const { t } = useTranslation();
 
   const { data, isLoading } = useCustom<BaseResponse<LeaveRequest[]>>({
-    url: "/timesheets/recent-leave-request",
+    url: "/timesheets/recent-leave-requests",
     method: "get",
+    config: {
+      query: {
+        count: 6,
+      },
+    },
   });
 
   const leaveRequests = data?.data.data || [];

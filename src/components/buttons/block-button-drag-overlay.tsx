@@ -1,7 +1,7 @@
 import React from "react";
 import { ObjectBlockType } from "@/types";
 import { Button } from "antd";
-import { cn } from "@/providers/utils";
+import { cn } from "@/utils";
 import { useTranslation } from "react-i18next";
 
 export const BlockBtnDragOverlay = ({
@@ -28,7 +28,7 @@ export const BlockBtnDragOverlay = ({
       )}
     >
       <Icon
-        className="!w-8 !h-8 
+        className="!w-8 !h-8
         !stroke-[0.9]
           !cursor-grab"
       />

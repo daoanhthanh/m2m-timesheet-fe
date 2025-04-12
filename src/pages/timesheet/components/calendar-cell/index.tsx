@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import "./index.scss";
 import type { PresetStatusColorType } from "antd/es/_util/colors";
 import type { CellRenderInfo } from "rc-picker/lib/interface";
-import getMonthName from "providers/month-list";
+import getMonthName from "@/utils/month-list";
 import { twMerge } from "tailwind-merge";
 import { useThemeMode } from "hooks";
 

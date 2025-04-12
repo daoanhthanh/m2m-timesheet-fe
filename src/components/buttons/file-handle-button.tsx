@@ -9,16 +9,16 @@ import Index from "components/warning-content";
 import styles from "./buttons.module.css";
 import { useNotification } from "@refinedev/core";
 import { get } from "providers/http/request";
-import { endpoints } from "providers/endpoints";
+import { endpoints } from "@/utils/endpoints";
 
 export type FileHandleButtonProps = {
   type: "Export" | "Import";
-  entity: "nhân viên";
+  entity: string;
   onSubmit: (file: File) => void;
   accept?: string;
   multiple?: boolean;
   label?: string;
-  mockedFile?: string;
+  template?: string;
   body?: ReactNode;
 };
 
@@ -28,7 +28,7 @@ const FileHandleButton: FC<FileHandleButtonProps> = ({
   accept,
   multiple,
   label,
-  mockedFile,
+  template,
   body,
 }) => {
   const [openFileModal, setOpenFileModal] = useState(false);
@@ -75,8 +75,8 @@ const FileHandleButton: FC<FileHandleButtonProps> = ({
 
   const downloadTemplate = async () => {
     await get(
-      mockedFile
-        ? endpoints.downloadFile(mockedFile)
+      template
+        ? endpoints.downloadFile(template)
         : endpoints.downloadFile("mau_file_khach_hang.xlsx"),
     );
   };

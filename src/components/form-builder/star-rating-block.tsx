@@ -8,7 +8,7 @@ import {
   HandleBlurFunc,
   ObjectBlockType,
 } from "types";
-import { defaultPrimaryColor } from "providers/constants";
+import { defaultPrimaryColor } from "@/utils/constants";
 import { Form, Input, Switch, Typography } from "antd";
 
 import "@smastrom/react-rating/style.css";

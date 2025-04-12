@@ -17,9 +17,9 @@ import "@refinedev/antd/dist/reset.css";
 import resources from "providers/routes/resources";
 import React from "react";
 import Banner from "components/banner";
-import authProvider from "providers/auth-provider";
+import authProvider from "@/providers/auth-provider";
 import Routes from "providers/routes/Routes";
-import dataProvider from "providers/data-provider";
+import dataProvider from "@/providers/data-provider";
 import { ColorModeContextProvider } from "providers/contexts/color-mode";
 
 const App: React.FC = () => {

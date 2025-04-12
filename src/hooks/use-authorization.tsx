@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import User from "types/user";
+import { User } from "types/user";
 
 const useAuthorization = (): User | null => {
   const [loginData, setLoginData] = useState<User | null>(null);

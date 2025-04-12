@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Tooltip as AntdTooltip } from "antd";
-import { cn } from "@/providers/utils";
+import { cn } from "@/utils";
 
 const TooltipProvider = ({ children }: { children: React.ReactNode }) => (
   <>{children}</>

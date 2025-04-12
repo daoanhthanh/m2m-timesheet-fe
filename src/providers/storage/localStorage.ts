@@ -1,10 +1,10 @@
-import User from "types/user";
+import { AuthUser } from "types/user";
 
-export const saveUserSession = (user: User) => {
+export const saveUserSession = (user: AuthUser) => {
   localStorage.setItem("user", JSON.stringify(user));
 };
 
-export const getUserSession = (): User | null => {
+export const getUserSession = (): AuthUser | null => {
   const user = localStorage.getItem("user");
   if (user) {
     return JSON.parse(user);

@@ -1,11 +1,14 @@
 import { AuthProvider } from "@refinedev/core";
-import { endpoints } from "providers/endpoints";
-import { BaseResponse, Role, User } from "types";
-import { clearSession, saveUserSession } from "providers/storage/localStorage";
-import { get, post } from "providers/http/request";
+import { endpoints } from "@/utils/endpoints";
+import { AuthUser, BaseResponse, Role, User } from "@/types";
+import {
+  clearSession,
+  saveUserSession,
+} from "@/providers/storage/localStorage";
+import { get, post } from "@/providers/http/request";
 
 const checkMe = async () => {
-  const maybeMe = await get<BaseResponse<User>>(endpoints.me);
+  const maybeMe = await get<BaseResponse<AuthUser>>(endpoints.me);
 
   if (maybeMe.isFails()) {
     return null;
@@ -58,7 +61,10 @@ const authProvider: AuthProvider = {
       password,
     };
 
-    const response = await post<any, User>(endpoints.login, body);
+    const response = await post<any, BaseResponse<AuthUser>>(
+      endpoints.login,
+      body,
+    );
 
     if (response.isFails()) {
       const message = response.getErrorMessage();
@@ -71,7 +77,7 @@ const authProvider: AuthProvider = {
       };
     }
 
-    const me = response.data();
+    const me = response.data().data!;
 
     saveUserSession(me);
     return {

@@ -6,13 +6,13 @@ import { LogoutOutlined, SettingOutlined } from "@ant-design/icons";
 import { Button, Popover, Space } from "antd";
 
 import { Text } from "components";
-import User from "types/user";
+import { AuthUser } from "types/user";
 import Avatar from "components/avatar";
 import ChangePasswordModal from "components/change-password";
 
 export const CurrentUser: React.FC = () => {
   const [openChangePw, setOpenChangePw] = useState(false);
-  const { data: user } = useGetIdentity<User>();
+  const { data: user } = useGetIdentity<AuthUser>();
   const { mutate: logout } = useLogout();
 
   const content = (
@@ -28,7 +28,7 @@ export const CurrentUser: React.FC = () => {
           padding: "12px 20px",
         }}
       >
-        {user?.userFullName}
+        {user?.name}
       </Text>
       <div
         style={{
@@ -65,16 +65,24 @@ export const CurrentUser: React.FC = () => {
   return (
     <div style={{ display: "flex" }}>
       <Space style={{ marginLeft: "8px" }} size="middle">
-        <Text strong>{user?.userLastName}</Text>
+        <Text strong>{user?.name}</Text>
         <Popover
           placement="bottomRight"
           content={content}
           trigger="click"
-          overlayInnerStyle={{ padding: 0 }}
-          overlayStyle={{ zIndex: 999 }}
+          styles={{
+            body: {
+              padding: 0,
+            },
+            root: {
+              zIndex: 999,
+            },
+          }}
+          // overlayInnerStyle={{ padding: 0 }}
+          // overlayStyle={{ zIndex: 999 }}
         >
           <Avatar
-            userName={user?.userLastName}
+            userName={user?.name}
             src={user?.avatarUrl}
             size="default"
             style={{ cursor: "pointer" }}
