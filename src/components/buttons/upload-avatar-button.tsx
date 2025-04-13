@@ -3,19 +3,36 @@ import React, { useState } from "react";
 import type { GetProp, UploadFile, UploadProps } from "antd";
 import { Upload } from "antd";
 import ImgCrop from "antd-img-crop";
+import { endpoints } from "@/utils/endpoints";
+import { useTranslation } from "react-i18next";
 
 type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 
 type Props = {
   className?: string;
+  onUploadSuccess?: (file: UploadFile) => void;
 };
 
-export const UploadAvatarButton: React.FC<Props> = ({ className }) => {
+export const UploadAvatarButton: React.FC<Props> = ({
+  className,
+  onUploadSuccess,
+}) => {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
 
-  const onChange: UploadProps["onChange"] = ({ fileList }) => {
+  const { t } = useTranslation();
+
+  const onChange: UploadProps["onChange"] = async ({ fileList }) => {
     fileList = fileList.slice(-1);
     setFileList(fileList);
+
+    // Handle the response from the backend
+    const lastFile = fileList[0];
+    if (lastFile?.status === "done" && lastFile.response?.data.atp) {
+      // console.log("Temporary Avatar Path:", lastFile.response.data.atp);
+      if (onUploadSuccess) {
+        onUploadSuccess(lastFile);
+      }
+    }
   };
 
   const onPreview = async (file: UploadFile) => {
@@ -37,14 +54,18 @@ export const UploadAvatarButton: React.FC<Props> = ({ className }) => {
     <div className={className}>
       <ImgCrop rotationSlider cropShape={"round"}>
         <Upload
-          action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+          action={endpoints.uploadAvatar}
+          withCredentials
           listType="picture-circle"
           fileList={fileList}
+          headers={{}}
           multiple={false}
           onChange={onChange}
           onPreview={onPreview}
         >
-          {fileList.length ? "+ Ảnh khác" : "+ Thêm ảnh"}
+          {fileList.length
+            ? t("buttons.uploadImage.edit")
+            : t("buttons.uploadImage.add")}
         </Upload>
       </ImgCrop>
     </div>

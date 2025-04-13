@@ -1,14 +1,20 @@
 {
   "buttons": {
     "filter": "Lọc",
-    "clear": "Xóa",
+    "clear": "Dọn",
     "cancel": "Hủy",
     "submit": "Gửi",
     "save": "Lưu",
+    "delete": "Xóa",
     "refresh": "Làm mới",
     "create": "Tạo mới",
     "edit": "Chỉnh sửa",
-    "logout": "Đăng xuất"
+    "confirm": "Bạn chắc chứ?",
+    "logout": "Đăng xuất",
+    "uploadImage": {
+      "add": "+ Thêm ảnh",
+      "edit": "+ Ảnh khác"
+    }
   },
   "pages": {
     "login": {
@@ -213,6 +219,9 @@
     }
   },
   "employees": {
+    "Admin": "Quản trị viên",
+    "Manager": "Quản lý",
+    "Employee": "Nhân viên",
     "entity": "nhân viên",
     "title": "Nhân viên",
     "exportButton": "Xuất danh sách",
@@ -225,6 +234,7 @@
       "position": "Chức vụ"
     },
     "create": {
+      "avatar": "Ảnh đại diện",
       "addBtn": "Thêm nhân viên",
       "addAction": "Thêm",
       "fullName": "Họ và tên",
@@ -235,12 +245,14 @@
       "genderFemale": "Nữ",
       "taxCode": "Mã số thuế",
       "emailValidation": "Hãy nhập địa chỉ email hợp lệ",
+      "phoneValidation": "Hãy nhập số điện thoại hợp lệ",
       "note": "Ghi chú",
       "acronym": "Tên viết tắt",
+      "selectRole": "Chọn quyền hạn",
       "password": "Mật khẩu",
       "repeatPassword": "Nhập lại mật khẩu",
       "name": "Tên",
-      "title": "Chức danh",
+      "role": "Quyền hạn",
       "color": "Màu sắc",
       "language": "Ngôn ngữ",
       "timezone": "Múi giờ",

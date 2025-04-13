@@ -7,6 +7,9 @@ export const endpoints = {
   me: `${API_URL}/auth/me`,
   logout: `${API_URL}/auth/logout`,
   changePassword: `${API_URL}/auth/change-password`,
+  retrieveAvatar: (userId: string | number) =>
+    `${BACKEND_DOMAIN}/assets/image/avatar?q=${userId}`,
+  uploadAvatar: `${BACKEND_DOMAIN}/assets/image/upload-avatar`,
   askAI: `${API_URL}/forms/ask-ai`,
   employee: {
     list: `${API_URL}/employees`,

@@ -27,13 +27,13 @@ export interface ErrorResponse {
   name: string;
 }
 
-export interface BaseEntity {
-  id: number;
-  createdAt: "2024-06-05T03:02:40.008456";
+export interface AuditEntity {
+  id: string | number;
+  createdAt: Date;
   createdBy: string; // user id, using string to prevent JS floating point limitation
-  updatedAt: "2024-06-09T04:32:23.203081";
+  updatedAt: Date;
   updatedBy: string; // user id, using string to prevent JS floating point limitation
-  isDeleted: boolean;
+  isActive: boolean;
 }
 
 export interface Pagination<T> {

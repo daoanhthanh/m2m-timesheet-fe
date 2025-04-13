@@ -1,24 +1,41 @@
 // ⚠️ Thứ tự xuất hiện của enum Role quan trọng, phải theo thứ tự sắp xếp của data Role dưới DB.
-import { BaseEntity } from "types/index";
+import { AuditEntity } from "types/index";
 
 export enum Role {
   Admin,
   Manager,
   Employee,
+}
+
+export enum Gender {
+  Male,
+  Female,
   Other,
 }
 
-export type Guid = string;
-
-export interface User extends BaseEntity {
-  // userID: number;
-  // identifier: string;
-  userFullName: string;
-  userLastName: string;
+export interface User extends AuditEntity {
+  accountId: number;
+  name: string;
+  phoneNumber: string;
+  gender: Gender;
+  email: string;
+  addressId?: number;
+  address?: any;
+  dateOfBirth?: Date;
+  taxCode?: string;
   role: Role;
-  avatarUrl: string;
-  userPhoneNumber: string;
-  email?: string;
+  note?: string;
+  hireDate: Date;
+  departmentId?: number;
+  department?: any;
+  managerId?: number;
+  positionId?: number;
+  salary: number;
+}
+
+export interface Position {
+  id: number;
+  name: string;
 }
 
 export interface AuthUser {

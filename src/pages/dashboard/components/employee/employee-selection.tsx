@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Select } from "antd";
-import { AuthUser, User, Guid } from "types/user";
+import { User } from "types/user";
 import { get } from "providers/http/request";
 import { endpoints } from "@/utils/endpoints";
 import { Pagination } from "types";
 import styles from "./styles.module.css";
 
 export interface EmProps {
-  currentUserId: Guid;
+  currentUserId: string | number;
   currentUserName: string;
 }
 
@@ -26,7 +26,7 @@ export default function EmployeeSelection(props: EmProps) {
     setEmployees(
       data.map((user) => {
         return {
-          label: user.userFullName,
+          label: user.name,
           value: user.id,
         };
       }),

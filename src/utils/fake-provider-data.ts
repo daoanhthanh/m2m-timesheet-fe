@@ -13,7 +13,7 @@ export const fakeUser: User = {
   email: "daoanhthanh.work@gmail.com",
   createdAt: "2024-06-05T03:02:40.008456",
   createdBy: "",
-  isDeleted: false,
+  isActive: false,
   updatedAt: "2024-06-09T04:32:23.203081",
   updatedBy: "",
 };

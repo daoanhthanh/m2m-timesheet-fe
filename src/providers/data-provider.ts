@@ -45,7 +45,7 @@ const dataProvider: DataProvider = {
   getList: async ({ resource, pagination, sorters, filters, meta }) => {
     const url = `${API_URL}/${resource}`;
 
-    const { current = 1, pageSize = 10, mode = "server" } = pagination ?? {};
+    const { current, pageSize, mode } = pagination ?? {};
 
     const { headers: headersFromMeta } = meta ?? {};
 
@@ -79,7 +79,7 @@ const dataProvider: DataProvider = {
       headers: headersFromMeta,
     });
 
-    return response.data().data;
+    return response.data();
   },
 
   create: async ({ resource, variables, meta }) => {

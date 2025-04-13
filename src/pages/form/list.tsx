@@ -120,8 +120,6 @@ function FormList() {
 export const FormListPageWrapper: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const { tableProps } = useTable<User>();
-
   return (
     <div className={"page-container"}>
       <List

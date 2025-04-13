@@ -10,6 +10,7 @@ import {
   Modal,
   Radio,
   RadioChangeEvent,
+  Select,
   Switch,
   Tooltip,
 } from "antd";
@@ -31,6 +32,21 @@ export const EmployeeCreate = () => {
   const { data: currentLoginUser } = useGetIdentity<AuthUser>();
 
   const { list } = useNavigation();
+
+  const roleData = [
+    {
+      value: 0,
+      label: "employees.Admin",
+    },
+    {
+      value: 1,
+      label: "employees.Manager",
+    },
+    {
+      value: 2,
+      label: "employees.Employee",
+    },
+  ];
 
   const [gender, setGender] = useState(1); // default is male
   const onChangeGender = (e: RadioChangeEvent) => {
@@ -79,6 +95,7 @@ export const EmployeeCreate = () => {
           gender: 1, // Male
           active: true,
           requestNewPassword: true,
+          role: roleData[2].value,
         }}
         onFinish={(values) => {
           onFinish({
@@ -89,11 +106,22 @@ export const EmployeeCreate = () => {
       >
         <div className="flex gap-2">
           <div className="flex-1">
-            <UploadAvatarButton className="m-4" />
+            <Form.Item
+              label={t("employees.create.avatar")}
+              name="base64AvatarTempPath"
+            >
+              <UploadAvatarButton
+                onUploadSuccess={(file) => {
+                  formProps.form?.setFieldsValue({
+                    base64AvatarTempPath: file.response.data.atp,
+                  });
+                }}
+              />
+            </Form.Item>
 
             <Form.Item
               label={t("employees.create.fullName")}
-              name="fullName"
+              name="name"
               rules={[
                 {
                   required: true,
@@ -131,7 +159,12 @@ export const EmployeeCreate = () => {
 
             <Form.Item
               label={t("employees.create.phoneNumber")}
-              name="userPhoneNumber"
+              name="phoneNumber"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
             >
               <Input type="number" />
             </Form.Item>
@@ -143,8 +176,14 @@ export const EmployeeCreate = () => {
               </Radio.Group>
             </Form.Item>
 
-            <Form.Item label={t("employees.create.title")} name="title">
-              <Input />
+            <Form.Item label={t("employees.create.role")} name="role">
+              <Select
+                options={roleData.map((role) => ({
+                  value: role.value,
+                  label: t(role.label),
+                }))}
+                placeholder={t("employees.create.selectRole")}
+              />
             </Form.Item>
           </div>
           <div className="flex-1">

@@ -16,31 +16,13 @@ export const CurrentUser: React.FC = () => {
   const { mutate: logout } = useLogout();
 
   const content = (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <Text
-        strong
-        style={{
-          padding: "12px 20px",
-        }}
-      >
+    <div className="flex flex-col">
+      <Text strong className="p-3">
         {user?.name}
       </Text>
-      <div
-        style={{
-          borderTop: "1px solid #d9d9d9",
-          padding: "4px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "4px",
-        }}
-      >
+      <div className="border-t border-gray-300 p-1 flex flex-col gap-1">
         <Button
-          style={{ textAlign: "left" }}
+          className="text-left"
           icon={<SettingOutlined />}
           type="text"
           block
@@ -49,7 +31,7 @@ export const CurrentUser: React.FC = () => {
           Đổi mật khẩu
         </Button>
         <Button
-          style={{ textAlign: "left" }}
+          className="text-left"
           icon={<LogoutOutlined />}
           type="text"
           danger
@@ -63,8 +45,8 @@ export const CurrentUser: React.FC = () => {
   );
 
   return (
-    <div style={{ display: "flex" }}>
-      <Space style={{ marginLeft: "8px" }} size="middle">
+    <div className="flex">
+      <Space className="ml-2" size="middle">
         <Text strong>{user?.name}</Text>
         <Popover
           placement="bottomRight"
@@ -78,26 +60,17 @@ export const CurrentUser: React.FC = () => {
               zIndex: 999,
             },
           }}
-          // overlayInnerStyle={{ padding: 0 }}
-          // overlayStyle={{ zIndex: 999 }}
         >
           <Avatar
             userName={user?.name}
             src={user?.avatarUrl}
             size="default"
-            style={{ cursor: "pointer" }}
+            className="cursor-pointer"
           />
         </Popover>
       </Space>
 
       <ChangePasswordModal opened={openChangePw} setOpened={setOpenChangePw} />
-      {/*{user && (*/}
-      {/*    <AccountSettings*/}
-      {/*        opened={opened}*/}
-      {/*        setOpened={setOpened}*/}
-      {/*        userId={user.id}*/}
-      {/*    />*/}
-      {/*)}*/}
     </div>
   );
 };
