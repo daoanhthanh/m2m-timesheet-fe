@@ -1,22 +1,5 @@
-import { User, Role } from "types";
 import { AnnualLeaveRemainder, AvailableLeaveType } from "types";
 import { GetOneResponse } from "@refinedev/core";
-
-export const fakeUser: User = {
-  id: 1,
-  // userID: 1,
-  userFullName: "Admin",
-  userLastName: "Admin",
-  role: Role.Admin,
-  avatarUrl: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
-  userPhoneNumber: "0123456789",
-  email: "daoanhthanh.work@gmail.com",
-  createdAt: "2024-06-05T03:02:40.008456",
-  createdBy: "",
-  isActive: false,
-  updatedAt: "2024-06-09T04:32:23.203081",
-  updatedBy: "",
-};
 
 export const fakeAnnualLeaveRemainder: GetOneResponse<AnnualLeaveRemainder> = {
   data: {

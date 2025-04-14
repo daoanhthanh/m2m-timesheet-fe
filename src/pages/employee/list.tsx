@@ -1,9 +1,9 @@
 import {
+  DeleteButton,
   EditButton,
   FilterDropdown,
   List,
   ShowButton,
-  DeleteButton,
   TextField,
   useTable,
 } from "@refinedev/antd";
@@ -115,15 +115,11 @@ export const EmployeeListWrapper: React.FC<React.PropsWithChildren> = ({
             dataIndex="hireDate"
             title="Ngày vào làm"
             render={(hireDate: Date) => {
-              const formattedDate = new Date(hireDate).toLocaleDateString(
-                "vi-VN",
-                {
-                  day: "2-digit",
-                  month: "2-digit",
-                  year: "numeric",
-                },
-              );
-              return formattedDate;
+              return new Date(hireDate).toLocaleDateString("vi-VN", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+              });
             }}
           />
           <Table.Column

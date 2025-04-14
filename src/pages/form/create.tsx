@@ -43,7 +43,6 @@ export const FormCreate = () => {
             //@ts-ignore
             (res: FormType) => {
               edit("forms", res.formId);
-              console.log("Data sau khi tao", res);
             },
           );
         }}

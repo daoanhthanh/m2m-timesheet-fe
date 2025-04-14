@@ -259,13 +259,15 @@
       "active": "Kích hoạt",
       "systemAccount": "Tài khoản hệ thống",
       "requestNewPassword": "Yêu cầu mật khẩu mới",
-      "refreshPassword": "Tạo lại mật khẩu",
-      "copyToClipboard": "Sao chép vào clipboard",
+      "copyToClipboard": "Sao chép mật khẩu",
       "sendPWEmail": "Email mật khẩu",
+      "refreshPassword": "Tạo mật khẩu mới",
       "sendPWEmailTooltip": "Gửi mật khẩu đến email của nhân viên sau khi tạo thành công",
       "activeTooltip": "Người dùng bị vô hiệu hóa, không thể đăng nhập và bị ẩn trong báo cáo và hộp chọn",
       "systemAccountTooltip": "Sẽ bị ẩn trong báo cáo và danh sách thả xuống",
-      "requestNewPasswordTooltip": "Lần tiếp theo người dùng đăng nhập, họ phải nhập mật khẩu mới"
+      "requestNewPasswordTooltip": "Lần tiếp theo người dùng đăng nhập, họ phải nhập mật khẩu mới",
+      "directManager": "Quản lý",
+      "selectDirectManager": "Chọn quản lý"
     }
   },
   "errors": {

@@ -14,7 +14,7 @@ export enum Gender {
 }
 
 export interface User extends AuditEntity {
-  accountId: number;
+  accountId: string;
   name: string;
   phoneNumber: string;
   gender: Gender;
@@ -28,7 +28,7 @@ export interface User extends AuditEntity {
   hireDate: Date;
   departmentId?: number;
   department?: any;
-  managerId?: number;
+  managerId?: string;
   positionId?: number;
   salary: number;
 }

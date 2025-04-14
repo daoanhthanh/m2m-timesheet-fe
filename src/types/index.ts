@@ -28,7 +28,7 @@ export interface ErrorResponse {
 }
 
 export interface AuditEntity {
-  id: string | number;
+  id: string;
   createdAt: Date;
   createdBy: string; // user id, using string to prevent JS floating point limitation
   updatedAt: Date;

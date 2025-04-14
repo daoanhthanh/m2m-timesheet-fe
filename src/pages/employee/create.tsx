@@ -16,11 +16,15 @@ import {
 } from "antd";
 
 import { CopyOutlined, ReloadOutlined } from "@ant-design/icons";
-import { useGetIdentity, useNavigation } from "@refinedev/core";
-import { AuthUser, User } from "types/user";
+import { useGetIdentity, useList, useNavigation } from "@refinedev/core";
+import { AuthUser, Gender, User } from "types/user";
 import { useTranslation } from "react-i18next";
 import { UploadAvatarButton } from "components/buttons";
 import { copyToClipboard, generatePassword } from "utils/passwordUtils";
+import { DefaultOptionType as OptionType } from "rc-select/lib/Select";
+import { endpoints } from "@/utils/endpoints";
+import Avatar from "@/components/avatar";
+import { roleData } from "@/providers/constants";
 
 export const EmployeeCreate = () => {
   const { formProps, saveButtonProps, onFinish } = useForm<User>({
@@ -33,20 +37,26 @@ export const EmployeeCreate = () => {
 
   const { list } = useNavigation();
 
-  const roleData = [
-    {
-      value: 0,
-      label: "employees.Admin",
+  const { data: managersData, isLoading } = useList({
+    resource: "employees",
+    filters: [
+      {
+        field: "role",
+        operator: "eq",
+        value: 1, // Manager role
+      },
+    ],
+    queryOptions: {
+      enabled: formProps.form?.getFieldValue("role") === 2, // Only fetch when role is Employee
     },
-    {
-      value: 1,
-      label: "employees.Manager",
-    },
-    {
-      value: 2,
-      label: "employees.Employee",
-    },
-  ];
+  });
+
+  const managerOptions: OptionType[] =
+    managersData?.data.map((manager) => ({
+      value: manager.id,
+      label: manager.name,
+      data: manager, // Store full manager data for rendering
+    })) || [];
 
   const [gender, setGender] = useState(1); // default is male
   const onChangeGender = (e: RadioChangeEvent) => {
@@ -59,8 +69,6 @@ export const EmployeeCreate = () => {
     labelCol: { span: 6 },
     wrapperCol: { span: 16 },
   };
-
-  // const [sendEmail, setSendEmail] = useState(true);
 
   const handleRenewPassword = () => {
     const newPassword = generatePassword();
@@ -92,7 +100,7 @@ export const EmployeeCreate = () => {
         initialValues={{
           password: generatePassword(),
           sendEmail: true,
-          gender: 1, // Male
+          gender: Gender.Male,
           active: true,
           requestNewPassword: true,
           role: roleData[2].value,
@@ -171,19 +179,13 @@ export const EmployeeCreate = () => {
 
             <Form.Item label={t("employees.create.gender")} name="gender">
               <Radio.Group onChange={onChangeGender} value={gender}>
-                <Radio value={1}>{t("employees.create.genderMale")}</Radio>
-                <Radio value={2}>{t("employees.create.genderFemale")}</Radio>
+                <Radio value={Gender.Male}>
+                  {t("employees.create.genderMale")}
+                </Radio>
+                <Radio value={Gender.Female}>
+                  {t("employees.create.genderFemale")}
+                </Radio>
               </Radio.Group>
-            </Form.Item>
-
-            <Form.Item label={t("employees.create.role")} name="role">
-              <Select
-                options={roleData.map((role) => ({
-                  value: role.value,
-                  label: t(role.label),
-                }))}
-                placeholder={t("employees.create.selectRole")}
-              />
             </Form.Item>
           </div>
           <div className="flex-1">
@@ -280,6 +282,69 @@ export const EmployeeCreate = () => {
                   {t("employees.create.requestNewPasswordTooltip")}
                 </span>
               </div>
+            </Form.Item>
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <div className="flex-1">
+            <Form.Item label={t("employees.create.role")} name="role">
+              <Select
+                options={roleData.map((role) => ({
+                  value: role.value,
+                  label: t(role.label),
+                }))}
+                placeholder={t("employees.create.selectRole")}
+                onChange={(value) => {
+                  formProps.form?.setFieldsValue({ directManager: undefined });
+                  formProps.form?.setFieldValue("role", value);
+                }}
+              />
+            </Form.Item>
+          </div>
+          <div className="flex-1">
+            <Form.Item
+              noStyle
+              shouldUpdate={(prevValues, currentValues) =>
+                prevValues.role !== currentValues.role
+              }
+            >
+              {({ getFieldValue }) =>
+                getFieldValue("role") === 2 && (
+                  <Form.Item
+                    label={t("employees.create.directManager")}
+                    name="directManager"
+                  >
+                    <Select
+                      placeholder={t("employees.create.selectDirectManager")}
+                      options={managerOptions}
+                      loading={isLoading}
+                      showSearch
+                      optionFilterProp="label"
+                      filterOption={(input, option) =>
+                        (option?.label?.toString() || "")
+                          .toLowerCase()
+                          .includes(input.toLowerCase())
+                      }
+                      optionRender={(option) => {
+                        const manager = option.data.data;
+                        return (
+                          <div
+                            key={manager.id}
+                            className="flex items-center gap-2"
+                          >
+                            <Avatar
+                              userName={manager.name}
+                              src={endpoints.retrieveAvatar(manager.id)}
+                              size="small"
+                            />
+                            <span>{manager.name}</span>
+                          </div>
+                        );
+                      }}
+                    />
+                  </Form.Item>
+                )
+              }
             </Form.Item>
           </div>
         </div>
