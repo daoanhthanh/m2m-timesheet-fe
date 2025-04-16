@@ -3,12 +3,12 @@
  */
 export const getRandomColorFromString = (text: string) => {
   const colors = [
-    "#ff9c6e",
+    "#fa7b3c",
     "#ff7875",
-    "#ffc069",
-    "#ffd666",
-    "#fadb14",
-    "#95de64",
+    "#bb894a",
+    "#968e1a",
+    "#ceb414",
+    "#689a45",
     "#5cdbd3",
     "#69c0ff",
     "#85a5ff",

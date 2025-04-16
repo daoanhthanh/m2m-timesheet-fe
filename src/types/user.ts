@@ -21,6 +21,7 @@ export interface User extends AuditEntity {
   email: string;
   addressId?: number;
   address?: any;
+  hasAvatar: boolean;
   dateOfBirth?: Date;
   taxCode?: string;
   role: Role;

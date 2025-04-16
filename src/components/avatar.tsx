@@ -10,28 +10,13 @@ type Props = AvatarProps & {
 };
 
 const AvatarComponent: FC<Props> = ({ userName = "", style, ...rest }) => {
-  let isValidImage = false;
-
-  if (rest?.src) {
-    fetch(rest.src as string, {
-      method: "HEAD",
-      credentials: "include",
-    }).then((response) => {
-      if (
-        response.ok &&
-        response.headers.get("Content-Type")?.startsWith("image/")
-      ) {
-        isValidImage = true;
-      }
-    });
-  }
-
+  
   return (
     <AntdAvatar
       alt={userName}
       size="small"
       style={{
-        backgroundColor: isValidImage
+        backgroundColor: rest?.src
           ? "transparent"
           : getRandomColorFromString(userName),
         display: "flex",
