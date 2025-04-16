@@ -10,7 +10,6 @@ type Props = AvatarProps & {
 };
 
 const AvatarComponent: FC<Props> = ({ userName = "", style, ...rest }) => {
-  
   return (
     <AntdAvatar
       alt={userName}

@@ -91,9 +91,10 @@ const Routes = () => {
         >
           <Route index element={null} />
           <Route path="create" element={<EmployeeCreate />} />
-          <Route path="edit/:id" element={<EmployeeEdit />} />
-          <Route path="show/:id" element={<EmployeeShow />} />
         </Route>
+
+        <Route path="/employees/edit/:id" element={<EmployeeEdit />} />
+        <Route path="/employees/show/:id" element={<EmployeeShow />} />
       </Route>
 
       <Route

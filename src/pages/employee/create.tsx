@@ -334,7 +334,11 @@ export const EmployeeCreate = () => {
                           >
                             <Avatar
                               userName={manager.name}
-                              src={manager.hasAvatar ?endpoints.retrieveAvatar(manager.id) : null}
+                              src={
+                                manager.hasAvatar
+                                  ? endpoints.retrieveAvatar(manager.id)
+                                  : null
+                              }
                               size="small"
                             />
                             <span>{manager.name}</span>

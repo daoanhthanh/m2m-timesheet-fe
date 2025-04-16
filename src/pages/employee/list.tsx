@@ -83,7 +83,9 @@ export const EmployeeListWrapper: React.FC<React.PropsWithChildren> = ({
                 <div className={styles.avatarAndName}>
                   <Avatar
                     userName={user?.name}
-                    src={user.hasAvatar ? endpoints.retrieveAvatar(user.id) : null }
+                    src={
+                      user.hasAvatar ? endpoints.retrieveAvatar(user.id) : null
+                    }
                     size="default"
                   />
                   <p>{name}</p>

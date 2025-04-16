@@ -6,12 +6,16 @@ import { Form, Input, Select } from "antd";
 
 import MDEditor from "@uiw/react-md-editor";
 
-import { ICategory, IPost } from "types";
+import { ICategory, User } from "types";
 
 export const EmployeeEdit = () => {
-  const { formProps, saveButtonProps, queryResult } = useForm<IPost>();
+  // const { formProps, saveButtonProps, queryResult } = useForm<IPost>();
 
-  const postData = queryResult?.data?.data;
+  const { formProps, saveButtonProps, onFinish, query } = useForm<User>({
+    redirect: "list",
+  });
+
+  const postData = query?.data?.data;
   const { selectProps: categorySelectProps } = useSelect<ICategory>({
     resource: "categories",
     defaultValue: postData?.category.id,
