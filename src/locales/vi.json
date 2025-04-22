@@ -268,6 +268,11 @@
       "requestNewPasswordTooltip": "Lần tiếp theo người dùng đăng nhập, họ phải nhập mật khẩu mới",
       "directManager": "Quản lý",
       "selectDirectManager": "Chọn quản lý"
+    },
+    "edit": {
+      "title": "Chỉnh sửa nhân viên",
+      "updateBtn": "Cập nhật nhân viên",
+      "saveAction": "Cập nhật"
     }
   },
   "errors": {
